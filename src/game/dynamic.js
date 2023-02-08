@@ -161,6 +161,7 @@ async function getCached(id, suffix = ".html") {
 // gets file from cache if it exists,
 // otherwise it downloads the file from the internet.
 async function getPage(id) {
+	id = encodeURI(id);
 	try {
 		let page = "";
 		if (isCached(id)) {

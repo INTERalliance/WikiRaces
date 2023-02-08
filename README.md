@@ -18,6 +18,7 @@ Wiki Races is a competition where players start on
 a Wikipedia page, and have to get to another Wikipedia page
 by only clicking the links in the Wikipedia pages. 
 
+
 ---
 
 ### Website features:
@@ -41,6 +42,16 @@ by only clicking the links in the Wikipedia pages.
 - Admin tools:
   - Rename users on the fly
   - Set level times easily
+
+---
+
+### General Server Structure
+
+GET ~/wiki/:id
+
+- This is the equivalent of just going to the Wikipedia page and downloading it.
+- This is a terrible way to structure it.
+- If you have lots of spare time or are writing this again, please use the Wikipedia API.
 
 ---
 

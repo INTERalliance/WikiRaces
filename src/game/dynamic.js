@@ -111,6 +111,7 @@ async function formatPage(page) {
 	page = tryRemoveClass(page, "mw-indicator");
 	// remove divs by id
 	page = tryRemoveId(page, "catlinks");
+	page = tryRemoveId(page, "searchInput");
 
 	return page;
 }

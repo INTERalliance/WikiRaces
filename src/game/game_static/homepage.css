@@ -40,7 +40,7 @@ body {
 
 /* Username Start */
 
-#username-entry {
+#username-entry, #rules-list {
     width: auto;
     background: white;
     border: 1px solid rgb(138, 176, 245);

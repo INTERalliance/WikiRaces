@@ -16,7 +16,8 @@ body {
     border: 1px solid rgb(138, 176, 245);
     margin-bottom: 1em;
     padding: 1em;
-    text-align: center;
+    text-align: center !important;
+
 }
 
 #header h1 {

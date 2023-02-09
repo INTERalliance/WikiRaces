@@ -1,7 +1,4 @@
-import dateparser
-import datetime
-import os
-import json
+import random,dateparser, datetime,os,json,csv
 from shutil import copyfile
 
 epoch = datetime.datetime.utcfromtimestamp(0)
@@ -48,23 +45,33 @@ def end_time() -> str:
     return get_time()
 
 
-def start_page():
-    print("Enter the part of the wikipedia url after 'https://en.wikipedia.org/wiki/' for the starting page.")
-    return input(cursor)
+def new_page(point):
+    if point == "start":
+        print("Enter the part of the wikipedia url after 'https://en.wikipedia.org/wiki/' for the starting page.")
+    else:
+        print("Enter the part of the wikipedia url after 'https://en.wikipedia.org/wiki/' for the ending page.")
+    
+    print("Or, press enter to randomize from the list of levels.")
+    
+    result = input(cursor)
+    if result == "":
+        result = fromList()
+    return result
 
-
-def end_page():
-    print("Enter the part of the wikipedia url after 'https://en.wikipedia.org/wiki/' for the ending page.")
-    return input(cursor)
-
+def fromList():
+    with open(os.path.join(os.pardir, "game/game_static/knowngood.csv"), 'r') as file: 
+        for row in csv.reader(file):
+            result = random.choice(row)
+        print(result)
+        return result
 
 def generate_level():
     return {
         "name": get_name(),
         "startTime": "",
         "endTime": "",
-        "startPage": start_page(),
-        "endPage": end_page()
+        "startPage": new_page("start"),
+        "endPage": new_page("end")
     }
 
 

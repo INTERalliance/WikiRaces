@@ -98,7 +98,7 @@ iframe {
 	white-space: nowrap;
 }
 
-.history-text, #goal {
+.history-text, #goalframe {
 	cursor: pointer;
 	display: inline;
 	border-radius: 3em;

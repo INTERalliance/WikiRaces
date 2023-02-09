@@ -67,3 +67,13 @@ button {
 button:hover {
     background: rgb(214, 214, 214);
 }
+.center {
+    text-align: center;
+}
+
+a {
+    color: black;
+}
+a:hover {
+    color: rgb(224, 113, 113);
+}

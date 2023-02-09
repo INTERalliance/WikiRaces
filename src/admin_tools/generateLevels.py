@@ -81,7 +81,7 @@ def accept(prompt, repeat=True):
     elif choice == "n":
         return False
     else:
-        return accept()
+        return accept("Please specify (y/n)")
 
 
 while accept("Would you like to add another level? (y/n)"):

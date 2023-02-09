@@ -1,4 +1,4 @@
-# WikiRaces
+# Wiki Races
 
 This is the repository for the INTERalliance WikiRaces competition at TechOlympics 2023.
 

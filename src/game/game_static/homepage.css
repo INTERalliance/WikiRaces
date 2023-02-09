@@ -1,46 +1,11 @@
-* {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-body {
-    background: #e6dfdf;
-}
 
 #levels-table table {
     width: 100%;
 }
 
-/* Heading Start */
-
-#header {
-    width: auto;
-    background: white;
-    border: 1px solid rgb(138, 176, 245);
-    margin-bottom: 1em;
-    padding: 1em;
-    text-align: center;
-}
-
-#header h1 {
-    font-size: xx-large;
-    padding: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-}
-
-#header h2 {
-    font-size: large;
-    padding: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-    color: grey;
-}
-
-/* Heading End */
-
 /* Username Start */
 
-#username-entry, #rules-list {
+#page section {
     width: auto;
     background: white;
     border: 1px solid rgb(138, 176, 245);
@@ -76,13 +41,7 @@ body {
     margin: 0.1em;
 }
 
-.input-status-error {
-    color: red;
-}
 
-.input-status-good {
-    color: green;
-}
 
 #username-value {
     font-weight: bold;
@@ -148,17 +107,4 @@ tr th, tr td {
     font-size: small;
 }
 
-/* Go to leaderboard button */
 
-#go-leaderboard {
-    /* background: rgb(166, 243, 170); */
-    /* margin-top: 1em; */
-    font-weight: bold;
-    border-radius: 5em;
-    padding: 0.5em;
-    cursor: pointer;
-}
-
-#go-leaderboard:hover {
-    background: rgb(214, 214, 214);
-}

@@ -20,22 +20,29 @@
 			type="text/css"
 			href="../wiki-races/homepage.css"
 		/>
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="../wiki-races/web.css"
+		/>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 	</head>
 
 	<body>
 		<div id="page">
-			<div id="header">
+			<section id="header">
 				<h1>Wiki Races</h1>
 				<h2>TechOlympics 2023</h2>
-			</div>
-			<div id="username-entry">
+			</section>
+			<section id="username-entry">
 				<div id="username-exists" class="has-username">
-					Your name is
-					<div id="username-value" class="has-username"></div>
-					<button id="delete-username">Log Out</button>
-					<br />
-					<button id="go-leaderboard">Go to leaderboard</button>
+					<div class="flex">
+						Welcome, 
+						<div id="username-value" class="has-username"></div>!
+					</div>
+					<br>
+					<button class="green" id="go-leaderboard">Go to leaderboard</button>
+					<button class="has-username red" id="delete-username">Log Out</button>
 				</div>
 
 				<div id="username-does-not-exist" class="no-username">
@@ -51,8 +58,8 @@
 					<br />
 					<div id="input-error" class="no-username"></div>
 				</div>
-			</div>
-			<div id="rules-list">
+			</section>
+			<section id="rules-list">
 				<strong>Rules</strong>
 				<ol>
 					<li>For each level, everyone will start on the same page.<br>
@@ -60,10 +67,10 @@
 					</li>
 					<li>Searching within the page is allowed.</li>
 				</ol>
-			</div>
+			</section>
 			<div id="levels-table">
 				<h3>Levels:</h3>
-			</div>
+			</section>
 		</div>
 		<!--[if lt IE 7]>
 			<p class="browsehappy">

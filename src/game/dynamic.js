@@ -92,7 +92,7 @@ async function formatPage(page) {
 	page = page.replace(/<table.*sistersitebox([\s\S]*?)<\/table>/gm, "");
 	page = page.replace(/<div role.*sistersitebox.*$/gm, "");
 	// replace external links with text
-	page = page.replace(/<a rel.*external text.*<\/a>/g, "[external link]");
+	page = page.replace(/<a .*external text.*<\/a>/g, "[external link]");
 	// remove Jump To ___ links
 	page = page.replace(/<a class.*Jump.*/g, "");
 	// remove php scripts
@@ -111,7 +111,7 @@ async function formatPage(page) {
 	page = tryRemoveClass(page, "mw-indicator");
 	// remove divs by id
 	page = tryRemoveId(page, "catlinks");
-	page = tryRemoveId(page, "searchInput");
+	page = tryRemoveId(page, "p-search");
 
 	return page;
 }

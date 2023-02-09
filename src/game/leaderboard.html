@@ -20,12 +20,17 @@
 			type="text/css"
 			href="../wiki-races/leaderboard.css"
 		/>
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="../wiki-races/web.css"
+		/>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 	</head>
 
 	<body>
 		<div id="page">
-			<div id="header" class="align-left">
+			<section id="header" class="align-left">
 				<h1>Leaderboard</h1>
 				<p>
 					Note: All incomplete levels count as the time they were
@@ -36,17 +41,17 @@
 					<br />
 					Your goal is to have the lowest total time.
 				</p>
-			</div>
-			<div id="text-section" class="align-left">
-				<button id="go-home">Go home!</button>
-			</div>
-			<div id="levels-container">
+			</section>
+			<section id="text-section" class="align-left">
+				<button class="red" id="go-home">Go home!</button>
+			</section>
+			<section id="levels-container">
 				<div id="static-section">
 					<p id="leaderboard-position">You are not logged in.</p>
 					<h3>Times (mins:secs)</h3>
 				</div>
 				<div id="levels-table"></div>
-			</div>
+			</section>
 		</div>
 		<!--[if lt IE 7]>
 			<p class="browsehappy">

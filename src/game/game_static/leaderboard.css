@@ -2,43 +2,6 @@
     --leaderboard-width: 65vw;
 }
 
-* {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-body {
-    background: #e6dfdf;
-}
-
-/* Heading Start */
-
-#header {
-    width: auto;
-    background: white;
-    border: 1px solid rgb(138, 176, 245);
-    margin-bottom: 1em;
-    padding: 1em;
-    display: block;
-}
-
-#header h1 {
-    font-size: xx-large;
-    padding: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-    text-align: center;
-}
-
-#header h2 {
-    font-size: large;
-    padding: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-    color: grey;
-}
-
-/* Heading End */
-
 /* Username Start */
 
 #text-section {
@@ -77,13 +40,6 @@ body {
     margin: 0.1em;
 }
 
-.input-status-error {
-    color: red;
-}
-
-.input-status-good {
-    color: green;
-}
 
 #username-value {
     font-weight: bold;
@@ -149,10 +105,6 @@ tr th, tr td {
     text-align: center;
 }
 
-.status-urgent {
-    background: rgb(241, 139, 144);
-}
-
 .status-over {
     color: grey;
 }
@@ -180,15 +132,11 @@ tr th, tr td {
 
 /* Button */
 
-#go-home, #give-up {
+#give-up {
     background: rgb(238, 160, 160);
-    font-weight: bold;
-    border-radius: 5em;
-    padding: 0.5em;
-    cursor: pointer;
 }
 
-#go-home:hover, #give-up:hover {
+#give-up:hover {
     background: rgb(233, 151, 151);
 }
 

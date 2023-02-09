@@ -128,7 +128,7 @@ def change_username_from_selection():
     change_username_by_user_id(ids)
 
 def delete_all_users():
-    print("DELETEING ALL USERS")
+    print("DELETING ALL USERS")
     db.users.delete_many({})
 
 list_of_commands = [

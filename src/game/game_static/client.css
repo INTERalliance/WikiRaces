@@ -98,8 +98,13 @@ iframe {
 	white-space: nowrap;
 }
 
-.history-text, #goalframe {
+.history-text {
 	cursor: pointer;
+}
+#goalframe {
+	margin-right: .5em;
+}
+.history-text, #goalframe {
 	display: inline;
 	border-radius: 3em;
 	border-width: 0.1em;
@@ -108,6 +113,9 @@ iframe {
 	padding-left: 0.6em;
 	padding-right: 0.5em;
 	white-space: nowrap;
+}
+#time-left {
+	padding: 5px;
 }
 
 .history-text:hover {

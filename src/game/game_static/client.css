@@ -60,6 +60,7 @@ iframe {
 }
 
 #restart {
+
 	margin: 0;
 	z-index: -1;
 	position: absolute;
@@ -71,17 +72,21 @@ iframe {
 	border-color: black;
 	border-style: solid;
 	padding: 0.5em;
+	margin-left: .5em;
 }
 
 #restart:hover {
 	background: lightgrey;
 }
-
+#goal {
+	font-weight: bold;
+}
 #history-frame {
 	list-style-type: '→';
 	margin: 0;
 	overflow-y: hidden;
-	overflow-x: scroll;
+	overflow-x: visible;
+	width: inherit;
 	padding: 0.5em;
 	padding-left: 2em;
 	display: flex;
@@ -93,7 +98,7 @@ iframe {
 	white-space: nowrap;
 }
 
-.history-text {
+.history-text, #goal {
 	cursor: pointer;
 	display: inline;
 	border-radius: 3em;

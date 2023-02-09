@@ -104,7 +104,7 @@ iframe {
 #goalframe {
 	margin-right: .5em;
 }
-.history-text, #goalframe {
+.history-text {
 	display: inline;
 	border-radius: 3em;
 	border-width: 0.1em;

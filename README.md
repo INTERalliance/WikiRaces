@@ -1,6 +1,6 @@
-# WikiRaces2021
+# WikiRaces
 
-This is the repository for the Interalliance WikiRaces 2021 competition
+This is the repository for the INTERalliance WikiRaces competition at TechOlympics 2023.
 
 Run `npm install` in the project directory to install the dependencies.
 
@@ -14,10 +14,9 @@ On the actual server, use pm2 to start the server with `pm2 start app.js --name 
 
 ### About Wiki Races:
 
-Wiki Races is a competition where players start on 
+Wiki Races is a competition where players start on
 a Wikipedia page, and have to get to another Wikipedia page
-by only clicking the links in the Wikipedia pages. 
-
+by only clicking the links in the Wikipedia pages.
 
 ---
 
@@ -42,16 +41,6 @@ by only clicking the links in the Wikipedia pages.
 - Admin tools:
   - Rename users on the fly
   - Set level times easily
-
----
-
-### General Server Structure
-
-GET ~/wiki/:id
-
-- This is the equivalent of just going to the Wikipedia page and downloading it.
-- This is a terrible way to structure it.
-- If you have lots of spare time or are writing this again, please use the Wikipedia API.
 
 ---
 
@@ -88,7 +77,7 @@ You will need to do that yourself if you are setitng this up.
 - The main issue right now is that I am unable to detect when a link is clicked.
 - Plan: Dynamically fetch wikipedia pages, and break out of the iframe to set variables.
 - If I can host the page and the game, I shouldn't have issues with XSS
-- Autogenerate [url](https://github.com/ElderINTERalliance/WikiRaces2021/blob/3d731bdac930a36299f17b73827c23e2dd1e2c54/src/game/game_static/client.js#L8)
+- Autogenerate [url](https://github.com/ElderINTERalliance/WikiRaces/blob/3d731bdac930a36299f17b73827c23e2dd1e2c54/src/game/game_static/client.js#L8)
 - improve `if (err) return log.error(err);`
 - set github language [with this](https://hackernoon.com/how-to-change-repo-language-in-github-c3e07819c5bb) [or this](https://stackoverflow.com/questions/34713765/github-changes-repository-to-wrong-language)
 - create test suite

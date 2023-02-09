@@ -86,7 +86,6 @@ iframe {
 	margin: 0;
 	overflow-y: hidden;
 	overflow-x: visible;
-	width: inherit;
 	padding: 0.5em;
 	padding-left: 2em;
 	display: flex;

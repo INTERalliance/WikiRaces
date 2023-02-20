@@ -129,23 +129,35 @@ async function generatePage(id) {
 
 // make folder if none exists
 const cacheFolder = path.join(__dirname, "/cache");
-if (!fs.existsSync(cacheFolder)) {
-	fs.mkdirSync(cacheFolder);
+try {
+	if (!fs.existsSync(cacheFolder)) {
+		fs.mkdirSync(cacheFolder);
+	}
+} catch (err) {
+	log.error(err);
 }
 
 // save file to cache
 async function saveFile(id, content, suffix = ".html") {
-	fs.writeFile(`${cacheFolder}/${id}${suffix}`, content, (err) => {
-		if (err) {
-			log.error(err);
-			return undefined;
-		}
-		log.info(`saved ${id} to cache.`);
-	});
+	try {
+		fs.writeFile(`${cacheFolder}/${id}${suffix}`, content, (err) => {
+			if (err) {
+				log.error(err);
+				return undefined;
+			}
+			log.info(`saved ${id} to cache.`);
+		});
+	} catch (err) {
+		log.error(err);
+	}
 }
 
 function isCached(id) {
-	return fs.existsSync(`${cacheFolder}/${id}.html`);
+	try {
+		return fs.existsSync(`${cacheFolder}/${id}.html`);
+	} catch (err) {
+		return false;
+	}
 }
 
 // get file from cache, or return undefined

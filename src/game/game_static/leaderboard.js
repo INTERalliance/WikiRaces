@@ -36,6 +36,12 @@ async function getLeaderboardData() {
 	return JSON.parse(resp);
 }
 
+async function getLeaderboardOverviewData() {
+	const levelsURL = generateURL("/wiki-races/api/leaderboard-overview");
+	const resp = await getTextFrom(levelsURL);
+	return JSON.parse(resp);
+}
+
 async function sortSubmissions(submissions) {
 	if (submissions.length <= 0) return undefined;
 	return submissions.sort((a, b) => {
@@ -84,7 +90,6 @@ function formatMS(milliseconds) {
 	const ms = date.getMilliseconds();
 	return `${m}:${s}.${ms}`;
 }
-
 function createNameLink(name, userId) {
 	let cell = document.createElement("td");
 	let link = document.createElement("a");
@@ -172,6 +177,18 @@ async function getPlaceString(place, allUsers) {
 	}
 }
 
+async function getLeaderboardOverviewString() {
+	let data = await getLeaderboardOverviewData();
+
+	let totalAll = formatMS(data.averages);
+	let totalFinished = formatMS(data.averagesExcludingDNF);
+	
+	return `
+		The average total time across finished levels was ${totalFinished},
+		and ${totalAll} across all levels.
+	`;
+}
+
 /* This is run at script load: */
 (async () => {
 	// Create leaderboard table
@@ -194,4 +211,6 @@ async function getPlaceString(place, allUsers) {
 	const userId = getCookie("userId");
 	const position = await getLeaderboardPosition(userId, sorted);
 	posText.textContent = await getPlaceString(position, sorted);
+	posText.innerHTML += '<br>';
+	posText.innerHTML += await getLeaderboardOverviewString();
 })();

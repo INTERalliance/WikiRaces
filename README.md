@@ -54,7 +54,11 @@ You will need to do that yourself if you are setitng this up.
 
 ### To do:
 
+- Big change: Pull from Wikipedia API instead of webpage
+  - change function `getWiki(id)` in dynamic.js to pull from Wikipedia API
+  - Take data from API and format it as a styled HTML webpage
 - clean up useless async/await
+- Set up auto redirect from HTTP to HTTPS
 - set up replica sets for mongodb
 - add informational text on homepage
 	- note a re-direct does not count

@@ -78,7 +78,7 @@ async function fillInMissing(total, times) {
  * a particular object, and means we can get the times by
  * looping over both the submissions and the levelnames once.
  */
-async function getUserTimes(userId) {
+async function getUserTimes(userId, fillInAll=true) {
 	const submissions = await db.getCollection(
 		{ userId: userId },
 		"submissions"
@@ -105,7 +105,9 @@ async function getUserTimes(userId) {
 		}
 	}
 
-	[totalTime, times] = await fillInMissing(totalTime, times);
+	if (fillInAll) {
+		[totalTime, times] = await fillInMissing(totalTime, times);
+	}
 
 	// Quick patch to make sure levels are ordered correctly:
 	let sortedTimes = {};
@@ -132,7 +134,7 @@ async function generateLeaderboard() {
 
 	let leaderboard = [];
 
-	for (id of userIds) {
+	for (let id of userIds) {
 		const user = await db.getUserById(id);
 		const [totalTime, times] = await getUserTimes(id);
 		leaderboard.push({
@@ -185,6 +187,72 @@ async function getLevelsLeaderboard() {
 	return JSON.stringify(submissions);
 }
 
+async function averageTimes(fillAll) {
+	const userIds = await getUserIds();
+
+	let leaderboard = [];
+
+	try {
+		for (let id of userIds) {
+			const user = await db.getUserById(id);
+			const [totalTime, times] = await getUserTimes(id, fillAll);
+			let goodTimes = Object.values(times).filter(time => time != null);
+			leaderboard = leaderboard.concat(goodTimes);
+		}
+	} catch (err) {
+		log.error(err)
+	}
+
+	if (leaderboard.length == 1){
+		return leaderboard[0].toString();
+	}
+
+	let average = leaderboard.reduce((acc, ele) => acc + ele, 0) / leaderboard.length;
+	if (average) {
+		return average.toString();
+	} else {
+		return "None";
+	}
+}
+
+async function generateLeaderboardOverview() {
+	log.info("generated leaderboard");
+
+	let averages, averagesExcludingDNF;
+	averages = averagesExcludingDNF = 0;
+
+	try {
+		averages = await averageTimes(true);
+		averagesExcludingDNF = await averageTimes(false);
+		log.info("line 219", {averages, averagesExcludingDNF});
+	} catch (err) {
+		log.error(err);
+	}
+
+	return {
+		averages,
+		averagesExcludingDNF,
+	};
+}
+
+async function getLeaderboardOverview() {
+	// Only generate leaderboard every `seconds` seconds.
+	// if (new Date().getTime() > lastGenerated.getTime() + seconds * 1000) {
+		lastGenerated = new Date();
+
+		const leaderboard = await generateLeaderboardOverview();
+		try {
+			saveFile(cacheName, JSON.stringify(leaderboard), ".json");
+		} catch (err) {
+			log.error(err)
+		}
+
+		return leaderboard;
+	// } else {
+		// return getCached("leaderboard-overview", ".json");
+	// }
+}
+
 // Only getLeaderboard() and getLevelsByUser() are actually used.
 // The rest are exported for testing.
 module.exports = {
@@ -198,4 +266,5 @@ module.exports = {
 	getUserTimes,
 	getUserIds,
 	generateLeaderboard,
+	getLeaderboardOverview,
 };

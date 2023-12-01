@@ -3,22 +3,17 @@ from shutil import copyfile
 
 epoch = datetime.datetime.utcfromtimestamp(0)
 wiki = wikipediaapi.Wikipedia('INTERalliance Wiki Races (tech@interalliance.org)', 'en')
-
 levels = {}
-
 cursor = "> "
-
 
 def backup():
     source = os.path.join(os.pardir, "game/game_static/levels.json")
     destination = os.path.join(os.pardir, "game/game_static/BU_levels.json")
     copyfile(source, destination)
 
-
 def set_json(raw_string: str):
     with open(os.path.join(os.pardir, "game/game_static/levels.json"), 'w') as file:
         return file.write(raw_string)
-
 
 def get_time() -> str:
     time = dateparser.parse(input(cursor))
@@ -27,7 +22,7 @@ def get_time() -> str:
         time = dateparser.parse(input(cursor))
     return time.isoformat()
 
-
+# This function automatically generates a name for the level and announces to the user which level they are editing.
 i = 0
 def get_name() -> str:
     global i
@@ -35,11 +30,9 @@ def get_name() -> str:
     print(f"Now editing level {i}.")
     return f"level{i}"
 
-
 def start_time() -> str:
     print("Enter the time the level should open. (e.g. 'in 3 min', 'Fri, 12 Dec 2023 10:55:50)'")
     return get_time()
-
 
 def end_time() -> str:
     print("Enter the time the level should close. (e.g. 'in 10 min', 'Fri, 12 Dec 2023 10:59:00')")
@@ -75,6 +68,7 @@ def fromList():
             result = random.choice(row)
         return result
 
+# This function generates a level using an automatically generated name (see get_name function) and a user-defined (see new_page function) start and end point.
 def generate_level():
     return {
         "name": get_name(),
@@ -84,12 +78,12 @@ def generate_level():
         "endPage": new_page("end")
     }
 
-
+# This function adds new levels using the generate level function, and adds them to the levels dictionary.
 def add_level():
     level = generate_level()
     levels[level["name"]] = level
 
-
+# This function allows other functions to prompt the user for a Y/N response.
 def accept(prompt, repeat=True):
     print(prompt)
     choice = input("> ")

@@ -6,11 +6,18 @@
 /* Username Start */
 #page section {
     width: auto;
-    background: white;
-    border: 1px solid rgb(138, 176, 245);
+    margin: auto;
     margin-bottom: 1em;
-    padding: 1em;
+    padding-right: 1em;
+    padding-left: 1em;
     text-align: left;
+    padding: 1em;
+    border: solid #2defe4 1px;
+    width: 80%;
+}
+
+h1 {
+    color: #2defe4;
 }
 
 #delete-username {
@@ -64,9 +71,16 @@ tr th, tr td {
 }
 
 #levels-table {
-    width: 100%;
-    background: white;
-    border: 1px solid rgb(138, 176, 245);
+    min-height: 17em;
+    width: auto;
+    margin: auto;
+    margin-bottom: 1em;
+    padding-right: 1em;
+    padding-left: 1em;
+    text-align: left;
+    padding: 1em;
+    border: solid #2defe4 1px;
+    width: 80%;
 }
 
 #levels-table h3 {
@@ -88,22 +102,24 @@ tr th, tr td {
 
 #page {
     margin: auto;
-    width: 50%;
-    padding: 10px;
-}
-
-@media (max-width: 700px) {
-    #page {
-        width: 98%;
-        padding: 2px;
-    }
+    font-size: 18px;
 }
 
 /* Credits, at footer of page */
 
 #credits {
-    padding-top: 3em;
-    font-size: small;
+    padding-top: 1em;
+    padding-bottom: 3em;
+
+    max-width: 1200px;
+    font-size: 12pt;
+    color: black;
+    margin: auto;
+    text-align: center;
 }
 
 
+footer {
+    background-color: #eeeeee;
+
+}

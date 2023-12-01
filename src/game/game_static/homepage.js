@@ -1,3 +1,7 @@
+document.getElementById("go-leaderboard").addEventListener("click", () => {
+	window.location.href = `${window.location.protocol}//${window.location.host}/wiki-races/leaderboard`;
+});
+
 function getTextFrom(url) {
 	var resp;
 	var xmlHttp;

@@ -34,42 +34,43 @@
 			<strong>TechOlympics 2024: Wiki Races</strong>
 		</header>
 		<div id="page">
-			
-			<section id="username-entry">
-				<h1>Account Selection</h1>
-				<div id="username-exists" class="has-username">
-					<div class="flex">
-						Welcome, 
-						<div id="username-value" class="has-username"></div>!
+			<div id="info-div">
+				<section id="username-entry">
+					<h1>Account Selection</h1>
+					<div id="username-exists" class="has-username">
+						<div class="flex">
+							Welcome, 
+							<div id="username-value" class="has-username"></div>!
+						</div>
+						<br>
+						<button class="green" id="go-leaderboard">Go to leaderboard</button>
+						<button class="has-username red" id="delete-username">Log Out</button>
 					</div>
-					<br>
-					<button class="green" id="go-leaderboard">Go to leaderboard</button>
-					<button class="has-username red" id="delete-username">Log Out</button>
-				</div>
-
-				<div id="username-does-not-exist" class="no-username">
-					<p>Please enter your real name: </p>
-					<input
-						type="text"
-						id="submission-box"
-						class="no-username"
-					/>
-					<button id="submission-button" class="no-username">
-						Submit
-					</button>
-					<br />
-					<div id="input-error" class="no-username"></div>
-				</div>
-			</section>
-			<section id="rules-list">
-				<h1>Rules</h1>
-				<ol>
-					<li>For each level, everyone will start on the same page.<br>
-					Your goal is to get to the target page as fast as possible.
-					</li>
-					<li>Searching within the page is allowed.</li>
-				</ol>
-			</section>
+	
+					<div id="username-does-not-exist" class="no-username">
+						<p>Please enter your real name: </p>
+						<input
+							type="text"
+							id="submission-box"
+							class="no-username"
+						/>
+						<button id="submission-button" class="no-username">
+							Submit
+						</button>
+						<br />
+						<div id="input-error" class="no-username"></div>
+					</div>
+				</section>
+				<section id="rules-list" style="margin: 0;">
+					<h1>Rules</h1>
+					<ol>
+						<li>For each level, everyone will start on the same page.<br>
+						Your goal is to get to the target page as fast as possible.
+						</li>
+						<li>Searching within the page is allowed.</li>
+					</ol>
+				</section>
+			</div>
 			<div id="levels-table">
 				<h1>Levels:</h1>
 			</section>
@@ -97,15 +98,5 @@
 			</p>
 		</footer>
 		<script src="../wiki-races/homepage.js" async defer></script>
-
-		<script>
-			// I normally don't like using script tags, but I don't want another .js file to keep track of.
-			// TODO - REPLACE THIS
-			document
-				.getElementById("go-leaderboard")
-				.addEventListener("click", () => {
-					window.location.href = `${window.location.protocol}//${window.location.host}/wiki-races/leaderboard`;
-				});
-		</script>
 	</body>
 </html>

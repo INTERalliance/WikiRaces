@@ -3,6 +3,15 @@
     width: 100%;
 }
 
+#info-div {
+    border: solid #90ebdc 1px;
+    display: flex;
+    width: 82.6%;
+    margin: auto;
+    margin-bottom: 1em;
+}
+
+
 /* Username Start */
 #page section {
     width: auto;
@@ -12,7 +21,6 @@
     padding-left: 1em;
     text-align: left;
     padding: 1em;
-    border: solid #2defe4 1px;
     width: 80%;
 }
 
@@ -28,6 +36,19 @@ h1 {
 #submission-box {
     margin-top: 1em;
     display: inline;
+    border-color: #70e479;
+    background-color: #262626;
+    padding-right: 40px;
+    padding-left: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+    outline: 0;
+    color: white;
+}
+input:focus {
+    border-color: #5fd55d;
+
 }
 
 .has-username {
@@ -60,6 +81,13 @@ h1 {
 tr th, tr td {
     width: fit-content;
     padding: 1em;
+    border: white solid 1px;
+    
+
+}
+
+table {
+    border-collapse:collapse;
 }
 
 .align-left {
@@ -71,7 +99,7 @@ tr th, tr td {
 }
 
 #levels-table {
-    min-height: 17em;
+    min-height: 30em;
     width: auto;
     margin: auto;
     margin-bottom: 1em;
@@ -109,8 +137,7 @@ tr th, tr td {
 
 #credits {
     padding-top: 1em;
-    padding-bottom: 3em;
-
+    padding-bottom: 1em;
     max-width: 1200px;
     font-size: 12pt;
     color: black;

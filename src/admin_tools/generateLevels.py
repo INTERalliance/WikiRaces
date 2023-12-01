@@ -1,7 +1,8 @@
-import random,dateparser, datetime,os,json,csv
+import random,dateparser, datetime,os,json,csv,wikipediaapi
 from shutil import copyfile
 
 epoch = datetime.datetime.utcfromtimestamp(0)
+wiki = wikipediaapi.Wikipedia('INTERalliance Wiki Races (tech@interalliance.org)', 'en')
 
 levels = {}
 
@@ -36,26 +37,29 @@ def get_name() -> str:
 
 
 def start_time() -> str:
-    print("Enter the time the level should open. (e.g. 'in 3 min', 'Fri, 12 Dec 2021 10:55:50)'")
+    print("Enter the time the level should open. (e.g. 'in 3 min', 'Fri, 12 Dec 2023 10:55:50)'")
     return get_time()
 
 
 def end_time() -> str:
-    print("Enter the time the level should close. (e.g. 'in 10 min', 'Fri, 12 Dec 2021 10:59:00')")
+    print("Enter the time the level should close. (e.g. 'in 10 min', 'Fri, 12 Dec 2023 10:59:00')")
     return get_time()
 
 
 def new_page(point):
-    if point == "start":
-        print("Enter the part of the wikipedia url after 'https://en.wikipedia.org/wiki/' for the starting page.")
-    else:
-        print("Enter the part of the wikipedia url after 'https://en.wikipedia.org/wiki/' for the ending page.")
-    
-    print("Or, press enter to randomize from the list of levels.")
-    
-    result = input(cursor)
-    if result == "":
-        result = fromList()
+    proceed = True
+    while proceed != False:
+        if point == "start":
+            print("Enter the part of the wikipedia url after 'https://en.wikipedia.org/wiki/' for the starting page.")
+        else:
+            print("Enter the part of the wikipedia url after 'https://en.wikipedia.org/wiki/' for the ending page.")
+        
+        print("Or, press enter to randomize from the list of levels.")
+        result = input(cursor)
+        if result == "":
+            result = fromList()
+        page = wiki.page(result)
+        proceed = not page.exists()
     return result
 
 def fromList():

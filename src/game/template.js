@@ -1,7 +1,7 @@
 const heading = `
 <div id="mw-head-base" class="noprint" style="height: 100px; display: flex; flex-direction: row;">
     <img src="../wiki-races/logo.png" height="95px">
-    <h1 style="border-bottom: 0; padding: 35px;">Wiki Races 2023</h1>
+    <h1 style="border-bottom: 0; padding: 35px;">Wiki Races 2024</h1>
 </div>
 `;
 

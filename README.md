@@ -1,6 +1,6 @@
 # Wiki Races
 
-This is the repository for the INTERalliance WikiRaces competition at TechOlympics 2023.
+This is the repository for the INTERalliance WikiRaces competition at TechOlympics 2024.
 
 Run `npm install` in the project directory to install the dependencies.
 

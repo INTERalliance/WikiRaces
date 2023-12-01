@@ -85,6 +85,10 @@ button:hover {
     text-align: center;
 }
 
+a {
+    color: white;
+}
+
 a:hover {
     color: rgb(224, 113, 113);
 }

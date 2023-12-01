@@ -85,9 +85,6 @@ button:hover {
     text-align: center;
 }
 
-a {
-    color: black;
-}
 a:hover {
     color: rgb(224, 113, 113);
 }

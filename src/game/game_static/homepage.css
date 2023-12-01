@@ -117,6 +117,9 @@ tr th, tr td {
     margin: auto;
     text-align: center;
 }
+#credits a {
+    color: black;
+}
 
 
 footer {

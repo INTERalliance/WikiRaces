@@ -19,7 +19,7 @@ header {
     background-color: #000;
     margin-bottom: 1em;
     font-size: 18px;
-    border-bottom: #2defe4 solid 1px;
+    border-bottom: #90ebdc solid 1px;
 
 }
 
@@ -52,34 +52,38 @@ header strong {
 
 
 .red, .status-urgent {
-    background-color: rgb(238, 160, 160);
+    background-color: #f98f53
 }
 .red:hover, .status-urgent:hover {
-    background-color: rgb(224, 113, 113);
+    background-color: #f55a07
 }
 .green {
-    background-color: rgb(160, 238, 164);
+    background-color: #70e479
 }
 .green:hover {
-    background-color: rgb(116, 231, 121);
+    background-color: #5fd55d
 }
 
 .input-status-error {
-    color: red;
+    color: #f98f53;
 }
 
 .input-status-good {
-    color: green;
+    color: #70e479;
 }
 
 button {
-    font-weight: bold;
-    border-radius: 5em;
-    padding: 0.7em;
+    padding-right: 40px;
+    padding-left: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 5px;
     cursor: pointer;
+    background-color: #90ebdc;
+    border-color: transparent;
 }
 button:hover {
-    background: rgb(214, 214, 214);
+    background: #2defe4;
 }
 .center {
     text-align: center;

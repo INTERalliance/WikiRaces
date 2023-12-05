@@ -6,8 +6,8 @@
 
 #text-section {
     width: auto;
-    background: white;
-    border: 1px solid rgb(138, 176, 245);
+    background: #1b1b1b;
+    border: 1px solid #90ebdc;
     margin-bottom: 1em;
     padding: 0.8em;
     text-align: left;
@@ -73,14 +73,14 @@ tr th, tr td {
 #levels-table {
     position: relative;
     width: 100%;
-    overflow-x: scroll;
+    overflow-x: auto;
     box-shadow: inset -1em 0 1em -1.2em grey;
-    background: white;
+    background: #1b1b1b;
 }
 
 #levels-container {
-    background: white;
-    border: 1px solid rgb(138, 176, 245);
+    background: #1b1b1b;
+    border: 1px solid #90ebdc;
     width: var(--leaderboard-width);
     margin-left: calc(-1 * calc(var(--leaderboard-width) - calc(4.5 * var(--leaderboard-width) / 5)));
 }

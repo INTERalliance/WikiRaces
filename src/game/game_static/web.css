@@ -50,18 +50,31 @@ header strong {
 
 /* Heading End */
 
+button.red, button.green {
+    font-weight: bold;
+    width: 100%;
+    color: black;
+    transition: background-color .5s;
+
+}
 
 .red, .status-urgent {
-    background-color: #f98f53
+    background-color: #f98f53;
+    border-color: #f55a07;
+
 }
 .red:hover, .status-urgent:hover {
-    background-color: #f55a07
+    background-color: #f55a07;
+    border-color: rgb(179, 179, 179);
+
 }
 .green {
-    background-color: #70e479
+    background-color: #70e479;
+
 }
 .green:hover {
-    background-color: #5fd55d
+    background-color: #48ac46;
+    border-color: rgb(179, 179, 179);
 }
 
 .input-status-error {
@@ -72,18 +85,23 @@ header strong {
     color: #70e479;
 }
 
-button {
+button, input {
     padding-right: 40px;
     padding-left: 40px;
     padding-top: 10px;
     padding-bottom: 10px;
     border-radius: 5px;
-    cursor: pointer;
-    background-color: #90ebdc;
-    border-color: transparent;
+    background-color: #262626;
+    border-color: #5fd55d;
+    color: white;
+    transition: border-color .2s;
+    margin-bottom: 10px;
 }
-button:hover {
-    background: #2defe4;
+button {
+    cursor: pointer;
+}
+button:hover, input:hover {
+    border-color: #9cfff5;
 }
 .center {
     text-align: center;

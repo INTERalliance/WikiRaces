@@ -63,7 +63,7 @@ button.red, button.green {
     border-color: #f55a07;
 
 }
-.red:hover, .status-urgent:hover {
+button.red:hover, button.status-urgent:hover {
     background-color: #f55a07;
     border-color: rgb(179, 179, 179);
 

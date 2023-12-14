@@ -31,6 +31,8 @@ class Database {
 				{ useUnifiedTopology: true },
 				(err, db) => {
 					if (err) reject(err);
+					// note that this will create the wikiRaces database  
+					// if it does not already exist
 					const dbo = db.db("wikiRaces");
 					resolve(dbo);
 				}

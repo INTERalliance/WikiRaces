@@ -2,7 +2,7 @@
 
 // mongoclient, to connect to mongodb
 var MongoClient = require("mongodb").MongoClient;
-var url = "mongodb://localhost:27017/";
+var url = "mongodb://127.0.0.1:27017/";
 
 // bunyan, for logging
 const bunyan = require("bunyan");

@@ -8,7 +8,7 @@ Run `npm run-script test` to run the test suites.
 
 Run `npm run-script run` to host the site for testing.
 
-On the actual server, use pm2 to start the server with `pm2 start app.js --name wikiRaces`
+On the actual server, use pm2 to start the server with `npm run-script prod-run`
 
 ### Installing and running on Fedora Linux 37
 

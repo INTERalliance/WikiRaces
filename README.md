@@ -10,7 +10,7 @@ Run `npm run-script run` to host the site for testing.
 
 On the actual server, use pm2 to start the server with `pm2 start app.js --name wikiRaces`
 
-### Installing and running on Fedora Linux
+### Installing and running on Fedora Linux 37
 
 ```bash
 git clone https://github.com/interalliancegc/wikiraces

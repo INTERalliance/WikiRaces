@@ -21,7 +21,7 @@ docker compose up
 # to detach output for deployment on server
 docker compose up -d
 # to rebuild after making chainges
-docker compose build && docker compose down
+docker compose build && docker compose up
 # to shut down
 docker compose down
 ```

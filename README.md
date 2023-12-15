@@ -47,6 +47,7 @@ EOF
 # handle errors with mongodb
 # https://www.mongodb.com/community/forums/t/openssl-error-when-starting-mongosh/243323/2
 sudo dnf install mongodb-mongosh-shared-openssl3
+sudo dnf install mongodb-org
 if `mongosh --help 1>/dev/null`; then echo 'OK'; else echo '!!!NG!!!'; fi
 # run server for development
 npm run-script run

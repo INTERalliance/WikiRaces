@@ -8,7 +8,54 @@ Run `npm run-script test` to run the test suites.
 
 Run `npm run-script run` to host the site for testing.
 
-On the actual server, use pm2 to start the server with `pm2 start app.js --name wikiRaces`
+On the actual server, use pm2 to start the server with `npm run-script prod-run`
+
+### Installing and running with Docker
+
+First, [Install Docker](<https://docs.docker.com/engine/install/>).
+
+Then, run the server:
+```
+# to build for the first time
+docker compose up
+# to detach output for deployment on server
+docker compose up -d
+# to rebuild after making chainges
+docker compose build && docker compose up
+# to shut down
+docker compose down
+```
+
+### Installing and running on Fedora Linux 37
+
+```bash
+git clone https://github.com/interalliancegc/wikiraces
+cd wikiraces
+npm install
+# FROM https://developer.fedoraproject.org/tech/database/mongodb/about.html
+# note that MongoDB is no longer supported for Fedora by default
+# https://developer.fedoraproject.org/tech/database/mongodb/about.html
+# add to the yum repos:
+sudo tee "/etc/yum.repos.d/mongodb-org-6.0.repo" << 'EOF'
+[mongodb-org-6.0]
+name=MongoDB Repository
+baseurl=https://repo.mongodb.org/yum/redhat/9/mongodb-org/6.0/x86_64/
+gpgcheck=1
+enabled=1
+gpgkey=https://www.mongodb.org/static/pgp/server-6.0.asc
+EOF
+# handle errors with mongodb
+# https://www.mongodb.com/community/forums/t/openssl-error-when-starting-mongosh/243323/2
+sudo dnf install mongodb-mongosh-shared-openssl3
+if `mongosh --help 1>/dev/null`; then echo 'OK'; else echo '!!!NG!!!'; fi
+# run server for development
+npm run-script run
+# OR run server for production
+sudo npm install pm2 -g
+pm2 start src/app.js --name wikiRaces
+pm2 status wikiRaces
+pm2 stop wikiRaces
+```
 
 ---
 
@@ -32,7 +79,7 @@ by only clicking the links in the Wikipedia pages.
     - Can click on a history element to go back to that page
   - Submits user data (history, time, userId) to server when a level is completed.
 - Leaderboard:
-  - Orders all players by total time 
+  - Orders all players by total time
   - Has links to show players individual submissions
 - Server:
   - Dynamically generate Wikipedia pages
@@ -44,11 +91,11 @@ by only clicking the links in the Wikipedia pages.
 
 ---
 
-This is intended to be run on a linux system. 
+This is intended to be run on a linux system.
 It has been proven to work on Ubuntu Server 20.04.2
 
-This does not have any of the NGINX settings needed to support the server. 
-You will need to do that yourself if you are setitng this up. 
+This does not have any of the NGINX settings needed to support the server.
+You will need to do that yourself if you are setitng this up.
 
 ---
 
@@ -61,19 +108,20 @@ You will need to do that yourself if you are setitng this up.
 - Set up auto redirect from HTTP to HTTPS
 - set up replica sets for mongodb
 - add informational text on homepage
-	- note a re-direct does not count
+  - note a re-direct does not count
 - Add message for Edge and weird browsers
 - encode urls properly
 - Reorder directory structure so pages are not jumbled together.
 - set up nojs and IE support
 - set up Docker
 
-----
+---
 
 <details>
   <summary>Completed tasks</summary>
 
 ## Completed:
+
 - Cache all loaded files -> Store as JSON or as Files?
 - Get Wikipedia content and parse it
 - How to return content from function with expressjs?
@@ -90,7 +138,7 @@ You will need to do that yourself if you are setitng this up.
 - Add horizontal history view in bottom bar
 - Before game starts, show timer
 - Be able to detect what webpage the user is on.
-	- How to get info from url?
+  - How to get info from url?
 - Time till completion should work by storing a date object at game start, and getting the delta at game over.
 - Create game client
 - Look into port forwarding with NGINX
@@ -103,16 +151,16 @@ You will need to do that yourself if you are setitng this up.
 - generates userid
 - Get backend capable of accepting submissions
 - create homepage that allows users to register username
-	- Submits userid with username to database
+  - Submits userid with username to database
 - create leaderboard that loads level data and views it.
 - Get backend capable of accepting submissions
-	- semi complete
+  - semi complete
 - create homepage that allows users to register username
   - Submits userid with username to database
 - make levels submit data on level clear
-	- log that data to database
+  - log that data to database
 - make levels submit data on level clear
-	- log that data to database
+  - log that data to database
 - create leaderboard that loads level data and views it.
 - replace JSDOM with custom formatter
 - add wikipedia attribution at the bottom of each page

@@ -6,10 +6,11 @@
 	"scripts": {
 		"test": "jest",
 		"run": "node src/app.js | bunyan",
+		"docker-run": "pm2-runtime start src/app.js --name WikiRaces | bunyan",
 		"prod-run": "pm2 start src/app.js --name wikiRaces",
 		"prod-stop": "pm2 stop src/app.js --name wikiRaces",
 		"prod-restart": "pm2 restart src/app.js --name wikiRaces",
-		"prod-show-latest-logs": "tail /var/tmp/WikiRaces.json | bunyan",
+		"prod-show-latest-logs": "bunyan /var/tmp/WikiRaces.json",
 		"prod-show-all-logs": "cat /var/tmp/WikiRaces.json | bunyan",
 		"prod-status": "pm2 status",
 		"clear-cache": "rm src/game/cache/ -r; mkdir -p src/game/cache/",

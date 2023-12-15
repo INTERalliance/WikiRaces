@@ -30,8 +30,6 @@ const avg = new stats.Average();
 // Custom functions for generating Wikipedia pages
 const dynamic = require("./game/dynamic");
 
-log.info("Server Started");
-
 // My code to interact with mongodb.
 // `db` is not the same as mongodb's `db`
 const { Database } = require("./game/database");
@@ -141,4 +139,6 @@ app.get("*", (req, res) => {
 	res.send(`Sorry, this is an invalid URL. `);
 });
 
-app.listen(8443);
+const PORT = 8443;
+app.listen(PORT);
+log.info(`Server Started on port ${PORT}`);

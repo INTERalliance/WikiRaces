@@ -10,6 +10,22 @@ Run `npm run-script run` to host the site for testing.
 
 On the actual server, use pm2 to start the server with `npm run-script prod-run`
 
+### Installing and running with Docker
+
+First, [Install Docker](<https://docs.docker.com/engine/install/>).
+
+Then, run the server:
+```
+# to build for the first time
+docker compose up
+# to detach output for deployment on server
+docker compose up -d
+# to rebuild after making chainges
+docker compose build && docker compose down
+# to shut down
+docker compose down
+```
+
 ### Installing and running on Fedora Linux 37
 
 ```bash

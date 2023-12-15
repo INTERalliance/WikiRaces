@@ -236,19 +236,18 @@ async function generateLeaderboardOverview() {
 }
 
 async function getLeaderboardOverview() {
+	return await generateLeaderboardOverview();
 	// Only generate leaderboard every `seconds` seconds. 
 	// (uncomment this if we have *lots* of people hitting the leaderboard at once)
 	// if (new Date().getTime() > lastGenerated.getTime() + seconds * 1000) {
-	lastGenerated = new Date();
-
-	const leaderboard = await generateLeaderboardOverview();
-	try {
-		saveFile("leaderboard-overview", JSON.stringify(leaderboard), ".json");
-	} catch (err) {
-		log.error(err)
-	}
-
-	return leaderboard;
+	// lastGenerated = new Date();
+	// const leaderboard = await generateLeaderboardOverview();
+	// try {
+	// 	saveFile("leaderboard-overview", JSON.stringify(leaderboard), ".json");
+	// } catch (err) {
+	// 	log.error(err)
+	// }
+	// return leaderboard;
 	// } else {
 	// return getCached("leaderboard-overview", ".json");
 	// }

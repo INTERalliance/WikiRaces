@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   mongodb:
-    image: mongo:5.0.2
+    image: mongo:6.0
     restart: unless-stopped
     ports:
       - 27017:27017 # bind $(mongodb local port):$(mongodb container port)
@@ -16,9 +16,10 @@ services:
     ports:
       - 8443:8443 # bind $(node local port):$(node container port)
     environment:
-      - MONGODB_URL="mongodb://mongodb:27016/"
+      - MONGODB_URL="mongodb://mongodb:27017/"
     stdin_open: true
     tty: true
 
 volumes:
   mongo_data: {}
+

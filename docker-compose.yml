@@ -5,20 +5,20 @@ services:
     image: mongo:5.0.2
     restart: unless-stopped
     ports:
-      - 27017:27017 # bind $(mongodb local port):$(mongodb docker port)
+      - 27017:27017 # bind $(mongodb local port):$(mongodb container port)
     volumes:
-      - db:/data/db
+      - mongo_data:/data/db
   app:
     depends_on:
       - mongodb
     build: ./
     restart: unless-stopped
     ports:
-      - 8443:8443 # bind $(node local port):$(node docker port)
+      - 8443:8443 # bind $(node local port):$(node container port)
     environment:
-      - DB_HOST=mongodb
+      - MONGODB_URL="mongodb://mongodb:27016/"
     stdin_open: true
     tty: true
 
 volumes:
-  db:
+  mongo_data: {}

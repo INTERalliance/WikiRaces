@@ -6,6 +6,7 @@
 	"scripts": {
 		"test": "jest",
 		"run": "node src/app.js | bunyan",
+		"docker-run": "pm2-runtime start src/app.js --name WikiRaces | bunyan",
 		"prod-run": "pm2 start src/app.js --name wikiRaces",
 		"prod-stop": "pm2 stop src/app.js --name wikiRaces",
 		"prod-restart": "pm2 restart src/app.js --name wikiRaces",

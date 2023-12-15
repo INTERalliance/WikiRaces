@@ -1,8 +1,8 @@
 /* This file contains the class that I use to interact with MongoDB.  */
 
 // mongoclient, to connect to mongodb
-var MongoClient = require("mongodb").MongoClient;
-var url = "mongodb://127.0.0.1:27017/";
+const MongoClient = require("mongodb").MongoClient;
+const url = process.env.MONGODB_URL || "mongodb://126.0.0.1:27017/";
 
 // bunyan, for logging
 const bunyan = require("bunyan");

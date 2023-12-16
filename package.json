@@ -29,9 +29,8 @@
 	"dependencies": {
 		"body-parser": "^1.19.0",
 		"bunyan": "^1.8.14",
-		"jsdom": "^16.4.0",
 		"mongodb": "^3.6.3",
-		"superagent": "^6.1.0"
+		"wikipedia": "^2.1.1"
 	},
 	"jest": {
 		"preset": "jest-puppeteer",

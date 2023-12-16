@@ -1,6 +1,3 @@
-// superagent to get wikipedia pages
-const superagent = require("superagent");
-
 // Statistics
 const stats = require("./stats");
 const avg = new stats.Average();
@@ -27,23 +24,24 @@ const fs = require("fs");
 const asyncfs = require("fs").promises;
 const path = require("path");
 
-// jsdom to create and modify the page
-const jsdom = require("jsdom");
-const { JSDOM } = jsdom;
-
 // basic html and css
 const { fillTemplate } = require("./template");
+
+// wiki to fetch wikipedia pages
+const wiki = require('wikipedia');
 
 // This gets the raw html from wikipedia.
 // I do not use an API because I want to preserve
 // the look of the website.
 async function getWiki(id) {
 	try {
-		const response = await superagent.get(
-			`https://en.wikipedia.org/wiki/${id}?useskin=vector`
-		);
+		// const response = await superagent.get(
+		// 	`https://en.wikipedia.org/wiki/${id}?useskin=vector`
+		// );
+		const page = await wiki.page(id);
+		const html = await page.html();
 		log.info(`Downloaded ${id}`);
-		return response.text;
+		return html;
 	} catch (error) {
 		log.warn(error);
 		return undefined;
@@ -122,8 +120,8 @@ async function generatePage(id) {
 	if (!page) {
 		return "This page does not exist.";
 	}
-	page = await formatPage(page);
-	page = await fillTemplate(page, id);
+	// page = await formatPage(page);
+	// page = await fillTemplate(page, id);
 	return page;
 }
 

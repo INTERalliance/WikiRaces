@@ -4,11 +4,11 @@
 }
 
 #info-div {
-    border: solid #90ebdc 1px;
     display: flex;
-    width: 82.6%;
+    flex-direction: column;
+    background-color: var(--header);
+    filter: drop-shadow(10px );
     margin: auto;
-    margin-bottom: 1em;
 }
 
 
@@ -16,16 +16,24 @@
 #page section {
     width: auto;
     margin: auto;
-    margin-bottom: 1em;
     padding-right: 1em;
     padding-left: 1em;
     text-align: left;
     padding: 1em;
     width: 80%;
+    border-radius: 10px;
+}
+
+section#username-entry {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+
 }
 
 h1 {
-    color: #2defe4;
+    color: var(--text);
+    font-weight: normal;
+    font-size: 1.2em;
 }
 
 #delete-username {
@@ -34,21 +42,38 @@ h1 {
 }
 
 #submission-box {
-    margin-top: 1em;
-    display: inline;
-    border-color: #70e479;
-    background-color: #262626;
-    padding-right: 40px;
-    padding-left: 5px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border-radius: 5px;
-    outline: 0;
-    color: white;
-}
-input:focus {
-    border-color: #5fd55d;
+    border: transparent none;
+    margin: 0;
+    padding-left: 20px;
+    width: 75%;
+    font-size: 1em;
 
+}
+#submission-box:focus-visible {
+    border: none;
+    outline: none;
+}
+#submission-button {
+    margin: 0;
+    background: var(--button);
+    border: none;
+    color: var(--background);
+    font-size: .9em;
+    width: 20%;
+
+}
+
+#username-entry-box {
+    background: var(--background);
+    width: 100%;
+    border-radius: 10px;
+    display: flex;
+
+}
+
+
+#submission-box:focus  {
+    border: none;
 }
 
 .has-username {
@@ -57,6 +82,14 @@ input:focus {
 
 .no-username {
     display: none;
+}
+
+#username-entry, #rules-list, #levels-table  {
+    background-color: var(--elementbg);
+}
+
+section#rules-list {
+    margin-bottom: 1em;
 }
 
 #username-entry h3 {
@@ -81,9 +114,8 @@ input:focus {
 tr th, tr td {
     width: fit-content;
     padding: 1em;
-    border: white solid 1px;
+    border: transparent
     
-
 }
 
 table {
@@ -107,7 +139,7 @@ table {
     padding-left: 1em;
     text-align: left;
     padding: 1em;
-    border: solid #2defe4 1px;
+    border-radius: 10px;
     width: 80%;
 }
 
@@ -130,7 +162,7 @@ table {
 
 #page {
     margin: auto;
-    font-size: 18px;
+    font-size: 1.2em;
 }
 
 /* Credits, at footer of page */

@@ -5,21 +5,28 @@
     font-family: 'Source Sans Pro', Verdana, Geneva, Tahoma, sans-serif;
 }
 
+:root {
+    --background: white;
+    --text: black;
+    --elementbg: #F3F3F3;
+    --header: #1B1B1B;
+    --button: #4A90E2;
+}
+
+
 body {
-    background: #1b1b1b;
+    background: var(--background);
     margin: 0;
-    color: white;
+    color: var(--text)
 }
 
 /* Heading Start */
 
 header {
-    align-items: center;
-    display: flex;
-    background-color: #000;
-    margin-bottom: 1em;
-    font-size: 18px;
-    border-bottom: #90ebdc solid 1px;
+    text-align: center;
+    background-color: var(--header);
+    color: var(--background);
+    font-size: 3em;
 
 }
 
@@ -53,7 +60,7 @@ header strong {
 button.red, button.green {
     font-weight: bold;
     width: 100%;
-    color: black;
+    color: var(--text);
     transition: background-color .5s;
 
 }
@@ -91,24 +98,20 @@ button, input {
     padding-top: 10px;
     padding-bottom: 10px;
     border-radius: 5px;
-    background-color: #262626;
-    border-color: #5fd55d;
-    color: white;
+    background-color: transparent;
+    color: var(--text);
     transition: border-color .2s;
     margin-bottom: 10px;
 }
 button {
     cursor: pointer;
 }
-button:hover, input:hover {
-    border-color: #9cfff5;
-}
 .center {
     text-align: center;
 }
 
 a {
-    color: white;
+    color: var(--text);
 }
 
 a:hover {

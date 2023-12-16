@@ -260,7 +260,7 @@ async function attemptToSubmitUsername() {
 	const levels = await getJsonData();
 	let levelsDiv = document.getElementById("levels-table");
 	let table = document.createElement("table");
-	table.append(createTableHeading());
+	//table.append(createTableHeading());
 
 	const names = Object.keys(levels);
 	for (let i = 0; i < names.length; i++) {

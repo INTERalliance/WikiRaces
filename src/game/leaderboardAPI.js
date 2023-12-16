@@ -78,7 +78,7 @@ async function fillInMissing(total, times) {
  * a particular object, and means we can get the times by
  * looping over both the submissions and the levelnames once.
  */
-async function getUserTimes(userId, fillInAll=true) {
+async function getUserTimes(userId, fillInAll = true) {
 	const submissions = await db.getCollection(
 		{ userId: userId },
 		"submissions"
@@ -203,7 +203,7 @@ async function averageTimes(fillAll) {
 		log.error(err)
 	}
 
-	if (leaderboard.length == 1){
+	if (leaderboard.length == 1) {
 		return leaderboard[0].toString();
 	}
 
@@ -224,7 +224,7 @@ async function generateLeaderboardOverview() {
 	try {
 		averages = await averageTimes(true);
 		averagesExcludingDNF = await averageTimes(false);
-		log.info("line 219", {averages, averagesExcludingDNF});
+		log.info("line 219", { averages, averagesExcludingDNF });
 	} catch (err) {
 		log.error(err);
 	}
@@ -236,20 +236,20 @@ async function generateLeaderboardOverview() {
 }
 
 async function getLeaderboardOverview() {
-	// Only generate leaderboard every `seconds` seconds.
+	return await generateLeaderboardOverview();
+	// Only generate leaderboard every `seconds` seconds. 
+	// (uncomment this if we have *lots* of people hitting the leaderboard at once)
 	// if (new Date().getTime() > lastGenerated.getTime() + seconds * 1000) {
-		lastGenerated = new Date();
-
-		const leaderboard = await generateLeaderboardOverview();
-		try {
-			saveFile(cacheName, JSON.stringify(leaderboard), ".json");
-		} catch (err) {
-			log.error(err)
-		}
-
-		return leaderboard;
+	// lastGenerated = new Date();
+	// const leaderboard = await generateLeaderboardOverview();
+	// try {
+	// 	saveFile("leaderboard-overview", JSON.stringify(leaderboard), ".json");
+	// } catch (err) {
+	// 	log.error(err)
+	// }
+	// return leaderboard;
 	// } else {
-		// return getCached("leaderboard-overview", ".json");
+	// return getCached("leaderboard-overview", ".json");
 	// }
 }
 

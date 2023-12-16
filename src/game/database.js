@@ -1,8 +1,8 @@
 /* This file contains the class that I use to interact with MongoDB.  */
 
 // mongoclient, to connect to mongodb
-var MongoClient = require("mongodb").MongoClient;
-var url = "mongodb://localhost:27017/";
+const MongoClient = require("mongodb").MongoClient;
+const url = process.env.MONGODB_URL || "mongodb://127.0.0.1:27017/";
 
 // bunyan, for logging
 const bunyan = require("bunyan");
@@ -31,6 +31,8 @@ class Database {
 				{ useUnifiedTopology: true },
 				(err, db) => {
 					if (err) reject(err);
+					// note that this will create the wikiRaces database  
+					// if it does not already exist
 					const dbo = db.db("wikiRaces");
 					resolve(dbo);
 				}

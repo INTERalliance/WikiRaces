@@ -1,9 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@600&family=Montserrat:wght@400;600&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@600&family=Montserrat&display=swap');
 
-* {
-    font-family: 'Montserrat', 'Source Sans Pro', Verdana, Geneva, Tahoma, sans-serif;
-}
 
 :root {
     --background: white;
@@ -22,6 +19,10 @@
 .font-header {
     font-family: 'Inter', sans-serif;
     font-weight: 600;
+}
+* {
+    font-family: 'Montserrat';
+    font-weight: 400;
 }
 
 body {
@@ -43,17 +44,22 @@ header {
     color: var(--background);
     font-size: 3em;
     padding-bottom: .8em;
+    display: flex;
+    flex-direction: column;
 
 }
 
 #year {
     color: var(--primary);
-    position: absolute;
-    left: 56.5%;
-    right: 46%;
-    transform: rotateZ(340deg);
-    top: 6%;
+    position: relative;
+    right: 150px;
+    left: 150px;
+    transform: rotateZ(334deg);
+    top: -35px;
     font-size: .7em;
+    font-weight: bold;
+    font-weight: 600 !important;
+
 }
 
 header img {

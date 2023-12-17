@@ -11,6 +11,9 @@
     margin: auto;
 }
 
+#go-leaderboard {
+    color: #AD7272;
+}
 
 /* Username Start */
 #page section {
@@ -32,7 +35,6 @@ section#username-entry {
 h1 {
     color: var(--text);
     font-weight: normal;
-    font-size: 1.2em;
 }
 
 #delete-username {
@@ -161,6 +163,9 @@ table {
 
 #page {
     margin: auto;
+}
+
+#page, h1, td, #go-leaderboard {
     font-size: 1.2em;
 }
 

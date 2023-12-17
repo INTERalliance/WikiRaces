@@ -62,22 +62,23 @@ function createTableLine(number, content) {
 	numbers.textContent = number.toString();
 	numbers.className = "align-left";
 
-	let links = document.createElement("td");
+	links = document.createElement("td");
 	let link = document.createElement("a");
 
 	url = nameToURL(content);
-	link.href = url;
-	link.textContent = `Level ${number}`;
-	link.className = "align-left";
+	//link.href = url;
+	//link.textContent = `Level ${number}`;
+	//link.className = "align-left";
 
-	let time = document.createElement("td");
+	let time = document.createElement("a");
+	time.href = url;
 	time.className = "align-right";
 	time.id = getIdFromName(content);
 
-	links.appendChild(link);
+	//links.appendChild(link);
 	element.appendChild(numbers);
 	element.appendChild(links);
-	element.appendChild(time);
+	links.appendChild(time);
 	return element;
 }
 

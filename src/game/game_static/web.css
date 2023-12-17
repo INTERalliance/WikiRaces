@@ -20,6 +20,11 @@ body {
     color: var(--text)
 }
 
+#levels-header {
+    display: flex;
+    justify-content: space-between;
+}
+
 /* Heading Start */
 
 header {
@@ -70,7 +75,6 @@ header strong {
 
 button.red, button.green {
     font-weight: bold;
-    width: 100%;
     color: var(--text);
     transition: background-color .5s;
 
@@ -81,6 +85,12 @@ button.red, button.green {
     border-color: #f55a07;
 
 }
+
+a.status-urgent {
+    background-color: transparent;
+    color: #f55a07
+}
+
 button.red:hover, button.status-urgent:hover {
     background-color: #f55a07;
     border-color: rgb(179, 179, 179);

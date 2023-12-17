@@ -11,8 +11,8 @@
     --elementbg: #F3F3F3;
     --header: #1B1B1B;
     --button: #4A90E2;
+    --primary: #58CC02;
 }
-
 
 body {
     background: var(--background);
@@ -27,7 +27,18 @@ header {
     background-color: var(--header);
     color: var(--background);
     font-size: 3em;
+    padding-bottom: .8em;
 
+}
+
+#year {
+    color: var(--primary);
+    position: absolute;
+    left: 58%;
+    right: 50%;
+    transform: rotateZ(345deg);
+    top: 5%;
+    font-size: .8em;
 }
 
 header img {

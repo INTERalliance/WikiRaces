@@ -14,19 +14,18 @@
 
 /* Username Start */
 #page section {
-    width: auto;
     margin: auto;
     padding-right: 1em;
     padding-left: 1em;
     text-align: left;
     padding: 1em;
-    width: 80%;
     border-radius: 10px;
 }
 
 section#username-entry {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
+    border-bottom: grey solid 1px;
 
 }
 
@@ -86,6 +85,8 @@ h1 {
 
 #username-entry, #rules-list, #levels-table  {
     background-color: var(--elementbg);
+    width: 60%;
+    max-width: 1000px;
 }
 
 section#rules-list {
@@ -132,7 +133,6 @@ table {
 
 #levels-table {
     min-height: 30em;
-    width: auto;
     margin: auto;
     margin-bottom: 1em;
     padding-right: 1em;
@@ -140,7 +140,6 @@ table {
     text-align: left;
     padding: 1em;
     border-radius: 10px;
-    width: 80%;
 }
 
 #levels-table h3 {

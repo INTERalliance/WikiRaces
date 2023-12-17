@@ -10,6 +10,7 @@
     --header: #1B1B1B;
     --button: #4A90E2;
     --primary: #58CC02;
+    --subtle: #AD7272;
 }
 
 .font-serif {
@@ -44,12 +45,15 @@ body {
     padding-bottom: 1em;
     max-width: 1200px;
     font-size: 12pt;
-    color: black;
+    color: var(--text);
     margin: auto;
     text-align: center;
 }
 #credits a {
-    color: black;
+    color: var(--text);
+}
+#credits a:hover {
+    color: var(--subtle);
 }
 
 

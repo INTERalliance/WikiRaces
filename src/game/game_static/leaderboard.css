@@ -11,9 +11,13 @@
 }
 
 #go-home {
-    color: #AD7272;
+    color: var(--subtle);
     background-color: var(--buttonbg);
     font-size: 1.2em
+}
+
+#levels-container, #text-section, #info-div {
+    filter: drop-shadow(0px 3px 2px #333);
 }
 
 

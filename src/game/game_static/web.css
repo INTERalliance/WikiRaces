@@ -64,6 +64,12 @@ footer {
 }
 
 /*Footer End*/
+#header, #text-section {
+    background-color: var(--elementbg);
+    width: 60%;
+    max-width: 1000px;
+    margin: auto;
+}
 
 /* Heading Start */
 

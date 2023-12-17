@@ -1,9 +1,16 @@
 {
     "level1": {
         "name": "level1",
-        "startTime": "2023-12-06T23:14:24+00:00",
-        "endTime": "2023-12-06T23:21:24+00:00",
-        "startPage": "Dolby",
-        "endPage": "THX"
+        "startTime": "",
+        "endTime": "",
+        "startPage": "Switzerland",
+        "endPage": "Byte"
+    },
+    "level2": {
+        "name": "level2",
+        "startTime": "",
+        "endTime": "",
+        "startPage": "Copper",
+        "endPage": "Carnegie"
     }
 }

@@ -88,8 +88,8 @@ header {
 #year {
     color: var(--primary);
     position: relative;
-    right: 150px;
-    left: 150px;
+    right: 180px;
+    left: 180px;
     transform: rotateZ(334deg);
     top: -35px;
     font-size: .7em;

@@ -49,11 +49,11 @@ header {
 #year {
     color: var(--primary);
     position: absolute;
-    left: 58%;
-    right: 50%;
-    transform: rotateZ(345deg);
-    top: 5%;
-    font-size: .8em;
+    left: 56.5%;
+    right: 46%;
+    transform: rotateZ(340deg);
+    top: 6%;
+    font-size: .7em;
 }
 
 header img {

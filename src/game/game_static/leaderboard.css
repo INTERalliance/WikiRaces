@@ -6,7 +6,7 @@
 
 #text-section {
     width: auto;
-    background: #1b1b1b;
+    background: var(--background);
     border: 1px solid #90ebdc;
     margin-bottom: 1em;
     padding: 0.8em;
@@ -75,11 +75,11 @@ tr th, tr td {
     width: 100%;
     overflow-x: auto;
     box-shadow: inset -1em 0 1em -1.2em grey;
-    background: #1b1b1b;
+    background: var(--background);
 }
 
 #levels-container {
-    background: #1b1b1b;
+    background: var(--background);
     border: 1px solid #90ebdc;
     width: var(--leaderboard-width);
     margin-left: calc(-1 * calc(var(--leaderboard-width) - calc(4.5 * var(--leaderboard-width) / 5)));

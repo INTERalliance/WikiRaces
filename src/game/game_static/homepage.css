@@ -13,6 +13,7 @@
 
 #go-leaderboard {
     color: #AD7272;
+    background-color: var(--buttonbg);
 }
 
 /* Username Start */

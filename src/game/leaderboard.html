@@ -29,26 +29,29 @@
 	</head>
 
 	<body>
+		<header>
+			<strong>
+				Leaderboard
+			</strong>
+		</header>
+		
 		<div id="page">
-			<section id="header" class="align-left">
-				<h1>Leaderboard</h1>
-				<p>
-					Note: All incomplete levels count as the time they were
-					open.
-					<br />
-					Therefore, you will start with the maximum time, and your
-					time will go down as you complete levels.
-					<br />
-					Your goal is to have the lowest total time.
-				</p>
-			</section>
-			<section id="text-section" class="align-left">
-				<button class="red" id="go-home">Go home!</button>
+			<div id="info-div">
+				<section id="ceremony">
+					there'll be a graphic here later
+				</section>
+				
+				
+			</div>
+			<section id="text-section">
+				part two
 			</section>
 			<section id="levels-container">
 				<div id="static-section">
-					<p id="leaderboard-position">You are not logged in.</p>
-					<h3>Times (mins:secs)</h3>
+					<div id="time-header">
+						<h3>Times (mins:secs)</h3>
+						<button id="go-home">Go home!</button>
+					</div>
 				</div>
 				<div id="levels-table"></div>
 			</section>
@@ -59,6 +62,22 @@
 				<a href="#">upgrade your browser</a> to improve your experience.
 			</p>
 		<![endif]-->
+		<footer>
+			<p id="credits">
+				
+
+				Available under MIT License 2021-2023 INTERalliance of Greater Cincinnati | Site developed by
+				<a target="_blank" href="https://github.com/zsarge"> Zack Sargent</a>
+				with some help from
+				<a target="_blank" href="https://github.com/Aurelius333"> Ajai Nelson</a>.
+				It is now maintained by the <a target="_blank" href="https://interalliance.org/programs/ilc">INTERalliance Leadership Council</a> alongside <a target="_blank" href="https://congodsted.com">Con Godsted</a>.
+
+				You can check out the source code
+				<a target="_blank" href="https://github.com/INTERallianceGC/WikiRaces">
+					here</a
+				>.
+			</p>
+		</footer>
 		<script src="../wiki-races/leaderboard.js" async defer></script>
 	</body>
 </html>

@@ -167,24 +167,3 @@ table {
 #page, h1, td, #go-leaderboard {
     font-size: 1.2em;
 }
-
-/* Credits, at footer of page */
-
-#credits {
-    padding-top: 1em;
-    padding-bottom: 1em;
-    max-width: 1200px;
-    font-size: 12pt;
-    color: black;
-    margin: auto;
-    text-align: center;
-}
-#credits a {
-    color: black;
-}
-
-
-footer {
-    background-color: #eeeeee;
-
-}

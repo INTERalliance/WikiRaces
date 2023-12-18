@@ -30,17 +30,21 @@ const { fillTemplate } = require("./template");
 // wiki to fetch wikipedia pages
 const wiki = require('wikipedia');
 
-// This gets the raw html from wikipedia.
-// I do not use an API because I want to preserve
-// the look of the website.
+/**
+ * Queries the Wikipedia Page API for a given page ID.
+ *
+ * This currently uses the 
+ * [Wikipedia npm library](https://github.com/dopecodez/Wikipedia)
+ * which should call the 
+ * [GET `/page/html/{title}` endpoint](https://en.wikipedia.org/api/rest_v1/#/Page%20content/get_page_html__title_).
+ * @param {string} id 
+ * @returns {string}
+ */
 async function getWiki(id) {
 	try {
-		// const response = await superagent.get(
-		// 	`https://en.wikipedia.org/wiki/${id}?useskin=vector`
-		// );
+		log.info(`Downloading ${id}`);
 		const page = await wiki.page(id);
 		const html = await page.html();
-		log.info(`Downloaded ${id}`);
 		return html;
 	} catch (error) {
 		log.warn(error);
@@ -120,8 +124,8 @@ async function generatePage(id) {
 	if (!page) {
 		return "This page does not exist.";
 	}
-	// page = await formatPage(page);
-	// page = await fillTemplate(page, id);
+	page = await formatPage(page);
+	page = await fillTemplate(page, id);
 	return page;
 }
 
@@ -135,7 +139,12 @@ try {
 	log.error(err);
 }
 
-// save file to cache
+/**
+ * save file to cache
+ * @param {string} id - A [URI encoded](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent) Wikipedia Page ID
+ * @param {string | NodeJS.ArrayBufferView} content - the content to write to the file
+ * @param {string?} suffix - any file extension for the file name / id. defaults to ".html"
+ */
 async function saveFile(id, content, suffix = ".html") {
 	try {
 		fs.writeFile(`${cacheFolder}/${id}${suffix}`, content, (err) => {
@@ -158,7 +167,12 @@ function isCached(id) {
 	}
 }
 
-// get file from cache, or return undefined
+/**
+ * get file from cache, or return undefined 
+ * @param {string} id - A [URI encoded](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent) Wikipedia Page ID
+ * @param {string?} suffix - any file extension for the file name / id. defaults to ".html"
+ * @returns {Promise<Buffer>}
+ */
 async function getCached(id, suffix = ".html") {
 	try {
 		log.info(`read ${id} from cache.`);
@@ -172,19 +186,21 @@ async function getCached(id, suffix = ".html") {
 // gets file from cache if it exists,
 // otherwise it downloads the file from the internet.
 async function getPage(id) {
-	id = encodeURI(id);
+	// const encodedId = encodeURIComponent(id);
 	try {
-		let page = "";
-		if (isCached(id)) {
-			avg.add(1);
-			page = await getCached(id);
-		}
-		if (!page) {
-			avg.add(0);
-			page = await generatePage(id);
-			saveFile(id, page);
-		}
-		log.info(`${Number(((await avg.average()) * 100).toFixed(4))}% cached`);
+		//let page = "";
+		let page = await generatePage(id);
+		// TODO: UNDO THIS
+		// if (isCached(encodedId)) {
+		// 	avg.add(1);
+		// 	page = await getCached(encodedId);
+		// }
+		// if (!page) {
+		// 	avg.add(0);
+		// 	page = await generatePage(id);
+		// 	saveFile(encodedId, page);
+		// }
+		// log.info(`${Number(((await avg.average()) * 100).toFixed(4))}% cached`);
 		return page;
 	} catch (err) {
 		log.error(`Error in page load ${err}`);

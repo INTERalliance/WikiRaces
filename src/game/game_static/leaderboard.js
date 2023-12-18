@@ -195,7 +195,9 @@ async function getLeaderboardOverviewString() {
 	const levelNames = await getLevelNames();
 	const data = await getLeaderboardData();
 	const sorted = await sortSubmissions([...data]);
-	console.log(sorted);
+	document.querySelector("#first-name p").innerHTML = sorted[0].name;
+	document.querySelector("#second-name p").innerHTML = sorted[1].name;
+	document.querySelector("#third-name p").innerHTML = sorted[2].name;
 	let levelsDiv = document.getElementById("levels-table");
 	let table = document.createElement("table");
 	table.append(createTableHeading(levelNames));

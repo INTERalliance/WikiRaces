@@ -61,13 +61,17 @@ section#ceremony, section#text-section {
 
 
 .standing {
-    width: 25%;
-    margin-right: .5em;
-    margin-left: .5em;
+    width: 100%;
     text-align: center;
     font-size: 3em;
     font-style: italic;
     font-weight: bold;
+    height: 96%;
+}
+.name {
+    width: 25%;
+    margin-right: .5em;
+    margin-left: .5em;
 }
 
 #first, #first-extended {
@@ -78,7 +82,6 @@ section#ceremony, section#text-section {
 }
 
 #first-extended {
-    margin-top: 1em;
     border-bottom: 0;
 }
 #first {
@@ -92,10 +95,31 @@ section#ceremony, section#text-section {
 }
 #third {
     background-color: var(--bronze);
-    margin-top: 2em;
     border: var(--bronzeaccent) 4px solid;
-    color: var(--bronzeaccent)
+    color: var(--bronzeaccent);
+    height: 39%;
 
+}
+
+#first-name {
+    margin-top: 1em;
+
+}
+
+#second-name {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+#third-name p {
+    margin-top: 2em;
+
+}
+
+.name p {
+    margin-bottom: 0;
+    text-align: center;
+    font-size: 1.2em;
 }
 
 #delete-username {

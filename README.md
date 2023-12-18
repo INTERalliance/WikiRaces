@@ -113,7 +113,7 @@ You will need to do that yourself if you are setitng this up.
 - encode urls properly
 - Reorder directory structure so pages are not jumbled together.
 - set up nojs and IE support
-- set up Docker
+- 2024 redesign
 
 ---
 
@@ -121,7 +121,7 @@ You will need to do that yourself if you are setitng this up.
   <summary>Completed tasks</summary>
 
 ## Completed:
-
+- set up Docker
 - Cache all loaded files -> Store as JSON or as Files?
 - Get Wikipedia content and parse it
 - How to return content from function with expressjs?

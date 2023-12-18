@@ -97,6 +97,9 @@ header {
     font-weight: 600;
 
 }
+#year:after {
+    content: "2024!"
+}
 
 header img {
     padding-right: 10px;

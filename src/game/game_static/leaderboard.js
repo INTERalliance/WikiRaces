@@ -210,7 +210,7 @@ async function getLeaderboardOverviewString() {
 	const posText = document.getElementById("leaderboard-position");
 	const userId = getCookie("userId");
 	const position = await getLeaderboardPosition(userId, sorted);
-	posText.textContent = await getPlaceString(position, sorted);
-	posText.innerHTML += '<br>';
-	posText.innerHTML += await getLeaderboardOverviewString();
+	//posText.textContent = await getPlaceString(position, sorted);
+	//posText.innerHTML += '<br>';
+	//posText.innerHTML += await getLeaderboardOverviewString();
 })();

@@ -27,8 +27,8 @@
 
 #time-header {
     display: flex;
-    justify-content: space-around;
-    padding-top: 1em;
+    justify-content: space-between;
+    padding-bottom: 1em;
 }
 
 #ceremony, #levels-container, #text-section   {
@@ -37,6 +37,10 @@
     max-width: 1000px;
     margin: auto;
     border-radius: 10px;
+}
+
+#levels-container {
+    padding: 1em;
 }
 
 section#text-section {
@@ -222,6 +226,7 @@ tr th, tr td {
     }
     #levels-container, #levels-table {
         width: 100% !important;
+        padding: 0;
     }
     header strong {
         font-size: 1em !important;
@@ -242,4 +247,9 @@ tr th, tr td {
 
 #page {
     min-height: 75vh;
+}
+
+#time-header h3 {
+    font-size: 1.2em;
+    padding-left: .7em;
 }

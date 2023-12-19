@@ -62,6 +62,13 @@ a[href^="/"] {
     color: var(--wikipedia-link) !important;
 }
 
+a[href^="/wiki/Special:"] {
+    pointer-events: none;
+    cursor: text;
+    text-decoration: none;
+    color: black !important;
+}
+
 a[href^="#"] {
     pointer-events: all;
     cursor: pointer;

@@ -1,3 +1,7 @@
+/**
+ * This is a statically-loaded script that run's in the clients browser
+ * when viewing the main page (`/wiki-races/`)
+ */
 document.getElementById("go-leaderboard").addEventListener("click", () => {
 	window.location.href = `${window.location.protocol}//${window.location.host}/wiki-races/leaderboard`;
 });
@@ -81,7 +85,7 @@ function createButton(number, link, active) {
 	const bottomElipse = createElipse(active, false);
 	svg.appendChild(bottomElipse);
 
-	// create text
+	// create text element representing current level number
 	const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
 	text.setAttribute("x", "45%");
 	text.setAttribute("y", "45%");
@@ -93,14 +97,6 @@ function createButton(number, link, active) {
 	}
 	text.textContent = number.toString();
 	svg.appendChild(text);
-
-	/*
-		<svg width="79" height="58" viewBox="0 0 79 58" fill="none" xmlns="http://www.w3.org/2000/svg">
-			<ellipse cx="39.5" cy="32.5" rx="39.5" ry="25.5" class="active-button button-top" />
-			<ellipse cx="39.5" cy="25.5" rx="39.5" ry="25.5" class="active-button button-bottom" />
-			<text x="44%" y="55%" class="active-button button-text">1</text>
-		</svg>
-	 */
 	return svg;
 }
 
@@ -120,6 +116,7 @@ function createTableHeading() {
 	element.appendChild(numbers);
 	element.appendChild(links);
 	element.appendChild(time);
+
 	return element;
 }
 
@@ -131,19 +128,28 @@ function getIdFromName(name) {
 	return `time-${name}`;
 }
 
-function createTableLine(number, content) {
+/**
+ * Creates a `tr` element for the list of levels. 
+ * Includes two columns:
+ * - a button to click
+ * - how long to the next level / "In progress" / "Complete"
+ * @param {number} number - zero indexed level number
+ * @param {string} levelName - name of the level (e.g. level1, level23, etc)
+ * @returns {HTMLTableRowElement}
+ */
+function createTableLine(number, levelName) {
 	let element = document.createElement("tr");
 	let numbers = document.createElement("td");
 	number++;
+	const url = nameToURL(levelName);
 	// TODO: fill in values
-	numbers.appendChild(createButton(number, "https://example.com", true));
+	numbers.appendChild(createButton(number, url, false));
 	// numbers.textContent = number.toString();
 	numbers.className = "align-left";
 
 	links = document.createElement("td");
 	let link = document.createElement("a");
 
-	url = nameToURL(content);
 	//link.href = url;
 	//link.textContent = `Level ${number}`;
 	//link.className = "align-left";
@@ -151,7 +157,7 @@ function createTableLine(number, content) {
 	let time = document.createElement("a");
 	time.href = url;
 	time.className = "align-right";
-	time.id = getIdFromName(content);
+	time.id = getIdFromName(levelName);
 
 	//links.appendChild(link);
 	element.appendChild(numbers);

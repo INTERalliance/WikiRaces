@@ -207,12 +207,12 @@ td,
     fill: white;
 }
 
-.inactive-buttom.button-top {
-    fill: #E5E5E5;
+.inactive-button.button-top {
+    fill: #B7B7B7;
 }
 
-.inactive-buttom.button-bottom {
-    fill: #B7B7B7;
+.inactive-button.button-bottom {
+    fill: #E5E5E5;
 }
 
 .inactive-button.button-text {

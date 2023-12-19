@@ -47,7 +47,7 @@ span.mw-editsection {
 }
 
 
-/* disable external links, but not internal links (aka ones that start with / or # */
+/* disable external links and special links, but not internal links (aka ones that start with / or # */
 a {
     pointer-events: none;
     cursor: text;

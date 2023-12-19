@@ -47,6 +47,7 @@ EOF
 # handle errors with mongodb
 # https://www.mongodb.com/community/forums/t/openssl-error-when-starting-mongosh/243323/2
 sudo dnf install mongodb-mongosh-shared-openssl3
+sudo dnf install mongodb-org
 if `mongosh --help 1>/dev/null`; then echo 'OK'; else echo '!!!NG!!!'; fi
 # run server for development
 npm run-script run
@@ -56,6 +57,15 @@ pm2 start src/app.js --name wikiRaces
 pm2 status wikiRaces
 pm2 stop wikiRaces
 ```
+
+### Running for development
+
+If you're developing this application locally, and you want to restart the server any time you make edits to a file, then you should use:
+```bash
+npm run-script dev-run
+```
+
+Overall, take a look through `package.json` and see if any of the scripts there seem useful to you.
 
 ---
 

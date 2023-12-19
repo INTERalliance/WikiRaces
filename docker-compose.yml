@@ -17,7 +17,7 @@ services:
       - 8443:8443 # bind $(node local port):$(node container port)
     environment:
       - MONGODB_URL="mongodb://mongodb:27017/"
-    stdin_open: true
+    stdin_open: true # TODO: should these be enabled for production
     tty: true
 
 volumes:

@@ -1,0 +1,82 @@
+:root {
+    --wikipedia-link: #3366cc;
+}
+
+/* This style sheet inclues custom wiki css for WikiRaces */
+/* wiki.css is just for Wikipedia's default CSS */
+
+/* add mobile support */
+
+table {
+    display: grid;
+    overflow: auto;
+}
+
+.outer-wrapper {
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+@media only screen and (min-width: 50em) {
+    .outer-wrapper {
+        margin: 0 auto;
+        max-width: 72rem;
+    }
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    overflow-x: auto;
+    display: block;
+}
+
+/* style filtered links to be normal text */
+.filtered-link {
+    font-weight: normal;
+}
+
+/* filter table message boxes */
+table.ambox {
+    display: none;
+}
+
+/* they shouldn't edit pages */
+span.mw-editsection {
+    display: none;
+}
+
+
+/* disable external links and special links, but not internal links (aka ones that start with / or # */
+a {
+    pointer-events: none;
+    cursor: text;
+    text-decoration: none;
+    color: black !important;
+}
+
+a[href^="/"] {
+    pointer-events: all;
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--wikipedia-link) !important;
+}
+
+a[href^="/wiki/Special:"] {
+    pointer-events: none;
+    cursor: text;
+    text-decoration: none;
+    color: black !important;
+}
+
+a[href^="#"] {
+    pointer-events: all;
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--wikipedia-link) !important;
+}
+
+/* make reading text easier on the eyes*/
+p {
+    line-height: 1.6;
+}

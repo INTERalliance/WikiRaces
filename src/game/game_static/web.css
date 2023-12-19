@@ -262,6 +262,10 @@ button.red:hover, button.status-urgent:hover {
         top: -20px;
         transform: none;
     }
+    header {
+        min-height: unset;
+        padding-bottom: .4em;
+    }
     button {
         padding: 0;
         padding-top: 10px;

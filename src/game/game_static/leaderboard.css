@@ -231,6 +231,9 @@ tr th, tr td {
         margin-bottom: 10px;
         margin-top: 10px;
     }
+    header strong {
+        font-size: 1.2em;
+    }
 }
 
 #page p {

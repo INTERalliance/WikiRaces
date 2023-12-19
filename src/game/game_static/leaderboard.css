@@ -48,6 +48,10 @@ section#text-section {
 
 }
 
+td span {
+    color: var(--subtle);
+}
+
 section#ceremony {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;

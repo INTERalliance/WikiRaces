@@ -3,7 +3,12 @@
 }
 
 * {
-	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	font-family: 'Montserrat';
+
+}
+
+#mw-head-base h1::after {
+	content: "2024"
 }
 
 html, body {

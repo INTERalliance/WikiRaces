@@ -223,6 +223,9 @@ tr th, tr td {
     #levels-container, #levels-table {
         width: 100% !important;
     }
+    header strong {
+        font-size: 1em !important;
+    }
     #time-header {
         flex-direction: column;
     }

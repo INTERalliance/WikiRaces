@@ -193,6 +193,9 @@ header strong {
 #username-entry h1 {
     font-size: 2em;
 }
+#username-entry h1#join {
+    font-size: 1.3em;
+}
 
 
 button, input {

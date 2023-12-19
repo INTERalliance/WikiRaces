@@ -19,6 +19,7 @@
     --bronzeaccent: #D09259;
     --shadow: #333;
     --lightshadow: #555;
+    --linkhover: #e07171;
 }
 
 .font-serif {
@@ -55,27 +56,63 @@ body {
 /* Credits, at footer of page */
 
 #credits {
-    padding-top: 1em;
-    padding-bottom: 1em;
-    max-width: 1200px;
+    max-width: 80%;
     font-size: 12pt;
     color: var(--text);
-    margin: auto;
-    text-align: center;
+    margin-left: 1em;
 }
 #credits a {
     color: var(--text);
 }
 #credits a:hover {
-    color: var(--subtle);
+    color: var(--linkhover);
 }
 
 
 footer {
     background-color: var(--elementbg);
     margin-top: 1em;
+    display: flex;
+    justify-content: space-between;
 
 }
+
+#credit-buttons {
+    margin-top: auto;
+    display: flex;
+    margin-bottom: auto;
+    margin-right: 1em;
+
+}
+#credit-buttons * {
+    border: none;
+    text-decoration: none;
+    margin: 0;
+    display: flex;
+    text-align: center;
+    height: 100%;
+}
+
+#credit-buttons #ia-logo svg {
+    height: 3.6em;
+    padding: 0;
+}
+
+#github i {
+    font-size: 3.4em;
+    padding: 0;
+}
+#change-theme-button {
+    padding: 0;
+    padding-top: 3px;
+    margin-left: 10px;
+}
+
+#credit-buttons *:hover {
+    color: var(--subtle);
+    fill: var(--subtle)
+}
+/*Footer End*/
 
 .buttons {
     display: flex;
@@ -86,7 +123,6 @@ footer {
 
 }
 
-/*Footer End*/
 #header, #text-section {
     background-color: var(--elementbg);
     width: 60%;
@@ -158,39 +194,6 @@ button.red, button.green {
 
 }
 
-.red, .status-urgent {
-    background-color: #f98f53;
-    border-color: #f55a07;
-
-}
-
-a.status-urgent {
-    background-color: transparent;
-    color: #f55a07
-}
-
-button.red:hover, button.status-urgent:hover {
-    background-color: #f55a07;
-    border-color: rgb(179, 179, 179);
-
-}
-.green {
-    background-color: #70e479;
-
-}
-.green:hover {
-    background-color: #48ac46;
-    border-color: rgb(179, 179, 179);
-}
-
-.input-status-error {
-    color: #f98f53;
-}
-
-.input-status-good {
-    color: #70e479;
-}
-
 button, input {
     padding-right: 40px;
     padding-left: 40px;
@@ -214,5 +217,5 @@ a {
 }
 
 a:hover {
-    color: rgb(224, 113, 113);
+    color: var(--linkhover);
 }

@@ -195,27 +195,30 @@ td,
 /* level buttons */
 
 /* TODO: USE CSS VARIABLES */
-.active-button.button-top {
+tr[data-level-status="present"] .button-top {
     fill: #46A302;
 }
 
-.active-button.button-bottom {
+tr[data-level-status="present"] .button-bottom {
     fill: #58CC02;
 }
 
-.active-button.button-text {
+tr[data-level-status="present"] .button-text {
     fill: white;
 }
 
-.inactive-button.button-top {
+tr[data-level-status="past"] .button-top,
+tr[data-level-status="future"] .button-top {
     fill: #B7B7B7;
 }
 
-.inactive-button.button-bottom {
+tr[data-level-status="past"] .button-bottom,
+tr[data-level-status="future"] .button-bottom {
     fill: #E5E5E5;
 }
 
-.inactive-button.button-text {
+tr[data-level-status="past"] .button-text,
+tr[data-level-status="future"] .button-text {
     fill: #AFAFAF;
 }
 

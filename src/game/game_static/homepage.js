@@ -2,9 +2,11 @@
  * This is a statically-loaded script that run's in the clients browser
  * when viewing the main page (`/wiki-races/`)
  */
-document.getElementById("go-leaderboard").addEventListener("click", () => {
-	window.location.href = `${window.location.protocol}//${window.location.host}/wiki-races/leaderboard`;
-});
+
+const LEVELS_CONTAINER_CLASS_NAME = "levels-table";
+const LEVELS_TABLE_CLASS_NAME = "levels-table-data";
+const LEVELS_ROW_CLASS_NAME = "levels-data-row";
+const LEVEL_STATUS_TEXT_CLASS_NAME = "level-status-text";
 
 function getTextFrom(url) {
 	var resp;
@@ -133,36 +135,38 @@ function getIdFromName(name) {
  * Includes two columns:
  * - a button to click
  * - how long to the next level / "In progress" / "Complete"
+ *
+ * The tr element will take the [dataset](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/data-*)
+ * attributes `startTime` and `endTime`.
  * @param {number} number - zero indexed level number
  * @param {string} levelName - name of the level (e.g. level1, level23, etc)
+ * @param {string} startTime - ISO8601 time string when the level starts
+ * @param {string} endTime - ISO8601 time string when the level ends
  * @returns {HTMLTableRowElement}
  */
-function createTableLine(number, levelName) {
-	let element = document.createElement("tr");
-	let numbers = document.createElement("td");
-	number++;
+function createTableLine(number, levelName, startTime, endTime) {
+	const element = document.createElement("tr");
+	element.className = LEVELS_ROW_CLASS_NAME;
+	element.dataset.startTime = startTime;
+	element.dataset.endTime = endTime;
+
+	const button = document.createElement("td");
 	const url = nameToURL(levelName);
-	// TODO: fill in values
-	numbers.appendChild(createButton(number, url, false));
-	// numbers.textContent = number.toString();
-	numbers.className = "align-left";
+	number++; // account for zero indexing
+	button.appendChild(createButton(number, url, false));
+	button.className = "align-left";
 
-	links = document.createElement("td");
-	let link = document.createElement("a");
+	let links = document.createElement("td");
 
-	//link.href = url;
-	//link.textContent = `Level ${number}`;
-	//link.className = "align-left";
-
-	let time = document.createElement("a");
-	time.href = url;
-	time.className = "align-right";
+	let time = document.createElement("span");
+	// time.href = url;
+	time.classList.add("align-right", LEVEL_STATUS_TEXT_CLASS_NAME);
 	time.id = getIdFromName(levelName);
 
-	//links.appendChild(link);
-	element.appendChild(numbers);
+	element.appendChild(button);
 	element.appendChild(links);
 	links.appendChild(time);
+
 	return element;
 }
 
@@ -181,6 +185,13 @@ function setServerOffset() {
 }
 setServerOffset();
 
+/**
+ * Returns the server time calculated via the offset determined on page load.
+ * This is important because the device time may be different than the server time,
+ * and we want all clients to start levels at the same time.
+ * @returns {Date}
+ * @see setServerOffset()
+ */
 function getTime() {
 	var date = new Date();
 
@@ -194,47 +205,79 @@ function s(number) {
 	return number === 1 ? "" : "s";
 }
 
-function getTimeStringAndClass(levelStart, levelEnd) {
-	const normal = "align-right";
-	const urgent = "align-right status-urgent";
-	const over = "align-right status-over";
-
-	if (levelStart === undefined || levelEnd === undefined) return "";
-	if (getTime() - levelStart >= 0) {
-		if (getTime() - levelEnd >= 0) {
-			return ["Complete", over]; // level is completely over
-		} else {
-			return ["In progress!", urgent];
-		}
-	}
+/**
+ * Takes a level's start time, and returns a human-readable
+ * string saying how soon it starts.
+ * @param {Date} startTime - time when the level starts
+ * @returns {string} 
+ */
+function getTimeString(startTime) {
 	const date = getTime();
-	let seconds = (levelStart - date) / 1000;
-	let minutes = Math.floor(seconds / 60);
+	let seconds = (startTime - date) / 1000;
+	const minutes = Math.floor(seconds / 60);
 	seconds = seconds - minutes * 60;
 
-	// Update time on screen
 	if (minutes > 5) {
-		return [`${minutes} minutes`, normal];
+		return `${minutes} minutes`;
 	} else if (minutes > 0) {
 		const secs = Math.round(seconds);
-		return [`${minutes} minute${s(minutes)} ${secs} sec${s(secs)}`, normal];
+		return `${minutes} minute${s(minutes)} ${secs} sec${s(secs)}`;
 	} else {
-		return [`${Math.round(seconds)} sec`, urgent];
+		return `${Math.round(seconds)} sec`;
 	}
 }
 
-function updateTimes(levels) {
-	const names = Object.keys(levels);
+/**
+ * Is the current server time between the two provided time stamps?
+ * @param {Date} startTime - time when the level starts
+ * @param {Date} endTime - time when the level ends
+ * @returns {"past" | "present" | "future"} startTime <= user time < endTime
+ */
+function getLevelStatus(startTime, endTime) {
+	if (getTime() - startTime >= 0) {
+		if (getTime() - endTime >= 0) {
+			return "past"; // level is completely over
+		} else {
+			return "present"; // level is in-progress
+		}
+	}
+	return "future"; // level is in the future;
+}
 
-	for (level of names) {
-		const div = document.getElementById(getIdFromName(level));
-		const levelStart = Date.parse(levels[level].startTime);
-		const levelEnd = Date.parse(levels[level].endTime);
-		const info = getTimeStringAndClass(levelStart, levelEnd);
-		const text = info[0];
-		const className = info[1];
-		div.textContent = text;
-		div.className = className;
+/**
+ * This function loops through the rows in the table created by createLevelsTable.
+ * It updates them as in the "past", "present", or "future" with the times set on page load.
+ * Note that if the `levels.json` file is updated after the page has loaded,
+ * this will not be detected by the page. A page refresh would be required.
+ * @see createLevelsTable()
+ */
+function updateTimes() {
+	const levelRows = document.getElementsByClassName(LEVELS_ROW_CLASS_NAME);
+	// set each row's level status to "past", "present", or "future"
+	for (const row of levelRows) {
+		const startTime = Date.parse(row.dataset.startTime);
+		const endTime = Date.parse(row.dataset.endTime);
+		row.dataset.levelStatus = getLevelStatus(startTime, endTime);
+	}
+
+	// set the past levels display as "complete"
+	const pastLevels = document.querySelectorAll(`[data-level-status="past"] .${LEVEL_STATUS_TEXT_CLASS_NAME}`);
+	for (const pastLevel of pastLevels) {
+		pastLevel.textContent = "Complete";
+	}
+
+	// set the current levels to "in progress"
+	const presentLevels = document.querySelectorAll(`[data-level-status="present"] .${LEVEL_STATUS_TEXT_CLASS_NAME}`);
+	for (const presentLevel of presentLevels) {
+		presentLevel.textContent = "In progress!";
+	}
+
+	// set the future levels to say how far they are into the future
+	const futureLevels = document.querySelectorAll(`[data-level-status="future"]`);
+	for (const futureLevelRow of futureLevels) {
+		const futureLevelText = futureLevelRow.getElementsByClassName(LEVEL_STATUS_TEXT_CLASS_NAME)[0];
+		const startTime = Date.parse(futureLevelRow.dataset.startTime);
+		futureLevelText.textContent = getTimeString(startTime);
 	}
 }
 
@@ -339,28 +382,32 @@ async function attemptToSubmitUsername() {
 	displayName();
 }
 
-// Run at script load:
-
-(async () => {
-	const levels = await getJsonData();
-	let levelsDiv = document.getElementById("levels-table");
-	let table = document.createElement("table");
-	//table.append(createTableHeading());
-
-	const names = Object.keys(levels);
-	for (let i = 0; i < names.length; i++) {
-		table.append(createTableLine(i, names[i]));
+/**
+ * This function relies on the "levels-table" table existing in the page.
+ * If it does exist, this function will fetch `levels.json` from game_static, and 
+ * then append a table row for each level. Each table row will have the appropriate
+ * `startTime` and `endTime` dataset attributes, which will be referenced by `updateTimes`.
+ */
+async function createLevelsTable() {
+	const levels = Object.values(await getJsonData());
+	const levelsDiv = document.getElementById(LEVELS_CONTAINER_CLASS_NAME);
+	const table = document.createElement("table");
+	table.className = LEVELS_TABLE_CLASS_NAME;
+	for (let i = 0; i < levels.length; i++) {
+		const level = levels[i];
+		table.append(createTableLine(i, level.name, level.startTime, level.endTime));
 	}
 	levelsDiv.append(table);
-})();
+}
 
 (async () => {
-	const data = await getJsonData();
-	updateTimes(data);
-	setInterval(() => {
-		updateTimes(data);
-	}, 1000);
-})();
+	await createLevelsTable(); // run asynchronously on page load
+	updateTimes();
+})()
+
+setInterval(() => {
+	updateTimes();
+}, 1000); // update the times every second
 
 // Submit when button is pressed:
 document
@@ -428,3 +475,7 @@ document.getElementById("delete-username").addEventListener("click", logOut);
 document.body.onload = () => {
 	document.getElementById("submission-box").focus();
 };
+
+document.getElementById("go-leaderboard").addEventListener("click", () => {
+	window.location.href = `${window.location.protocol}//${window.location.host}/wiki-races/leaderboard`;
+});

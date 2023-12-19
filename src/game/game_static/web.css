@@ -17,6 +17,8 @@
     --silveraccent: #AAC0D5;
     --goldaccent: #FEC701;
     --bronzeaccent: #D09259;
+    --shadow: #333;
+    --lightshadow: #555;
 }
 
 .font-serif {
@@ -70,8 +72,17 @@ body {
 
 
 footer {
-    background-color: #eeeeee;
+    background-color: var(--elementbg);
     margin-top: 1em;
+
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+}
+.buttons button {
+    height: min-content;
 
 }
 

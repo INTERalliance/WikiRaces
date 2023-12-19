@@ -11,7 +11,7 @@
     padding: 1em;
     display: block;
     min-height: 20vh;
-    filter: drop-shadow(0px 3px 2px #333);
+    filter: drop-shadow(0px 3px 2px (--shadow));
 
 }
 
@@ -51,7 +51,7 @@
     margin-bottom: 1em;
     padding: 0.8em;
     text-align: left;
-    filter: drop-shadow(0px 3px 2px #333);
+    filter: drop-shadow(0px 3px 2px var(--shadow));
     min-height: 20vh;
 
 
@@ -84,14 +84,6 @@
     margin: 0.1em;
 }
 
-.input-status-error {
-    color: red;
-}
-
-.input-status-good {
-    color: green;
-}
-
 #username-value {
     font-weight: bold;
 }
@@ -113,56 +105,8 @@ tr th, tr td {
     text-align: right;
 }
 
-#levels-table {
-    width: 100%;
-    background: white;
-    border: 1px solid rgb(138, 176, 245);
-}
-
-#levels-table h3 {
-    margin-left: 1em;
-    margin-bottom: 0;
-    margin-top: 0.5em;
-    text-align: center;
-}
-
-.status-urgent {
-    background: rgb(241, 139, 144);
-}
-
-.status-over {
-    color: grey;
-}
-
 /* Table End */
 
-/* Button */
-
-#go-home, #give-up {
-    background: rgb(238, 160, 160);
-    /* margin-top: 1em; */
-    font-weight: bold;
-    border-radius: 5em;
-    padding: 0.5em;
-    cursor: pointer;
-}
-
-#go-home:hover, #give-up:hover {
-    background: rgb(233, 151, 151);
-}
-
-#go-leaderboard {
-    background: rgb(15, 218, 25);
-    /* margin-top: 1em; */
-    font-weight: bold;
-    border-radius: 5em;
-    padding: 0.5em;
-    cursor: pointer;
-}
-
-#go-leaderboard:hover {
-    background: rgb(10, 187, 18);
-}
 
 p {
     line-height: 200%;

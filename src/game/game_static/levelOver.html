@@ -9,7 +9,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<link rel="icon" href="/wiki-races/favicon.png" />
+		<link rel="icon" type="image/x-icon" href="/wiki-races/favicon.png" />
 		<title>INTERalliance Wiki Races</title>
 		<meta
 			name="description"
@@ -18,7 +18,7 @@
 		<link
 			rel="stylesheet"
 			type="text/css"
-			href="../wiki-races/levelComplete.css"
+			href="../wiki-races/homepage.css"
 		/>
 		<link
 			rel="stylesheet"
@@ -33,27 +33,28 @@
 		<header>
 			<strong>
 				<i class="fa fa-globe" aria-hidden="true"></i>
+
 				<span class="font-serif">Wiki</span><span class="font-header">Races</span> 
 			</strong>
 			<span id="year"></span>
 		</header>
 		<div id="page">
 			<div id="info-div">
-				<div id="header" class="align-left">
-					<h1>Level Over.</h1>
+				<section id="username-entry" class="align-left">
+					<h1 style="text-align: center;">Level Over.</h1>
 					<p>
 						This level has finished. If you have no other submissions,
 						your time for this level will be the time it was open. If
 						you have multiple submissions, the shortest time will be
 						used.
-						<br />
 					</p>
-				</div>
+				</section>
+				
 			</div>
-			<div id="text-section" class="align-left">
-				<button id="go-home">Go home!</button>
-				<button id="go-leaderboard">Go to leaderboard!</button>
-			</div>
+			<section style="min-height: 10vh;" id="rules-list" class="buttons">
+				<button id="go-home">Go Home →</button>
+				<button id="go-leaderboard">View Leaderboard →</button>
+			</section>
 		</div>
 		<!--[if lt IE 7]>
 			<p class="browsehappy">
@@ -61,6 +62,22 @@
 				<a href="#">upgrade your browser</a> to improve your experience.
 			</p>
 		<![endif]-->
+		<footer>
+			<p id="credits">
+				
+
+				Available under MIT License 2021-2023, INTERalliance of Greater Cincinnati | Site developed by
+				<a target="_blank" href="https://github.com/zsarge"> Zack Sargent</a>
+				with some help from
+				<a target="_blank" href="https://github.com/Aurelius333"> Ajai Nelson</a>.
+				It is now maintained by the <a target="_blank" href="https://interalliance.org/programs/ilc">INTERalliance Leadership Council</a> alongside <a target="_blank" href="https://congodsted.com">Con Godsted</a>.
+
+				You can check out the source code
+				<a target="_blank" href="https://github.com/INTERallianceGC/WikiRaces">
+					here</a
+				>.
+			</p>
+		</footer>
 		<script>
 			// I normally don't like using script tags, but I don't want another .js file to keep track of.
 			document.getElementById("go-home").addEventListener("click", () => {

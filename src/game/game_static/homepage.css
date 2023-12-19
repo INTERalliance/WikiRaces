@@ -56,12 +56,16 @@ h1 {
 }
 #submission-button {
     margin: 0;
-    background: var(--button);
+    background: var(--blue);
     border: none;
     color: var(--background);
     font-size: .9em;
     width: 20%;
 
+}
+#submission-button:hover {
+    background-color: var(--bluer);
+    transition: background-color .2s;
 }
 
 #username-entry-box {

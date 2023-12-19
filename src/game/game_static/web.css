@@ -7,9 +7,8 @@
     --text: black;
     --elementbg: #F3F3F3;
     --buttonbg: #EFECEC;
+    --buttonborder: #b3b3b3;
     --header: #1B1B1B;
-    --button: #4A90E2;
-    --primary: #58CC02;
     --subtle: #AD7272;
     --gold: #FEE333;
     --silver: #D9E3ED;
@@ -20,6 +19,14 @@
     --shadow: #333;
     --lightshadow: #555;
     --linkhover: #e07171;
+    --orange: #f98f53;
+    --red: #f55a07;
+    --green: #70e479;
+    --greener: #48ac46;
+    --primary: #58CC02;
+    --blue: #4A90E2;
+    --bluer: #2d8bf6;
+
 }
 
 .font-serif {
@@ -170,29 +177,11 @@ header strong {
     font-size: 1.3em;
 }
 
-#header h1 {
-    font-size: xx-large;
-    padding: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-}
-
-#header h2 {
-    font-size: large;
-    padding: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-    color: grey;
+#username-entry h1 {
+    font-size: 2em;
 }
 
 /* Heading End */
-
-button.red, button.green {
-    font-weight: bold;
-    color: var(--text);
-    transition: background-color .5s;
-
-}
 
 button, input {
     padding-right: 40px;
@@ -218,4 +207,37 @@ a {
 
 a:hover {
     color: var(--linkhover);
+}
+
+
+button.red, button.green {
+    font-weight: bold;
+    color: var(--text);
+    transition: background-color .5s;
+
+}
+
+.red, .status-urgent {
+    background-color: var(--orange);
+    border-color: var(--red);
+
+}
+
+a.status-urgent {
+    background-color: transparent;
+    color: var(--red)
+}
+
+button.red:hover, button.status-urgent:hover {
+    background-color: var(--red);
+    border-color: var(--buttonborder);
+
+}
+.green {
+    background-color: var(--green);
+
+}
+.green:hover {
+    background-color: --greener;
+    border-color: var(--buttonborder);
 }

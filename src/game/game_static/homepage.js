@@ -36,22 +36,16 @@ async function getJsonData() {
 
 /**
  * creates an elipse element for use in the level button
- * @param {boolean} active - true when the button represents the current level. 
- * false when the button represents a past or future level.
  * @param {boolean} top - true when this elipse is the top of the button.
  * false when this elipse is the bottom of the button.
  * @returns {SVGEllipseElement}
+ * @see createButton()
  */
-function createElipse(active, top) {
+function createElipse(top) {
 	const elipse = document.createElementNS("http://www.w3.org/2000/svg", "ellipse");
 	elipse.setAttribute("cx", 39.5); // magic numbers from Figma design
 	elipse.setAttribute("rx", 39.5);
 	elipse.setAttribute("ry", 25.5);
-	if (active) {
-		elipse.classList.add("active-button");
-	} else {
-		elipse.classList.add("inactive-button");
-	}
 	if (top) {
 		elipse.classList.add("button-top");
 		elipse.setAttribute("cy", 32.5); // magic number from Figma
@@ -65,11 +59,9 @@ function createElipse(active, top) {
 /**
  * Creates a clickable button element to take a user to the level
  * @param {number} number - the index in the list of levels
- * @param {string} link - what should this button link to?
- * @param {boolean} active - is this the current level?
  * @returns {SVGElement} svg of button
  */
-function createButton(number, link, active) {
+function createButton(number) {
 	const BUTTON_WIDTH = 79; // exported from figma
 	const BUTTON_HEIGHT = 85;
 	/**
@@ -82,9 +74,9 @@ function createButton(number, link, active) {
 	svg.setAttribute("fill", "none");
 
 	// create elipses for button effect
-	const topElipse = createElipse(active, true);
+	const topElipse = createElipse(true);
 	svg.appendChild(topElipse);
-	const bottomElipse = createElipse(active, false);
+	const bottomElipse = createElipse(false);
 	svg.appendChild(bottomElipse);
 
 	// create text element representing current level number
@@ -92,11 +84,6 @@ function createButton(number, link, active) {
 	text.setAttribute("x", "45%");
 	text.setAttribute("y", "45%");
 	text.classList.add('button-text')
-	if (active) {
-		text.classList.add('active-button')
-	} else {
-		text.classList.add('inactive-button')
-	}
 	text.textContent = number.toString();
 	svg.appendChild(text);
 	return svg;
@@ -153,7 +140,10 @@ function createTableLine(number, levelName, startTime, endTime) {
 	const button = document.createElement("td");
 	const url = nameToURL(levelName);
 	number++; // account for zero indexing
-	button.appendChild(createButton(number, url, false));
+	const linkedButton = document.createElement('a');
+	linkedButton.href = url;
+	linkedButton.appendChild(createButton(number, url, false));
+	button.appendChild(linkedButton);
 	button.className = "align-left";
 
 	let links = document.createElement("td");

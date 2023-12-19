@@ -148,8 +148,18 @@ header {
     padding-bottom: .8em;
     display: flex;
     flex-direction: column;
+    min-height: 2.8em;
 
 }
+
+header strong {
+    font-size: 1.3em;
+}
+
+/* Heading End */
+
+
+/* Year start */
 
 #year {
     color: var(--primary);
@@ -159,29 +169,31 @@ header {
     transform: rotateZ(334deg);
     top: -35px;
     font-size: .7em;
-    font-weight: bold;
+    animation-name: year;
+    animation-duration: .3s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
     font-weight: 600;
 
 }
+
+@keyframes year {
+    from {font-size: .7em;}
+    to {font-size: .8em;}
+  }
+
+
 #year:after {
     content: "2024!"
 }
 
-header img {
-    padding-right: 10px;
-    height: 25px;
-    padding: 1em;
-}
+/* Year End */
 
-header strong {
-    font-size: 1.3em;
-}
 
 #username-entry h1 {
     font-size: 2em;
 }
 
-/* Heading End */
 
 button, input {
     padding-right: 40px;

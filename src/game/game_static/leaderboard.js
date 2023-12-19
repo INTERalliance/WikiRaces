@@ -55,11 +55,11 @@ function createTableHeading(levelNames) {
 	numbers.textContent = "#";
 	numbers.className = "align-left";
 	let links = document.createElement("th");
-	links.textContent = "User:";
+	links.textContent = "User";
 	links.className = "align-left";
 
 	let time = document.createElement("th");
-	time.textContent = "Total:";
+	time.textContent = "Total";
 	time.className = "align-left";
 
 	element.appendChild(numbers);
@@ -68,7 +68,7 @@ function createTableHeading(levelNames) {
 
 	for (levelName of levelNames) {
 		let level = document.createElement("th");
-		level.textContent = `${levelName}:`;
+		level.textContent = `${levelName}`;
 		level.className = "align-left";
 		element.appendChild(level);
 	}
@@ -78,8 +78,17 @@ function createTableHeading(levelNames) {
 
 function createCell(content) {
 	let cell = document.createElement("td");
-	cell.textContent = content.toString();
+	cell.innerHTML = content;
 	return cell;
+}
+
+function createSpan(content) {
+	const date = new Date(Number(content));
+	const ms = createSpan(date.getMilliseconds());
+
+	let span = document.createElement("span")
+	span.textContent = ms.toString();
+	return span;
 }
 
 // format millisecond time
@@ -88,7 +97,7 @@ function formatMS(milliseconds) {
 	const m = date.getMinutes();
 	const s = date.getSeconds();
 	const ms = date.getMilliseconds();
-	return `${m}:${s}.${ms}`;
+	return `${m}:${s}<span>.${ms}</span>`;
 }
 function createNameLink(name, userId) {
 	let cell = document.createElement("td");
@@ -110,7 +119,6 @@ function createTableLine(submission) {
 	for (levelTime of Object.values(submission.times)) {
 		element.appendChild(createCell(formatMS(levelTime)));
 	}
-
 	return element;
 }
 
@@ -191,14 +199,25 @@ async function getLeaderboardOverviewString() {
 
 /* This is run at script load: */
 (async () => {
-	// Create leaderboard table
+	// Load info for leaderboard table
 	const levelNames = await getLevelNames();
 	const data = await getLeaderboardData();
 	const sorted = await sortSubmissions([...data]);
-	console.log(sorted);
+	// Replace level name with capitalized, properly spaced name.
+	let newLevelNames = [];
+	levelNames.forEach(function(level) {
+		level = level.slice(5)
+		level = `Level ` + level
+		newLevelNames.push(level);
+	})
+	// Load names into ceremony graphic
+	document.querySelector("#first-name p").innerHTML = sorted[0].name;
+	document.querySelector("#second-name p").innerHTML = sorted[1].name;
+	document.querySelector("#third-name p").innerHTML = sorted[2].name;
+	// Generate leaderboard table
 	let levelsDiv = document.getElementById("levels-table");
 	let table = document.createElement("table");
-	table.append(createTableHeading(levelNames));
+	table.append(createTableHeading(newLevelNames));
 
 	for (submission of sorted) {
 		table.append(createTableLine(submission));
@@ -206,11 +225,11 @@ async function getLeaderboardOverviewString() {
 
 	levelsDiv.append(table);
 
-	// Display user position:
-	const posText = document.getElementById("leaderboard-position");
+	// Display user position. Disabled for 2024 redesign.
+	/*const posText = document.getElementById("leaderboard-position");
 	const userId = getCookie("userId");
 	const position = await getLeaderboardPosition(userId, sorted);
 	posText.textContent = await getPlaceString(position, sorted);
 	posText.innerHTML += '<br>';
-	posText.innerHTML += await getLeaderboardOverviewString();
+	posText.innerHTML += await getLeaderboardOverviewString();*/
 })();

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- This is the homepage. -->
+<!-- This is the level complete page. -->
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
@@ -9,7 +9,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<link rel="icon" href="/wiki-races/favicon.png" />
+		<link rel="icon" type="image/x-icon" href="/wiki-races/favicon.png" />
 		<title>INTERalliance Wiki Races</title>
 		<meta
 			name="description"
@@ -18,15 +18,30 @@
 		<link
 			rel="stylesheet"
 			type="text/css"
-			href="../wiki-races/levelComplete.css"
+			href="../wiki-races/homepage.css"
 		/>
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="../wiki-races/web.css"
+		/>
+		<link rel="stylesheet" href="../wiki-races/font-awesome/css/font-awesome.min.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 	</head>
 
 	<body>
+		<header>
+			<strong>
+				<i class="fa fa-globe" aria-hidden="true"></i>
+
+				<span class="font-serif">Wiki</span><span class="font-header">Races</span> 
+			</strong>
+			<span id="year"></span>
+		</header>
 		<div id="page">
-			<div id="header" class="align-left">
-				<h1>Congratulations!</h1>
+			<div id="info-div">
+				<section id="username-entry">
+					<h1>Congratulations!</h1>
 				<p>
 					Your time has been submitted and can be viewed on the
 					leaderboard.
@@ -37,11 +52,13 @@
 					(It won't improve your time, but it might help you see
 					better connections in the future.)
 				</p>
+				</section>
+				
 			</div>
-			<div id="text-section" class="align-left">
-				<button id="go-home">Go home!</button>
-				<button id="go-leaderboard">Go to leaderboard!</button>
-			</div>
+			<section style="min-height: 10vh;" id="rules-list" class="buttons">
+				<button id="go-home">Go Home →</button>
+				<button id="go-leaderboard">View Leaderboard →</button>
+			</section>
 		</div>
 		<!--[if lt IE 7]>
 			<p class="browsehappy">
@@ -49,6 +66,50 @@
 				<a href="#">upgrade your browser</a> to improve your experience.
 			</p>
 		<![endif]-->
+		<footer>
+			<p id="credits">
+				WikiRaces was designed by <a class="main-text" href="https://zack.fyi">Zack Sargent</a> in 2021, with help from Ajai Nelson.
+				<br> The source code is available under the <a class="main-text" href="https://github.com/INTERallianceGC/WikiRaces/blob/TO2024/LICENSE">MIT License</a> 
+				by the INTERalliance of Greater Cincinnati.
+				<br>The site is now maintained by the <a target="_blank" href="https://interalliance.org/programs/ilc">INTERalliance Leadership Council</a> alongside <a target="_blank" href="https://congodsted.com">Con Godsted</a>.
+			</p>
+			<div id="credit-buttons">
+				<a id="ia-logo" href="https://interalliance.org"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+					viewBox="0 0 1080 1080" xml:space="preserve">
+					<g>
+						<path d="M455.62,204.28c90.92,0,167.79,61.47,193.11,146h158.37C793.39,213.66,678.08,107,537.85,107
+							c-130.83,0-239.95,92.84-265.14,216.22C304.95,252.95,374.73,204.28,455.62,204.28z"/>
+						<path d="M624.88,875.72c-90.92,0-167.79-61.47-193.11-146H273.4C287.11,866.34,402.43,973,542.66,973
+							c130.83,0,239.95-92.84,265.14-216.22C775.56,827.05,705.78,875.72,624.88,875.72z"/>
+						<circle cx="475" cy="293.82" r="45.98"/>
+						<path d="M660.65,687.83c0,3.53,0,6.16,0,6.98c0,4.66,1.16,5.82,5.82,5.82c0.52,0,3.06,0,6.98,0c2.84,0,6.41,0,10.48,0
+							c27.83,0,70.97,0,73.33,0c4.66,0,5.82-1.16,5.82-5.82c0-2.16,0-16.81,0-27.94c0-3.56,0-6.5,0-8.15c0-0.52,0-0.92,0-1.16
+							c0-4.66-1.16-5.82-5.82-5.82c-0.57,0-3.56,0-8.15,0c-2.63,0-5.78,0-9.31,0c-7.97,0-17.45,0-27.03,0V518.59
+							c0.79-19.48,0-22.6-5.52-47.68c-5.55-25.26-11.98-35.75-28.32-54.63c-16.42-18.98-45.11-28.55-61.73-32.86
+							c-16.61-4.31-49.12-5.21-49.12-5.21H358.02c-2.03,0-3.98,0-5.82,0c-6.92,0-12.09,0-12.8,0c-4.66,0-5.82,1.16-5.82,5.82
+							c0,0.73,0,2.88,0,5.82c0,1.07,0,2.24,0,3.49v20.95c0,1.25,0,2.42,0,3.49c0,2.94,0,5.09,0,5.82c0,4.66,1.16,5.82,5.82,5.82
+							c0.9,0,8.93,0,18.62,0l0-0.06H436v0.06c4.66,0,5.82,1.16,5.82,5.82c0,0.41,0.11,0.72,0.26,0.98l-0.26,212.69
+							c0,0.04-0.02,0.07-0.02,0.12c-0.01,4.27-2.32,5.04-5.81,5.04h-94.28c-3.88,0-7.48,0-10.48,0c-4.49,0-7.61,0-8.15,0
+							c-4.66,0-5.82,1.16-5.82,5.82c0,0.73,0,2.88,0,5.82c0,1.07,0,2.24,0,3.49v16.3c0,2.84,0,5.27,0,6.98c0,1.12,0,1.94,0,2.33
+							c0,4.66,1.16,5.82,5.82,5.82c0.59,0,4.2,0,9.31,0c2.75,0,5.92,0,9.31,0H603.3c3.39-0.63,6.43-1.27,8.21-1.81
+							c5.88-1.78,11.04-2.97,16.68-6.5s11.28-7.18,14.14-9.94s6.16-5.57,10.27-11.93c3.84-5.96,6.78-12.9,8.06-13.77v28.82
+							C660.65,686.31,660.65,687.08,660.65,687.83z M504.68,435.24c4.66-3.49,54.37-1.16,54.37-1.16s33.04,1.71,41.07,3.49
+							c10.48,2.33,19.79,5.82,27.94,10.48c8.15,4.66,15.13,15.13,19.79,25.61c4.66,10.48,5.82,20.95,5.82,26.77
+							c0,5.82,1.16,12.8-1.16,15.71c-2.33,2.91-13.97-1.75-19.79-2.91c-5.82-1.16-26.77-3.49-32.59-3.49s-25.61,0-32.59,0
+							c-6.98,0-23.23,1.39-27.94,2.33c-5.82,1.16-11.35,2.91-13.97,3.49s-9.2,5.82-17.46,5.82C498.86,521.38,502.04,437.22,504.68,435.24
+							z M652.5,602.85c-1.16,5.82-4.66,12.8-6.98,16.3c-2.33,3.49-9.31,12.8-19.79,19.79c-10.48,6.98-13.97,10.48-27.94,13.97
+							c-13.97,3.49-34.34,2.33-34.34,2.33c-31.82,0-57.62-21.89-57.62-48.89c0-22.76,18.33-41.89,43.15-47.33c0.01,0,0.01,0,0.02-0.01
+							c0,0,0,0,0.01,0c3.82-0.84,7.8-1.34,11.89-1.49c8.36-0.86,15.8-1.22,20.59-1.22c6.98,0,29.02,1.16,33.76,1.16
+							c6.98,0,20.95,1.16,20.95,1.16s15.13,1.16,17.46,3.49c2.33,2.33,2.33,9.31,2.33,15.13S653.67,597.03,652.5,602.85z"/>
+					</g>
+				</svg></a>
+
+				<a target="_blank" href="https://github.com/INTERallianceGC/WikiRaces" id="github" aria-hidden="true">
+					<i class="fa fa-github fa-3x" aria-hidden="true"></i>
+				</a>
+				<button id="change-theme-button" alt="Click to toggle between dark and light theme" class="fa fa-sun-o fa-3x" onclick="changeSetting(`theme`)"></button>
+			</div>
+		</footer>
 		<script>
 			// I normally don't like using script tags, but I don't want another .js file to keep track of.
 			document.getElementById("go-home").addEventListener("click", () => {

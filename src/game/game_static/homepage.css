@@ -1,31 +1,40 @@
+body {
+    overflow-x: hidden;
+}
+
 
 #levels-table table {
     width: 100%;
 }
 
 #info-div {
-    border: solid #90ebdc 1px;
     display: flex;
-    width: 82.6%;
+    flex-direction: column;
+    background-color: var(--header);
     margin: auto;
-    margin-bottom: 1em;
 }
 
+#page {
+    min-height: 72vh;
+}
 
 /* Username Start */
 #page section {
-    width: auto;
     margin: auto;
-    margin-bottom: 1em;
-    padding-right: 1em;
-    padding-left: 1em;
     text-align: left;
     padding: 1em;
-    width: 80%;
+    border-radius: 10px;
+}
+
+section#username-entry {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+
 }
 
 h1 {
-    color: #2defe4;
+    color: var(--text);
+    font-weight: normal;
 }
 
 #delete-username {
@@ -34,21 +43,42 @@ h1 {
 }
 
 #submission-box {
-    margin-top: 1em;
-    display: inline;
-    border-color: #70e479;
-    background-color: #262626;
-    padding-right: 40px;
-    padding-left: 5px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border-radius: 5px;
-    outline: 0;
-    color: white;
-}
-input:focus {
-    border-color: #5fd55d;
+    border: transparent none;
+    margin: 0;
+    padding-left: 20px;
+    width: 75%;
+    font-size: 1em;
 
+}
+#submission-box:focus-visible {
+    border: none;
+    outline: none;
+}
+#submission-button {
+    margin: 0;
+    background: var(--blue);
+    border: none;
+    color: var(--background);
+    font-size: .9em;
+    width: 20%;
+
+}
+#submission-button:hover {
+    background-color: var(--bluer);
+    transition: background-color .2s;
+}
+
+#username-entry-box {
+    background: var(--background);
+    width: 100%;
+    border-radius: 10px;
+    display: flex;
+
+}
+
+
+#submission-box:focus  {
+    border: none;
 }
 
 .has-username {
@@ -58,6 +88,25 @@ input:focus {
 .no-username {
     display: none;
 }
+
+#username-entry, #rules-list, #levels-table  {
+    background-color: var(--elementbg);
+    width: 60%;
+    max-width: 1000px;
+}
+
+section#rules-list {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    margin-bottom: 1em;
+    filter: drop-shadow(0px 5px 2px #555);
+}
+
+#levels-table, #info-div {
+    filter: drop-shadow(0px 3px 2px #333);
+}
+
+
 
 #username-entry h3 {
     margin-top: 0.2em;
@@ -81,9 +130,8 @@ input:focus {
 tr th, tr td {
     width: fit-content;
     padding: 1em;
-    border: white solid 1px;
+    border: transparent
     
-
 }
 
 table {
@@ -100,15 +148,13 @@ table {
 
 #levels-table {
     min-height: 30em;
-    width: auto;
     margin: auto;
     margin-bottom: 1em;
     padding-right: 1em;
     padding-left: 1em;
     text-align: left;
     padding: 1em;
-    border: solid #2defe4 1px;
-    width: 80%;
+    border-radius: 10px;
 }
 
 #levels-table h3 {
@@ -130,26 +176,8 @@ table {
 
 #page {
     margin: auto;
-    font-size: 18px;
 }
 
-/* Credits, at footer of page */
-
-#credits {
-    padding-top: 1em;
-    padding-bottom: 1em;
-    max-width: 1200px;
-    font-size: 12pt;
-    color: black;
-    margin: auto;
-    text-align: center;
-}
-#credits a {
-    color: black;
-}
-
-
-footer {
-    background-color: #eeeeee;
-
+#page, h1, td, #go-leaderboard, #go-home {
+    font-size: 1.2em;
 }

@@ -2,15 +2,132 @@
     --leaderboard-width: 65vw;
 }
 
+#info-div {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--header);
+    margin: auto;
+}
+
+#go-home {
+    color: var(--subtle);
+    background-color: var(--buttonbg);
+    font-size: 1.2em
+}
+
+#levels-container, #text-section, #info-div {
+    filter: drop-shadow(0px 3px 2px var(--shadow));
+}
+#text-section {
+    filter: drop-shadow(0px 5px 2px var(--lightshadow));
+}
+
+
 /* Username Start */
 
-#text-section {
-    width: auto;
-    background: #1b1b1b;
-    border: 1px solid #90ebdc;
+#time-header {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 1em;
+}
+
+#ceremony, #levels-container, #text-section   {
+    background-color: var(--elementbg);
+    width: 60%;
+    max-width: 1000px;
+    margin: auto;
+    border-radius: 10px;
+}
+
+#levels-container {
+    padding: 1em;
+}
+
+section#text-section {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
     margin-bottom: 1em;
-    padding: 0.8em;
-    text-align: left;
+    min-height: 10vh;
+
+
+}
+
+td span {
+    color: var(--subtle);
+}
+
+section#ceremony {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+
+}
+
+section#ceremony, section#text-section {
+    display: flex;
+    justify-content: center;
+}
+
+
+.standing {
+    width: 100%;
+    text-align: center;
+    font-size: 3em;
+    font-style: italic;
+    font-weight: bold;
+    height: 96%;
+}
+.name {
+    width: 25%;
+    margin-right: .5em;
+    margin-left: .5em;
+}
+
+#first, #first-extended {
+    background-color: var(--gold);
+    border: var(--goldaccent) 4px solid;
+    color: var(--goldaccent);
+
+}
+
+#first-extended {
+    border-bottom: 0;
+}
+#first {
+    border-top: 0;
+}
+
+#second {
+    background-color: var(--silver);
+    border: var(--silveraccent) 4px solid;
+    color: var(--silveraccent)
+}
+#third {
+    background-color: var(--bronze);
+    border: var(--bronzeaccent) 4px solid;
+    color: var(--bronzeaccent);
+    height: 39%;
+
+}
+
+#first-name {
+    margin-top: 1em;
+
+}
+
+#second-name {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+#third-name p {
+    margin-top: 2em;
+
+}
+
+.name p {
+    margin-bottom: 0;
+    text-align: center;
+    font-size: 1.2em;
 }
 
 #delete-username {
@@ -74,15 +191,7 @@ tr th, tr td {
     position: relative;
     width: 100%;
     overflow-x: auto;
-    box-shadow: inset -1em 0 1em -1.2em grey;
-    background: #1b1b1b;
-}
-
-#levels-container {
-    background: #1b1b1b;
-    border: 1px solid #90ebdc;
-    width: var(--leaderboard-width);
-    margin-left: calc(-1 * calc(var(--leaderboard-width) - calc(4.5 * var(--leaderboard-width) / 5)));
+    background: var(--elementbg);
 }
 
 #static-section h3 {
@@ -111,35 +220,36 @@ tr th, tr td {
 
 /* Table End */
 
-#page {
-    margin: auto;
-    width: 50%;
-    padding: 10px;
-}
-
 @media (max-width: 700px) {
-    #page {
-        width: 98%;
-        padding: 2px;
+    #ceremony, #text-section {
+        width: 80% !important;
     }
-    #levels-container {
-        width: 100%;
+    #levels-container, #levels-table {
+        width: 100% !important;
         padding: 0;
-        margin-right: 0;
-        margin-left: 0;
+    }
+    header strong {
+        font-size: 1em !important;
+    }
+    #time-header {
+        flex-direction: column;
+    }
+    h3 {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+        margin-top: 10px;
     }
 }
 
-/* Button */
-
-#give-up {
-    background: rgb(238, 160, 160);
-}
-
-#give-up:hover {
-    background: rgb(233, 151, 151);
-}
-
-p {
+#page p {
     line-height: 200%;
+}
+
+#page {
+    min-height: 75vh;
+}
+
+#time-header h3 {
+    font-size: 1.2em;
+    padding-left: .7em;
 }

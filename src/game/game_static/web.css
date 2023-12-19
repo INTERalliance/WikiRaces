@@ -1,89 +1,202 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;500;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@600&family=Montserrat:wght@400;600&display=swap');
 
+
+
+:root {
+    --background: white;
+    --text: black;
+    --elementbg: #F3F3F3;
+    --buttonbg: #EFECEC;
+    --buttonborder: #b3b3b3;
+    --header: #1B1B1B;
+    --subtle: #AD7272;
+    --gold: #FEE333;
+    --silver: #D9E3ED;
+    --bronze: #F8BE8E;
+    --silveraccent: #AAC0D5;
+    --goldaccent: #FEC701;
+    --bronzeaccent: #D09259;
+    --shadow: #333;
+    --lightshadow: #555;
+    --linkhover: #e07171;
+    --orange: #f98f53;
+    --red: #f55a07;
+    --green: #70e479;
+    --greener: #48ac46;
+    --primary: #58CC02;
+    --blue: #4A90E2;
+    --bluer: #2d8bf6;
+
+}
+
+.font-serif {
+    font-family: 'DM Serif Display', serif;
+    font-weight: normal;
+}
+.font-header {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+}
 * {
-    font-family: 'Source Sans Pro', Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Montserrat';
+    font-weight: 400;
 }
 
 body {
-    background: #1b1b1b;
+    background: var(--background);
     margin: 0;
-    color: white;
+    color: var(--text)
+}
+
+#levels-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+#go-leaderboard, #go-home {
+    color: var(--subtle);
+    background-color: var(--buttonbg);
+    border: none;
+}
+
+/*Footer Start*/
+/* Credits, at footer of page */
+
+#credits {
+    max-width: 80%;
+    font-size: 12pt;
+    color: var(--text);
+    margin-left: 1em;
+}
+#credits a {
+    color: var(--text);
+}
+#credits a:hover {
+    color: var(--linkhover);
+}
+
+
+footer {
+    background-color: var(--elementbg);
+    margin-top: 1em;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+#credit-buttons {
+    margin-top: auto;
+    display: flex;
+    margin-bottom: auto;
+    margin-right: 1em;
+
+}
+#credit-buttons * {
+    border: none;
+    text-decoration: none;
+    margin: 0;
+    display: flex;
+    text-align: center;
+    height: 100%;
+}
+
+#credit-buttons #ia-logo svg {
+    height: 3.6em;
+    padding: 0;
+}
+
+#github i {
+    font-size: 3.4em;
+    padding: 0;
+}
+#change-theme-button {
+    padding: 0;
+    padding-top: 3px;
+    margin-left: 10px;
+}
+
+#credit-buttons *:hover {
+    color: var(--subtle);
+    fill: var(--subtle)
+}
+/*Footer End*/
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+}
+.buttons button {
+    height: min-content;
+
+}
+
+#header, #text-section {
+    background-color: var(--elementbg);
+    width: 60%;
+    max-width: 1000px;
+    margin: auto;
 }
 
 /* Heading Start */
 
 header {
-    align-items: center;
+    text-align: center;
+    background-color: var(--header);
+    color: var(--background);
+    font-size: 3em;
+    padding-top: .4em;
+    padding-bottom: .8em;
     display: flex;
-    background-color: #000;
-    margin-bottom: 1em;
-    font-size: 18px;
-    border-bottom: #90ebdc solid 1px;
+    flex-direction: column;
+    min-height: 2.8em;
 
-}
-
-header img {
-    padding-right: 10px;
-    height: 25px;
-    padding: 1em;
 }
 
 header strong {
     font-size: 1.3em;
 }
 
-#header h1 {
-    font-size: xx-large;
-    padding: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-}
-
-#header h2 {
-    font-size: large;
-    padding: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-    color: grey;
-}
-
 /* Heading End */
 
-button.red, button.green {
-    font-weight: bold;
-    width: 100%;
-    color: black;
-    transition: background-color .5s;
+
+/* Year start */
+
+#year {
+    color: var(--primary);
+    position: relative;
+    right: 180px;
+    left: 180px;
+    transform: rotateZ(334deg);
+    top: -35px;
+    font-size: .7em;
+    animation-name: year;
+    animation-duration: .3s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    font-weight: 600;
 
 }
 
-.red, .status-urgent {
-    background-color: #f98f53;
-    border-color: #f55a07;
+@keyframes year {
+    from {font-size: .7em;}
+    to {font-size: .8em;}
+  }
 
-}
-button.red:hover, button.status-urgent:hover {
-    background-color: #f55a07;
-    border-color: rgb(179, 179, 179);
 
-}
-.green {
-    background-color: #70e479;
-
-}
-.green:hover {
-    background-color: #48ac46;
-    border-color: rgb(179, 179, 179);
+#year:after {
+    content: "2024!"
 }
 
-.input-status-error {
-    color: #f98f53;
+/* Year End */
+
+
+#username-entry h1 {
+    font-size: 2em;
+}
+#username-entry h1#join {
+    font-size: 1.3em;
 }
 
-.input-status-good {
-    color: #70e479;
-}
 
 button, input {
     padding-right: 40px;
@@ -91,26 +204,90 @@ button, input {
     padding-top: 10px;
     padding-bottom: 10px;
     border-radius: 5px;
-    background-color: #262626;
-    border-color: #5fd55d;
-    color: white;
+    background-color: transparent;
+    color: var(--text);
     transition: border-color .2s;
     margin-bottom: 10px;
 }
 button {
     cursor: pointer;
 }
-button:hover, input:hover {
-    border-color: #9cfff5;
-}
 .center {
     text-align: center;
 }
 
 a {
-    color: white;
+    color: var(--text);
 }
 
 a:hover {
-    color: rgb(224, 113, 113);
+    color: var(--linkhover);
+}
+
+
+button.red, button.green {
+    font-weight: bold;
+    color: var(--text);
+    transition: background-color .5s;
+
+}
+
+.red, .status-urgent {
+    background-color: var(--orange);
+    border-color: var(--red);
+
+}
+
+a.status-urgent {
+    background-color: transparent;
+    color: var(--red)
+}
+
+button.red:hover, button.status-urgent:hover {
+    background-color: var(--red);
+    border-color: var(--buttonborder);
+
+}
+.green {
+    background-color: var(--green);
+
+}
+.green:hover {
+    background-color: --greener;
+    border-color: var(--buttonborder);
+}
+
+@media (max-width: 700px) {
+    #year {
+        animation: none;
+        left: 140px;
+        right: 140px;
+        top: -20px;
+        transform: none;
+    }
+    header {
+        min-height: unset;
+        padding-bottom: .4em;
+    }
+    button {
+        padding: 0;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    #username-entry h1 {
+        font-size: 1.5em;
+    }
+    footer {
+        flex-direction: column;
+    }
+    #submission-box {
+        font-size: 14px;
+    }
+    #levels-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    #username-entry, #rules-list, #levels-table {
+        width: 80%;
+    }
 }

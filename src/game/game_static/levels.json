@@ -54,17 +54,5 @@
         "endTime": "2023-12-19T21:33:46+00:00",
         "startPage": "Olympic_Games",
         "endPage": "Technology"
-=======
-        "startTime": "2023-12-17T16:14:15+00:00",
-        "endTime": "2023-12-17T16:15:15+00:00",
-        "startPage": "Switzerland",
-        "endPage": "Byte"
-    },
-    "level2": {
-        "name": "level2",
-        "startTime": "2023-12-17T16:16:15+00:00",
-        "endTime": "2023-12-17T16:17:15+00:00",
-        "startPage": "Copper",
-        "endPage": "Carnegie"
     }
 }

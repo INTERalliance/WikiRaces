@@ -2,13 +2,6 @@
     --leaderboard-width: 65vw;
 }
 
-* {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-body {
-    background: #e6dfdf;
-}
 
 /* Heading Start */
 
@@ -191,21 +184,4 @@ tr th, tr td {
 
 #go-home:hover, #give-up:hover {
     background: rgb(233, 151, 151);
-}
-
-p {
-    line-height: 200%;
-}
-
-#go-leaderboard {
-    background: rgb(15, 218, 25);
-    /* margin-top: 1em; */
-    font-weight: bold;
-    border-radius: 5em;
-    padding: 0.5em;
-    cursor: pointer;
-}
-
-#go-leaderboard:hover {
-    background: rgb(10, 187, 18);
 }

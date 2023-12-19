@@ -217,15 +217,19 @@ tr th, tr td {
 /* Table End */
 
 @media (max-width: 700px) {
-    #page {
-        width: 98%;
-        padding: 2px;
+    #ceremony, #text-section {
+        width: 80% !important;
     }
     #levels-container {
         width: 100%;
-        padding: 0;
-        margin-right: 0;
-        margin-left: 0;
+    }
+    #time-header {
+        flex-direction: column;
+    }
+    h3 {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+        margin-top: 10px;
     }
 }
 

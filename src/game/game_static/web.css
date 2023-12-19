@@ -253,3 +253,30 @@ button.red:hover, button.status-urgent:hover {
     background-color: --greener;
     border-color: var(--buttonborder);
 }
+
+@media (max-width: 700px) {
+    #year {
+        display: none;
+    }
+    button {
+        padding: 0;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    #username-entry h1 {
+        font-size: 1.5em;
+    }
+    footer {
+        flex-direction: column;
+    }
+    #submission-box {
+        font-size: 14px;
+    }
+    #levels-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    #username-entry, #rules-list, #levels-table {
+        width: 80%;
+    }
+}

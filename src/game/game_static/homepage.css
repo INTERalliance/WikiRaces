@@ -14,10 +14,8 @@ body {
     margin: auto;
 }
 
-#go-leaderboard {
-    color: var(--subtle);
-    background-color: var(--buttonbg);
-    border: none;
+#page {
+    min-height: 72vh;
 }
 
 /* Username Start */
@@ -177,6 +175,6 @@ table {
     margin: auto;
 }
 
-#page, h1, td, #go-leaderboard {
+#page, h1, td, #go-leaderboard, #go-home {
     font-size: 1.2em;
 }

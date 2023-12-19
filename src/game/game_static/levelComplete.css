@@ -16,9 +16,11 @@
 }
 
 #info-div {
+    background-color: var(--header);
+}
+#second-div, #info-div {
     display: flex;
     flex-direction: column;
-    background-color: var(--header);
     margin: auto;
 }
 

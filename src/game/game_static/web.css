@@ -256,7 +256,11 @@ button.red:hover, button.status-urgent:hover {
 
 @media (max-width: 700px) {
     #year {
-        display: none;
+        animation: none;
+        left: 140px;
+        right: 140px;
+        top: -20px;
+        transform: none;
     }
     button {
         padding: 0;

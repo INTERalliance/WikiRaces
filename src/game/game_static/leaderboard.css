@@ -99,7 +99,8 @@ section#ceremony, section#text-section {
 #second {
     background-color: var(--silver);
     border: var(--silveraccent) 4px solid;
-    color: var(--silveraccent)
+    color: var(--silveraccent);
+    height: 94%
 }
 #third {
     background-color: var(--bronze);

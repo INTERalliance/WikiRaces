@@ -28,6 +28,82 @@ async function getJsonData() {
 	return JSON.parse(resp);
 }
 
+/**
+ * creates an elipse element for use in the level button
+ * @param {boolean} active - true when the button represents the current level. 
+ * false when the button represents a past or future level.
+ * @param {boolean} top - true when this elipse is the top of the button.
+ * false when this elipse is the bottom of the button.
+ * @returns {SVGEllipseElement}
+ */
+function createElipse(active, top) {
+	const elipse = document.createElementNS("http://www.w3.org/2000/svg", "ellipse");
+	elipse.setAttribute("cx", 39.5); // magic numbers from Figma design
+	elipse.setAttribute("rx", 39.5);
+	elipse.setAttribute("ry", 25.5);
+	if (active) {
+		elipse.classList.add("active-button");
+	} else {
+		elipse.classList.add("inactive-button");
+	}
+	if (top) {
+		elipse.classList.add("button-top");
+		elipse.setAttribute("cy", 32.5); // magic number from Figma
+	} else {
+		elipse.classList.add("button-bottom");
+		elipse.setAttribute("cy", 25.5); // magic number from Figma
+	}
+	return elipse;
+}
+
+/**
+ * Creates a clickable button element to take a user to the level
+ * @param {number} number - the index in the list of levels
+ * @param {string} link - what should this button link to?
+ * @param {boolean} active - is this the current level?
+ * @returns {SVGElement} svg of button
+ */
+function createButton(number, link, active) {
+	const BUTTON_WIDTH = 79; // exported from figma
+	const BUTTON_HEIGHT = 85;
+	/**
+	 * @type {SVGElement}
+	 */
+	const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+	svg.setAttribute("height", BUTTON_HEIGHT);
+	svg.setAttribute("width", BUTTON_WIDTH);
+	svg.setAttribute("viewBox", `0 0 ${BUTTON_WIDTH} ${BUTTON_HEIGHT}`);
+	svg.setAttribute("fill", "none");
+
+	// create elipses for button effect
+	const topElipse = createElipse(active, true);
+	svg.appendChild(topElipse);
+	const bottomElipse = createElipse(active, false);
+	svg.appendChild(bottomElipse);
+
+	// create text
+	const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+	text.setAttribute("x", "45%");
+	text.setAttribute("y", "45%");
+	text.classList.add('button-text')
+	if (active) {
+		text.classList.add('active-button')
+	} else {
+		text.classList.add('inactive-button')
+	}
+	text.textContent = number.toString();
+	svg.appendChild(text);
+
+	/*
+		<svg width="79" height="58" viewBox="0 0 79 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<ellipse cx="39.5" cy="32.5" rx="39.5" ry="25.5" class="active-button button-top" />
+			<ellipse cx="39.5" cy="25.5" rx="39.5" ry="25.5" class="active-button button-bottom" />
+			<text x="44%" y="55%" class="active-button button-text">1</text>
+		</svg>
+	 */
+	return svg;
+}
+
 function createTableHeading() {
 	let element = document.createElement("tr");
 	let numbers = document.createElement("th");
@@ -59,7 +135,9 @@ function createTableLine(number, content) {
 	let element = document.createElement("tr");
 	let numbers = document.createElement("td");
 	number++;
-	numbers.textContent = number.toString();
+	// TODO: fill in values
+	numbers.appendChild(createButton(number, "https://example.com", true));
+	// numbers.textContent = number.toString();
 	numbers.className = "align-left";
 
 	links = document.createElement("td");

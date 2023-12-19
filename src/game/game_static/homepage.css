@@ -50,10 +50,12 @@ h1 {
     font-size: 1em;
 
 }
+
 #submission-box:focus-visible {
     border: none;
     outline: none;
 }
+
 #submission-button {
     margin: 0;
     background: var(--blue);
@@ -63,6 +65,7 @@ h1 {
     width: 20%;
 
 }
+
 #submission-button:hover {
     background-color: var(--bluer);
     transition: background-color .2s;
@@ -77,7 +80,7 @@ h1 {
 }
 
 
-#submission-box:focus  {
+#submission-box:focus {
     border: none;
 }
 
@@ -89,7 +92,9 @@ h1 {
     display: none;
 }
 
-#username-entry, #rules-list, #levels-table  {
+#username-entry,
+#rules-list,
+#levels-table {
     background-color: var(--elementbg);
     width: 60%;
     max-width: 1000px;
@@ -102,7 +107,8 @@ section#rules-list {
     filter: drop-shadow(0px 5px 2px #555);
 }
 
-#levels-table, #info-div {
+#levels-table,
+#info-div {
     filter: drop-shadow(0px 3px 2px #333);
 }
 
@@ -127,15 +133,15 @@ section#rules-list {
 
 /* Table Start */
 
-tr th, tr td {
+tr th,
+tr td {
     width: fit-content;
     padding: 1em;
     border: transparent
-    
 }
 
 table {
-    border-collapse:collapse;
+    border-collapse: collapse;
 }
 
 .align-left {
@@ -178,6 +184,42 @@ table {
     margin: auto;
 }
 
-#page, h1, td, #go-leaderboard, #go-home {
+#page,
+h1,
+td,
+#go-leaderboard,
+#go-home {
     font-size: 1.2em;
+}
+
+/* level buttons */
+
+/* TODO: USE CSS VARIABLES */
+.active-button.button-top {
+    fill: #46A302;
+}
+
+.active-button.button-bottom {
+    fill: #58CC02;
+}
+
+.active-button.button-text {
+    fill: white;
+}
+
+.inactive-buttom.button-top {
+    fill: #E5E5E5;
+}
+
+.inactive-buttom.button-bottom {
+    fill: #B7B7B7;
+}
+
+.inactive-button.button-text {
+    fill: #AFAFAF;
+}
+
+.button-text {
+    font-size: x-large;
+    font-weight: bold;
 }

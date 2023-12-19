@@ -130,7 +130,7 @@ footer {
 
 }
 
-#header, #text-section {
+#header, #text-section, #submissions-container {
     background-color: var(--elementbg);
     width: 60%;
     max-width: 1000px;

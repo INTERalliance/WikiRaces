@@ -4,7 +4,7 @@ body {
 
 
 #levels-table table {
-    width: 100%;
+    width: fit-content;
 }
 
 #info-div {

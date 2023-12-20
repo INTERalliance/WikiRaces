@@ -63,7 +63,7 @@ function createElipse(top) {
  */
 function createButton(number) {
 	const BUTTON_WIDTH = 79; // exported from figma
-	const BUTTON_HEIGHT = 85;
+	const BUTTON_HEIGHT = 58;
 	/**
 	 * @type {SVGElement}
 	 */
@@ -81,8 +81,8 @@ function createButton(number) {
 
 	// create text element representing current level number
 	const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
-	text.setAttribute("x", "45%");
-	text.setAttribute("y", "45%");
+	text.setAttribute("x", "34px");
+	text.setAttribute("y", "36px");
 	text.classList.add('button-text')
 	text.textContent = number.toString();
 	svg.appendChild(text);

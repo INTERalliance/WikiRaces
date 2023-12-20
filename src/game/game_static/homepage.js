@@ -262,8 +262,16 @@ function updateTimes() {
 		presentLevel.textContent = "In progress!";
 	}
 
-	// set the future levels to say how far they are into the future
 	const futureLevels = document.querySelectorAll(`[data-level-status="future"]`);
+
+	// if there are no levels open at the present, consider the next future level to be the level that people should join
+	if (presentLevels.length === 0) {
+		if (futureLevels.length > 0) {
+			futureLevels[0].dataset.levelStatus = "present";
+		}
+	}
+
+	// set the future levels to say how far they are into the future
 	for (const futureLevelRow of futureLevels) {
 		const futureLevelText = futureLevelRow.getElementsByClassName(LEVEL_STATUS_TEXT_CLASS_NAME)[0];
 		const startTime = Date.parse(futureLevelRow.dataset.startTime);

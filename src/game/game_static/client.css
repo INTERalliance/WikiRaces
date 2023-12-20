@@ -1,5 +1,7 @@
 :root {
 	--overlay-height: 3.2em;
+	--history-element-left-pad: 2em;
+	--control-buttons-frame-width: 10em;
 }
 
 * {
@@ -11,7 +13,8 @@
 	content: "2024"
 }
 
-html, body {
+html,
+body {
 	height: 100%;
 	overflow-y: hidden;
 }
@@ -42,7 +45,6 @@ iframe {
 	position: fixed;
 	bottom: 0;
 	right: 0;
-	background: gold;
 	box-shadow: 0em -0.2em rgba(0, 0, 0, 0.034);
 }
 
@@ -59,19 +61,22 @@ iframe {
 }
 
 #control-buttons-frame {
-	background: white;
-	z-index: -1;
-	position: relative;
+	display: grid;
+	align-items: center;
+}
+
+#history-wrapper {
+	overflow-x: auto;
+	margin: 0 1em;
+	padding: 0 1em;
+}
+
+.history-element:not(:last-child) {
+	margin-right: 1em;
 }
 
 #restart {
-
 	margin: 0;
-	z-index: -1;
-	position: absolute;
-	top: 50%;
-	-ms-transform: translateY(-50%);
-	transform: translateY(-50%);
 	border-radius: 3em;
 	border-width: 0.1em;
 	border-color: black;
@@ -83,23 +88,41 @@ iframe {
 #restart:hover {
 	background: lightgrey;
 }
-#goal {
+
+#goal,
+#time-left {
 	font-weight: bold;
 }
+
 #history-frame {
-	list-style-type: '→';
-	margin: 0;
-	overflow-y: hidden;
-	overflow-x: visible;
-	padding: 0.5em;
-	padding-left: 2em;
+	flex-direction: row;
 	display: flex;
-	margin-left: 5em;
-	margin-right: 1em;
+	height: 100%;
+	width: fit-content;
+	position: relative;
+	overflow-x: hidden;
 }
+
+
+/* grey bar that goes behind all of the elements */
+#history-frame::after {
+	--spacing: 10px;
+	--bar-height: 5px;
+	content: "";
+	position: absolute;
+	top: calc(50% - calc(var(--bar-height) / 2));
+	left: calc(var(--history-element-left-pad) + var(--spacing));
+	width: calc(calc(100% - calc(var(--history-element-left-pad) * 2)) - var(--spacing));
+	height: var(--bar-height);
+	background: #C4C4C4;
+	z-index: -10;
+}
+
 
 .history-element {
 	white-space: nowrap;
+	display: grid;
+	align-items: center;
 }
 
 .history-text {
@@ -112,6 +135,8 @@ iframe {
 	padding-left: 0.6em;
 	padding-right: 0.5em;
 	white-space: nowrap;
+	background-color: white;
+	/* TODO: pull all of these into css variables */
 }
 
 .history-text:hover {
@@ -127,11 +152,13 @@ li span {
 	display: inline-block;
 }
 
-#control-buttons-frame {
-	cursor: pointer;
-}
-
 #overlay {
 	background-color: white;
 	padding-top: 0.5em;
+}
+
+#infobox {
+	width: fit-content;
+	min-width: fit-content;
+	margin-right: 1em;
 }

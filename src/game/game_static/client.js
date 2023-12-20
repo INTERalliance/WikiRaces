@@ -179,16 +179,8 @@ function setUpCountDown() {
 			const diff = endDate - date;
 			const seconds = Math.floor(diff / 1000) % 60;
 			const minutes = Math.floor((diff / 1000) / 60);
-
-			if (minutes > 0) {
-				return `Time Left: ${minutes} minute${s(
-					minutes
-				)} ${Math.round(seconds)} second${s(seconds)}.`;
-			} else if (seconds >= 0) {
-				return `Time Left: ${Math.round(seconds)} second${s(
-					Math.round(seconds)
-				)}.`;
-			}
+			const zeroPaddedSeconds = Math.round(seconds).toString().padStart(2, '0');
+			return `${minutes}:${zeroPaddedSeconds}`;
 		}
 
 		console.log(timer.textContent, "timer.textContent");
@@ -218,9 +210,7 @@ function startGame(level) {
 	viewedPages = [];
 
 	// Set goal text:
-	document.getElementById("goal").textContent = `Goal: ${serialize(
-		level.endPage
-	)}`;
+	document.getElementById("goal").textContent = serialize(level.endPage);
 }
 
 // Sets Iframe location on script load, and when `reset` is clicked
@@ -283,11 +273,11 @@ function unSerialize(name) {
 // creates unordered list from array
 function visualizeHistory(array) {
 	// Create the list element:
-	var list = document.createElement("ul");
+	var list = document.createElement("div");
 
 	for (var i = 0; i < array.length; i++) {
 		// Create the list items:
-		var item = document.createElement("li");
+		var item = document.createElement("div");
 		item.className = "history-element";
 		let border = document.createElement("span");
 		border.className = "history-text";
@@ -311,9 +301,10 @@ function reverseHistory(goal) {
 }
 
 function setHistory() {
-	let frame = document.getElementById("history-frame");
+	const frame = document.getElementById("history-frame");
 	frame.innerHTML = visualizeHistory(viewedPages).innerHTML;
-	frame.scrollLeft = 10000;
+	const wrapper = document.getElementById("history-wrapper");
+	wrapper.scrollLeft = 10000;
 }
 
 function kickIfNotLoggedIn() {

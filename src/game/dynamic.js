@@ -28,7 +28,7 @@ const path = require("path");
 const { fillTemplate } = require("./template");
 
 // wiki to fetch wikipedia pages
-const wiki = require('wikipedia');
+const wiki = require('wikijs').default;
 
 /**
  * Takes HTML and processes it to be embedded in the template by
@@ -69,17 +69,14 @@ async function generatePage(id) {
 	// get raw html from wikipedia.
 	try {
 		log.info(`Downloading ${id}`);
-		let page = await wiki.page(id);
-		if (!page) {
-			return "This page does not exist.";
-		}
+		const page = await wiki().page(id);
 		let html = await page.html();
 		html = processHTML(html);
-		page = fillTemplate(html, id, page.title);
-		return page;
+		html = fillTemplate(html, id, page.title);
+		return html;
 	} catch (error) {
-		log.warn(error);
-		return undefined;
+		log.error(error);
+		return "This page could not be found. You can use the timeline at the bottom of the page to go back.";
 	}
 }
 

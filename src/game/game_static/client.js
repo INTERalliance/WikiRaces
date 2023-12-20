@@ -2,7 +2,6 @@
  * This is the code that is loaded by `index.html`.
  * It is responsible for holding the wiki page in an iframe,
  * and monitoring the user's progress.
- * It might also submit but idk I haven't go that far.
  */
 
 function getTextFrom(url) {
@@ -263,12 +262,22 @@ function submit() {
 }
 
 // REVIEW - Rename these functions to something that makes more sense
+/**
+ * Take a raw wikipedia page id, and make it presentable to the user.
+ * @param {string} name raw Wikipedia page ID
+ * @returns {string} user presentable Wikipedia page name
+ */
 function serialize(name) {
-	return name.replace(/_/g, " ").replace(/%27/g, "'");
+	return decodeURIComponent(name).replaceAll("_", " ");
 }
 
+/**
+ * Take a user presentable page name, and turn it into a raw wikipedia page id.
+ * @param {string} name user presentable Wikipedia page name
+ * @returns raw Wikipedia page ID
+ */
 function unSerialize(name) {
-	return name.replace(/ /g, "_").replace(/'/g, "%27");
+	return encodeURIComponent(name.replaceAll(" ", "_"));
 }
 
 // creates unordered list from array

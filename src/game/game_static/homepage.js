@@ -83,7 +83,7 @@ function createButton(number) {
 
 	// create text element representing current level number
 	const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
-	text.setAttribute("x", "34px");
+	text.setAttribute("x", "33px");
 	text.setAttribute("y", "36px");
 	text.classList.add('button-text')
 	text.textContent = number.toString();

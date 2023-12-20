@@ -189,3 +189,18 @@ You will need to do that yourself if you are setitng this up.
 - click to view user's submission info on leaderboard
 
 </details>
+
+## Using the Wikipedia API?
+
+- There are many NodeJS Wikipedia APIs
+  1. [Wikipedia](https://github.com/dopecodez/Wikipedia)
+    - returns images in a nice format
+    - looks like it's already in use by <https://wiki-race.com/game>
+  2. [NodeMW](https://github.com/macbre/nodemw)
+  3. [NodeJS wiki](https://github.com/dijs/wiki)
+- Excluding references from parse request?
+  - https://stackoverflow.com/questions/16259946/wikipedia-api-excluding-references-from-parse-request 
+- Problem:
+  - How do we avoid links that do not point to wikipedia?
+  - ([Thou shalt not parse HTML with regex](https://stackoverflow.com/a/1732454))
+  

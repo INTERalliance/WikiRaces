@@ -1,6 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@600&family=Montserrat:wght@400;600&display=swap');
-
-
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@600&family=Montserrat:wght@400;500;600&display=swap');
 
 :root {
     --background: white;
@@ -26,17 +24,28 @@
     --primary: #58CC02;
     --blue: #4A90E2;
     --bluer: #2d8bf6;
-
+    /* buttons on homepage */
+    --active-button-top: #58CC02;
+    --active-button-bottom: #46A302;
+    --active-button-text: white;
+    --active-level-text: #58CC02;
+    --inactive-button-top: #E5E5E5;
+    --inactive-button-bottom: #B7B7B7;
+    --inactive-button-text: #AFAFAF;
+    --inactive-level-text: #AFAFAF;
+    --button-connector-line: #BFBFBF;
 }
 
 .font-serif {
     font-family: 'DM Serif Display', serif;
     font-weight: normal;
 }
+
 .font-header {
     font-family: 'Inter', sans-serif;
     font-weight: 600;
 }
+
 * {
     font-family: 'Montserrat';
     font-weight: 400;
@@ -53,7 +62,8 @@ body {
     justify-content: space-between;
 }
 
-#go-leaderboard, #go-home {
+#go-leaderboard,
+#go-home {
     color: var(--subtle);
     background-color: var(--buttonbg);
     border: none;
@@ -68,9 +78,11 @@ body {
     color: var(--text);
     margin-left: 1em;
 }
+
 #credits a {
     color: var(--text);
 }
+
 #credits a:hover {
     color: var(--linkhover);
 }
@@ -91,6 +103,7 @@ footer {
     margin-right: 1em;
 
 }
+
 #credit-buttons * {
     border: none;
     text-decoration: none;
@@ -109,6 +122,7 @@ footer {
     font-size: 3.4em;
     padding: 0;
 }
+
 #change-theme-button {
     padding: 0;
     padding-top: 3px;
@@ -119,12 +133,14 @@ footer {
     color: var(--subtle);
     fill: var(--subtle)
 }
+
 /*Footer End*/
 
 .buttons {
     display: flex;
     justify-content: space-around;
 }
+
 .buttons button {
     height: min-content;
 
@@ -178,9 +194,14 @@ header strong {
 }
 
 @keyframes year {
-    from {font-size: .7em;}
-    to {font-size: .8em;}
-  }
+    from {
+        font-size: .7em;
+    }
+
+    to {
+        font-size: .8em;
+    }
+}
 
 
 #year:after {
@@ -193,12 +214,14 @@ header strong {
 #username-entry h1 {
     font-size: 2em;
 }
+
 #username-entry h1#join {
     font-size: 1.3em;
 }
 
 
-button, input {
+button,
+input {
     padding-right: 40px;
     padding-left: 40px;
     padding-top: 10px;
@@ -209,9 +232,11 @@ button, input {
     transition: border-color .2s;
     margin-bottom: 10px;
 }
+
 button {
     cursor: pointer;
 }
+
 .center {
     text-align: center;
 }
@@ -225,14 +250,16 @@ a:hover {
 }
 
 
-button.red, button.green {
+button.red,
+button.green {
     font-weight: bold;
     color: var(--text);
     transition: background-color .5s;
 
 }
 
-.red, .status-urgent {
+.red,
+.status-urgent {
     background-color: var(--orange);
     border-color: var(--red);
 
@@ -243,15 +270,18 @@ a.status-urgent {
     color: var(--red)
 }
 
-button.red:hover, button.status-urgent:hover {
+button.red:hover,
+button.status-urgent:hover {
     background-color: var(--red);
     border-color: var(--buttonborder);
 
 }
+
 .green {
     background-color: var(--green);
 
 }
+
 .green:hover {
     background-color: --greener;
     border-color: var(--buttonborder);
@@ -265,29 +295,38 @@ button.red:hover, button.status-urgent:hover {
         top: -20px;
         transform: none;
     }
+
     header {
         min-height: unset;
         padding-bottom: .4em;
     }
+
     button {
         padding: 0;
         padding-top: 10px;
         padding-bottom: 10px;
     }
+
     #username-entry h1 {
         font-size: 1.5em;
     }
+
     footer {
         flex-direction: column;
     }
+
     #submission-box {
         font-size: 14px;
     }
+
     #levels-header {
         flex-direction: column;
         text-align: center;
     }
-    #username-entry, #rules-list, #levels-table {
+
+    #username-entry,
+    #rules-list,
+    #levels-table {
         width: 80%;
     }
 }

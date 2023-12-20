@@ -4,7 +4,7 @@ body {
 
 
 #levels-table table {
-    width: 100%;
+    width: fit-content;
 }
 
 #info-div {
@@ -50,10 +50,12 @@ h1 {
     font-size: 1em;
 
 }
+
 #submission-box:focus-visible {
     border: none;
     outline: none;
 }
+
 #submission-button {
     margin: 0;
     background: var(--blue);
@@ -63,6 +65,7 @@ h1 {
     width: 20%;
 
 }
+
 #submission-button:hover {
     background-color: var(--bluer);
     transition: background-color .2s;
@@ -77,7 +80,7 @@ h1 {
 }
 
 
-#submission-box:focus  {
+#submission-box:focus {
     border: none;
 }
 
@@ -89,7 +92,9 @@ h1 {
     display: none;
 }
 
-#username-entry, #rules-list, #levels-table  {
+#username-entry,
+#rules-list,
+#levels-table {
     background-color: var(--elementbg);
     width: 60%;
     max-width: 1000px;
@@ -102,7 +107,8 @@ section#rules-list {
     filter: drop-shadow(0px 5px 2px #555);
 }
 
-#levels-table, #info-div {
+#levels-table,
+#info-div {
     filter: drop-shadow(0px 3px 2px #333);
 }
 
@@ -127,15 +133,15 @@ section#rules-list {
 
 /* Table Start */
 
-tr th, tr td {
+tr th,
+tr td {
     width: fit-content;
     padding: 1em;
     border: transparent
-    
 }
 
 table {
-    border-collapse:collapse;
+    border-collapse: collapse;
 }
 
 .align-left {
@@ -178,6 +184,84 @@ table {
     margin: auto;
 }
 
-#page, h1, td, #go-leaderboard, #go-home {
+#page,
+h1,
+td,
+#go-leaderboard,
+#go-home {
     font-size: 1.2em;
+}
+
+/* level buttons */
+
+/* TODO: USE CSS VARIABLES */
+tr[data-level-status="present"] .button-top {
+    fill: var(--active-button-top);
+}
+
+tr[data-level-status="present"] .button-bottom {
+    fill: var(--active-button-bottom);
+}
+
+tr[data-level-status="present"] .button-text {
+    fill: var(--active-button-text);
+}
+
+tr[data-level-status="past"] .button-top,
+tr[data-level-status="future"] .button-top {
+    fill: var(--inactive-button-top);
+}
+
+tr[data-level-status="past"] .button-bottom,
+tr[data-level-status="future"] .button-bottom {
+    fill: var(--inactive-button-bottom);
+}
+
+tr[data-level-status="past"] .button-text,
+tr[data-level-status="future"] .button-text {
+    fill: var(--inactive-button-text);
+}
+
+.button-text {
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.level-status-text {
+    font-weight: 500;
+}
+
+tr[data-level-status="present"] .level-status-text {
+    color: var(--active-level-text);
+}
+
+tr[data-level-status="past"] .level-status-text,
+tr[data-level-status="future"] .level-status-text {
+    color: var(--inactive-level-text);
+}
+
+/* make buttons lower down and therefore look clickable on hover */
+.button-top {
+    transition: cy 1s ease;
+}
+
+.button-link:hover .button-text,
+.button-link:hover .button-top {
+    transform: translateY(3px);
+}
+
+/* line connecting buttons */
+
+.button-connector-line {
+    width: 6px;
+    height: 90%;
+    background: var(--button-connector-line);
+    position: absolute;
+    top: 42px;
+    left: 59px;
+    z-index: -1;
+}
+
+.levels-table-wrapper {
+    position: relative;
 }

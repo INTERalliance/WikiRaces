@@ -1,6 +1,14 @@
-document.getElementById("go-leaderboard").addEventListener("click", () => {
-	window.location.href = `${window.location.protocol}//${window.location.host}/wiki-races/leaderboard`;
-});
+/**
+ * This is a statically-loaded script that run's in the clients browser
+ * when viewing the main page (`/wiki-races/`)
+ */
+
+const BUTTON_CONNECTOR_LINE_CLASS_NAME = "button-connector-line";
+const LEVELS_TABLE_WRAPPER_CLASS_NAME = "levels-table-wrapper";
+const LEVELS_CONTAINER_CLASS_NAME = "levels-table";
+const LEVELS_TABLE_CLASS_NAME = "levels-table-data";
+const LEVELS_ROW_CLASS_NAME = "levels-data-row";
+const LEVEL_STATUS_TEXT_CLASS_NAME = "level-status-text";
 
 function getTextFrom(url) {
 	var resp;
@@ -28,6 +36,61 @@ async function getJsonData() {
 	return JSON.parse(resp);
 }
 
+/**
+ * creates an elipse element for use in the level button
+ * @param {boolean} top - true when this elipse is the top of the button.
+ * false when this elipse is the bottom of the button.
+ * @returns {SVGEllipseElement}
+ * @see createButton()
+ */
+function createElipse(top) {
+	const elipse = document.createElementNS("http://www.w3.org/2000/svg", "ellipse");
+	elipse.setAttribute("cx", 39.5); // magic numbers from Figma design
+	elipse.setAttribute("rx", 39.5);
+	elipse.setAttribute("ry", 25.5);
+	if (top) {
+		elipse.classList.add("button-top");
+		elipse.setAttribute("cy", 25.5); // magic number from Figma
+	} else {
+		elipse.classList.add("button-bottom");
+		elipse.setAttribute("cy", 32.5); // magic number from Figma
+	}
+	return elipse;
+}
+
+/**
+ * Creates a clickable button element to take a user to the level
+ * @param {number} number - the index in the list of levels
+ * @returns {SVGElement} svg of button
+ */
+function createButton(number) {
+	const BUTTON_WIDTH = 79; // exported from figma
+	const BUTTON_HEIGHT = 58;
+	/**
+	 * @type {SVGElement}
+	 */
+	const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+	svg.setAttribute("height", BUTTON_HEIGHT);
+	svg.setAttribute("width", BUTTON_WIDTH);
+	svg.setAttribute("viewBox", `0 0 ${BUTTON_WIDTH} ${BUTTON_HEIGHT}`);
+	svg.setAttribute("fill", "none");
+
+	// create elipses for button effect
+	const bottomElipse = createElipse(false);
+	svg.appendChild(bottomElipse);
+	const topElipse = createElipse(true);
+	svg.appendChild(topElipse);
+
+	// create text element representing current level number
+	const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+	text.setAttribute("x", "34px");
+	text.setAttribute("y", "36px");
+	text.classList.add('button-text')
+	text.textContent = number.toString();
+	svg.appendChild(text);
+	return svg;
+}
+
 function createTableHeading() {
 	let element = document.createElement("tr");
 	let numbers = document.createElement("th");
@@ -44,6 +107,7 @@ function createTableHeading() {
 	element.appendChild(numbers);
 	element.appendChild(links);
 	element.appendChild(time);
+
 	return element;
 }
 
@@ -55,30 +119,46 @@ function getIdFromName(name) {
 	return `time-${name}`;
 }
 
-function createTableLine(number, content) {
-	let element = document.createElement("tr");
-	let numbers = document.createElement("td");
-	number++;
-	numbers.textContent = number.toString();
-	numbers.className = "align-left";
+/**
+ * Creates a `tr` element for the list of levels. 
+ * Includes two columns:
+ * - a button to click
+ * - how long to the next level / "In progress" / "Complete"
+ *
+ * The tr element will take the [dataset](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/data-*)
+ * attributes `startTime` and `endTime`.
+ * @param {number} number - zero indexed level number
+ * @param {string} levelName - name of the level (e.g. level1, level23, etc)
+ * @param {string} startTime - ISO8601 time string when the level starts
+ * @param {string} endTime - ISO8601 time string when the level ends
+ * @returns {HTMLTableRowElement}
+ */
+function createTableLine(number, levelName, startTime, endTime) {
+	const element = document.createElement("tr");
+	element.className = LEVELS_ROW_CLASS_NAME;
+	element.dataset.startTime = startTime;
+	element.dataset.endTime = endTime;
 
-	links = document.createElement("td");
-	let link = document.createElement("a");
+	const button = document.createElement("td");
+	const url = nameToURL(levelName);
+	number++; // account for zero indexing
+	const buttonLink = document.createElement('a');
+	buttonLink.href = url;
+	buttonLink.className = "button-link";
+	buttonLink.appendChild(createButton(number, url, false));
+	button.appendChild(buttonLink);
+	button.className = "button-container";
 
-	url = nameToURL(content);
-	//link.href = url;
-	//link.textContent = `Level ${number}`;
-	//link.className = "align-left";
+	let links = document.createElement("td");
 
-	let time = document.createElement("a");
-	time.href = url;
-	time.className = "align-right";
-	time.id = getIdFromName(content);
+	let time = document.createElement("span");
+	time.classList.add("align-right", LEVEL_STATUS_TEXT_CLASS_NAME);
+	time.id = getIdFromName(levelName);
 
-	//links.appendChild(link);
-	element.appendChild(numbers);
+	element.appendChild(button);
 	element.appendChild(links);
 	links.appendChild(time);
+
 	return element;
 }
 
@@ -97,6 +177,13 @@ function setServerOffset() {
 }
 setServerOffset();
 
+/**
+ * Returns the server time calculated via the offset determined on page load.
+ * This is important because the device time may be different than the server time,
+ * and we want all clients to start levels at the same time.
+ * @returns {Date}
+ * @see setServerOffset()
+ */
 function getTime() {
 	var date = new Date();
 
@@ -110,47 +197,88 @@ function s(number) {
 	return number === 1 ? "" : "s";
 }
 
-function getTimeStringAndClass(levelStart, levelEnd) {
-	const normal = "align-right";
-	const urgent = "align-right status-urgent";
-	const over = "align-right status-over";
-
-	if (levelStart === undefined || levelEnd === undefined) return "";
-	if (getTime() - levelStart >= 0) {
-		if (getTime() - levelEnd >= 0) {
-			return ["Complete", over]; // level is completely over
-		} else {
-			return ["In progress!", urgent];
-		}
-	}
+/**
+ * Takes a level's start time, and returns a human-readable
+ * string saying how soon it starts.
+ * @param {Date} startTime - time when the level starts
+ * @returns {string} 
+ */
+function getTimeString(startTime) {
 	const date = getTime();
-	let seconds = (levelStart - date) / 1000;
-	let minutes = Math.floor(seconds / 60);
+	let seconds = (startTime - date) / 1000;
+	const minutes = Math.floor(seconds / 60);
 	seconds = seconds - minutes * 60;
 
-	// Update time on screen
 	if (minutes > 5) {
-		return [`${minutes} minutes`, normal];
+		return `${minutes} minutes`;
 	} else if (minutes > 0) {
 		const secs = Math.round(seconds);
-		return [`${minutes} minute${s(minutes)} ${secs} sec${s(secs)}`, normal];
+		return `${minutes} minute${s(minutes)} ${secs} sec${s(secs)}`;
 	} else {
-		return [`${Math.round(seconds)} sec`, urgent];
+		const secs = Math.round(seconds);
+		return `${secs} sec${s(secs)}`;
 	}
 }
 
-function updateTimes(levels) {
-	const names = Object.keys(levels);
+/**
+ * Is the current server time between the two provided time stamps?
+ * @param {Date} startTime - time when the level starts
+ * @param {Date} endTime - time when the level ends
+ * @returns {"past" | "present" | "future"} startTime <= user time < endTime
+ */
+function getLevelStatus(startTime, endTime) {
+	if (getTime() - startTime >= 0) {
+		if (getTime() - endTime >= 0) {
+			return "past"; // level is completely over
+		} else {
+			return "present"; // level is in-progress
+		}
+	}
+	return "future"; // level is in the future;
+}
 
-	for (level of names) {
-		const div = document.getElementById(getIdFromName(level));
-		const levelStart = Date.parse(levels[level].startTime);
-		const levelEnd = Date.parse(levels[level].endTime);
-		const info = getTimeStringAndClass(levelStart, levelEnd);
-		const text = info[0];
-		const className = info[1];
-		div.textContent = text;
-		div.className = className;
+/**
+ * This function loops through the rows in the table created by createLevelsTable.
+ * It updates them as in the "past", "present", or "future" with the times set on page load.
+ * Note that if the `levels.json` file is updated after the page has loaded,
+ * this will not be detected by the page. A page refresh would be required.
+ * @see createLevelsTable()
+ */
+function updateTimes() {
+	const levelRows = document.getElementsByClassName(LEVELS_ROW_CLASS_NAME);
+	// set each row's level status to "past", "present", or "future"
+	for (const row of levelRows) {
+		const startTime = Date.parse(row.dataset.startTime);
+		const endTime = Date.parse(row.dataset.endTime);
+		row.dataset.levelStatus = getLevelStatus(startTime, endTime);
+	}
+
+	// set the past levels display as "complete"
+	const pastLevels = document.querySelectorAll(`[data-level-status="past"] .${LEVEL_STATUS_TEXT_CLASS_NAME}`);
+	for (const pastLevel of pastLevels) {
+		pastLevel.textContent = "Complete";
+	}
+
+	// set the current levels to "in progress"
+	const presentLevels = document.querySelectorAll(`[data-level-status="present"] .${LEVEL_STATUS_TEXT_CLASS_NAME}`);
+	for (const presentLevel of presentLevels) {
+		presentLevel.textContent = "In progress!";
+	}
+
+	const futureLevels = document.querySelectorAll(`[data-level-status="future"]`);
+
+	// if there are no levels open at the present, consider the next future level to be the level that people should join
+	if (presentLevels.length === 0) {
+		if (futureLevels.length > 0) {
+			futureLevels[0].dataset.levelStatus = "present";
+		}
+	}
+
+	// set the future levels to say how far they are into the future
+	for (const futureLevelRow of futureLevels) {
+		const futureLevelText = futureLevelRow.getElementsByClassName(LEVEL_STATUS_TEXT_CLASS_NAME)[0];
+		const startTime = Date.parse(futureLevelRow.dataset.startTime);
+		futureLevelText.textContent = getTimeString(startTime);
 	}
 }
 
@@ -255,28 +383,38 @@ async function attemptToSubmitUsername() {
 	displayName();
 }
 
-// Run at script load:
-
-(async () => {
-	const levels = await getJsonData();
-	let levelsDiv = document.getElementById("levels-table");
-	let table = document.createElement("table");
-	//table.append(createTableHeading());
-
-	const names = Object.keys(levels);
-	for (let i = 0; i < names.length; i++) {
-		table.append(createTableLine(i, names[i]));
+/**
+ * This function relies on the "levels-table" table existing in the page.
+ * If it does exist, this function will fetch `levels.json` from game_static, and 
+ * then append a table row for each level. Each table row will have the appropriate
+ * `startTime` and `endTime` dataset attributes, which will be referenced by `updateTimes`.
+ */
+async function createLevelsTable() {
+	const levels = Object.values(await getJsonData());
+	const levelsDiv = document.getElementById(LEVELS_CONTAINER_CLASS_NAME);
+	const wrapper = document.createElement("div");
+	wrapper.className = LEVELS_TABLE_WRAPPER_CLASS_NAME;
+	const table = document.createElement("table");
+	table.className = LEVELS_TABLE_CLASS_NAME;
+	for (let i = 0; i < levels.length; i++) {
+		const level = levels[i];
+		table.append(createTableLine(i, level.name, level.startTime, level.endTime));
 	}
-	levelsDiv.append(table);
-})();
+	wrapper.append(table);
+	const line = document.createElement("div");
+	line.className = BUTTON_CONNECTOR_LINE_CLASS_NAME;
+	wrapper.append(line);
+	levelsDiv.append(wrapper);
+}
 
 (async () => {
-	const data = await getJsonData();
-	updateTimes(data);
-	setInterval(() => {
-		updateTimes(data);
-	}, 1000);
-})();
+	await createLevelsTable(); // run asynchronously on page load
+	updateTimes();
+})()
+
+setInterval(() => {
+	updateTimes();
+}, 1000); // update the times every second
 
 // Submit when button is pressed:
 document
@@ -344,3 +482,7 @@ document.getElementById("delete-username").addEventListener("click", logOut);
 document.body.onload = () => {
 	document.getElementById("submission-box").focus();
 };
+
+document.getElementById("go-leaderboard").addEventListener("click", () => {
+	window.location.href = `${window.location.protocol}//${window.location.host}/wiki-races/leaderboard`;
+});

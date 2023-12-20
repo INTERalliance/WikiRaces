@@ -6,40 +6,24 @@
 <!--[if gt IE 8]>      <html class="no-js">        <![endif]-->
 
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<link rel="icon" href="/wiki-races/favicon.png" />
-		<title>INTERalliance Wiki Races</title>
-		<meta
-			name="description"
-			content="A website to host challenges where people try to get from one wikipedia page to another, as quick as possible."
-		/>
-		<link
-			rel="stylesheet"
-			type="text/css"
-			href="../../wiki-races/userSubmissions.css"
-		/>
-		<link
-			rel="stylesheet"
-			type="text/css"
-			href="../../wiki-races/homepage.css"
-		/>
-		<link
-			rel="stylesheet"
-			type="text/css"
-			href="../../wiki-races/web.css"
-		/>
-		<link rel="stylesheet" href="../../wiki-races/font-awesome/css/font-awesome.min.css">
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
+<head>
+	  <meta charset="utf-8" />
+	  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	  <link rel="icon" href="/wiki-races/favicon.png" />
+	  <title>INTERalliance Wiki Races</title>
+	  <meta name="description"
+		content="A website to host challenges where people try to get from one wikipedia page to another, as quick as possible." />
+	  <link rel="stylesheet" type="text/css" href="../../wiki-races/userSubmissions.css" />
+	  <link rel="stylesheet" type="text/css" href="../../wiki-races/homepage.css" />
+	  <link rel="stylesheet" type="text/css" href="../../wiki-races/web.css" />
+	  <link rel="stylesheet" href="../../wiki-races/font-awesome/css/font-awesome.min.css">
+	  <meta name="viewport" content="width=device-width, initial-scale=1" />
 	</head>
-
-	
 <body>
 	<header>
 		<strong>
 			<i class="fa fa-globe" aria-hidden="true"></i>
-
+			<span class="font-serif">Wiki</span><span class="font-header">Races</span>
 			<span class="font-serif">Wiki</span><span class="font-header">Races</span> 
 		</strong>
 		<span id="year"></span>
@@ -51,10 +35,9 @@
 				<h2>User Information</h2>
 				<p> Note that the final page is not used in these statistics. </p>
 				<p>
-					<div id="num-of-levels">Number of levels completed:</div>
+				<div id="num-of-levels">Number of levels completed:</div>
 				</p>
 			</div>
-			
 		</div>
 		<section id="rules-list" class="buttons">
 			<button id="go-home">Go Home →</button>
@@ -103,18 +86,20 @@
 						z M652.5,602.85c-1.16,5.82-4.66,12.8-6.98,16.3c-2.33,3.49-9.31,12.8-19.79,19.79c-10.48,6.98-13.97,10.48-27.94,13.97
 						c-13.97,3.49-34.34,2.33-34.34,2.33c-31.82,0-57.62-21.89-57.62-48.89c0-22.76,18.33-41.89,43.15-47.33c0.01,0,0.01,0,0.02-0.01
 						c0,0,0,0,0.01,0c3.82-0.84,7.8-1.34,11.89-1.49c8.36-0.86,15.8-1.22,20.59-1.22c6.98,0,29.02,1.16,33.76,1.16
+						c6.98,0,20.95,1.16,20.95,1.16s15.13,1.16,17.46,3.49c2.33,2.33,2.33,9.31,2.33,15.13S653.67,597.03,652.5,602.85z" />
+					</g>
+				</svg></a>
 						c6.98,0,20.95,1.16,20.95,1.16s15.13,1.16,17.46,3.49c2.33,2.33,2.33,9.31,2.33,15.13S653.67,597.03,652.5,602.85z"/>
 				</g>
 			</svg></a>
-
 			<a target="_blank" href="https://github.com/INTERallianceGC/WikiRaces" id="github" aria-hidden="true">
 				<i class="fa fa-github fa-3x" aria-hidden="true"></i>
 			</a>
+			<button id="change-theme-button" alt="Click to toggle between dark and light theme"
+				class="fa fa-sun-o fa-3x" onclick="changeSetting(`theme`)"></button>
 			<button id="change-theme-button" alt="Click to toggle between dark and light theme" class="fa fa-sun-o fa-3x" onclick="changeSetting(`theme`)"></button>
 		</div>
 	</footer>
 	<script src="../../wiki-races/userSubmissions.js" async defer></script>
 </body>
 </html>
-
-

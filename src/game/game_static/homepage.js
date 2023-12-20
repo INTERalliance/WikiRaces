@@ -48,10 +48,10 @@ function createElipse(top) {
 	elipse.setAttribute("ry", 25.5);
 	if (top) {
 		elipse.classList.add("button-top");
-		elipse.setAttribute("cy", 32.5); // magic number from Figma
+		elipse.setAttribute("cy", 25.5); // magic number from Figma
 	} else {
 		elipse.classList.add("button-bottom");
-		elipse.setAttribute("cy", 25.5); // magic number from Figma
+		elipse.setAttribute("cy", 32.5); // magic number from Figma
 	}
 	return elipse;
 }
@@ -74,10 +74,10 @@ function createButton(number) {
 	svg.setAttribute("fill", "none");
 
 	// create elipses for button effect
-	const topElipse = createElipse(true);
-	svg.appendChild(topElipse);
 	const bottomElipse = createElipse(false);
 	svg.appendChild(bottomElipse);
+	const topElipse = createElipse(true);
+	svg.appendChild(topElipse);
 
 	// create text element representing current level number
 	const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
@@ -144,7 +144,7 @@ function createTableLine(number, levelName, startTime, endTime) {
 	linkedButton.href = url;
 	linkedButton.appendChild(createButton(number, url, false));
 	button.appendChild(linkedButton);
-	button.className = "align-left";
+	button.className = "button-container";
 
 	let links = document.createElement("td");
 

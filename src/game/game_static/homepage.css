@@ -196,30 +196,30 @@ td,
 
 /* TODO: USE CSS VARIABLES */
 tr[data-level-status="present"] .button-top {
-    fill: #46A302;
+    fill: var(--active-button-top);
 }
 
 tr[data-level-status="present"] .button-bottom {
-    fill: #58CC02;
+    fill: var(--active-button-bottom);
 }
 
 tr[data-level-status="present"] .button-text {
-    fill: white;
+    fill: var(--active-button-text);
 }
 
 tr[data-level-status="past"] .button-top,
 tr[data-level-status="future"] .button-top {
-    fill: #B7B7B7;
+    fill: var(--inactive-button-top);
 }
 
 tr[data-level-status="past"] .button-bottom,
 tr[data-level-status="future"] .button-bottom {
-    fill: #E5E5E5;
+    fill: var(--inactive-button-bottom);
 }
 
 tr[data-level-status="past"] .button-text,
 tr[data-level-status="future"] .button-text {
-    fill: #AFAFAF;
+    fill: var(--inactive-button-text);
 }
 
 .button-text {

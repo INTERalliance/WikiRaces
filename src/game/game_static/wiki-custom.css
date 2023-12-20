@@ -64,6 +64,7 @@ a[href^="/"] {
 }
 
 a[href^="/wiki/Help:"],
+a[href^="/wiki/Portal:"],
 a[href^="/wiki/Special:"] {
     pointer-events: none;
     cursor: text;

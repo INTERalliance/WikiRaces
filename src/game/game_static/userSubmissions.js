@@ -83,7 +83,7 @@ function formatMS(milliseconds) {
 }
 
 function serialize(name) {
-	return name.replace(/_/g, " ").replace(/%27/g, "'");
+	return decodeURIComponent(name).replaceAll("_", " ");
 }
 
 /** From ./client.js */

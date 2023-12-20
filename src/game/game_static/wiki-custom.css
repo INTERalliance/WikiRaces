@@ -55,6 +55,7 @@ a {
     color: black !important;
 }
 
+a[href^="#"],
 a[href^="/"] {
     pointer-events: all;
     cursor: pointer;
@@ -62,18 +63,15 @@ a[href^="/"] {
     color: var(--wikipedia-link) !important;
 }
 
-a[href^="/wiki/Special:"] {
+a[href^="/wiki/Help:"],
+a[href^="/wiki/Portal:"],
+a[href^="/wiki/Special:"],
+/* a.new == "red" links to pages that don't exist yet */
+a.new {
     pointer-events: none;
     cursor: text;
     text-decoration: none;
     color: black !important;
-}
-
-a[href^="#"] {
-    pointer-events: all;
-    cursor: pointer;
-    text-decoration: none;
-    color: var(--wikipedia-link) !important;
 }
 
 /* make reading text easier on the eyes*/

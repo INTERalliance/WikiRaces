@@ -45,7 +45,7 @@
         --buttonbg: #0c0c0c;
         --buttonborder: #b3b3b3;
         --header: black;
-        --subtle: #71AD8F;
+        --subtle: #70e479;
         --gold: #FEE333;
         --silver: #D9E3ED;
         --bronze: #F8BE8E;
@@ -54,7 +54,7 @@
         --bronzeaccent: #D09259;
         --shadow: #111;
         --lightshadow: #222;
-        --linkhover: #71AD8F;
+        --linkhover: #8fc665;
         --orange: #f98f53;
         --red: #f55a07;
         --green: #70e479;
@@ -114,6 +114,12 @@ body {
     background-color: var(--buttonbg);
     border: none;
 }
+#go-leaderboard,
+#go-home {
+    color: var(--subtle);
+    background-color: var(--buttonbg);
+    border: none;
+}
 
 /*Footer Start*/
 /* Credits, at footer of page */
@@ -129,10 +135,13 @@ body {
     color: var(--text);
 }
 
-#credits a:hover {
+#credits a:hover, #go-leaderboard:hover,
+#go-home:hover, #credit-buttons *:hover, a:hover {
     color: var(--linkhover);
-}
+    fill: var(--linkhover);
+    transition: color .2s, fill .2s;
 
+}
 
 footer {
     background-color: var(--elementbg);
@@ -173,11 +182,6 @@ footer {
     padding: 0;
     padding-top: 3px;
     margin-left: 10px;
-}
-
-#credit-buttons *:hover {
-    color: var(--subtle);
-    fill: var(--subtle)
 }
 
 /*Footer End*/
@@ -290,11 +294,6 @@ button {
 a {
     color: var(--text);
 }
-
-a:hover {
-    color: var(--linkhover);
-}
-
 
 button.red,
 button.green {

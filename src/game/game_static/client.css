@@ -11,7 +11,8 @@
 	content: "2024"
 }
 
-html, body {
+html,
+body {
 	height: 100%;
 	overflow-y: hidden;
 }
@@ -83,11 +84,13 @@ iframe {
 #restart:hover {
 	background: lightgrey;
 }
+
 #goal {
 	font-weight: bold;
 }
+
 #history-frame {
-	list-style-type: '→';
+	list-style-type: none;
 	margin: 0;
 	overflow-y: hidden;
 	overflow-x: visible;
@@ -100,6 +103,8 @@ iframe {
 
 .history-element {
 	white-space: nowrap;
+	display: grid;
+	align-items: center;
 }
 
 .history-text {

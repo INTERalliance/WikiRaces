@@ -1,6 +1,8 @@
 :root {
 	--overlay-height: 3.2em;
 	--history-element-left-pad: 2em;
+	--control-buttons-frame-width: 10em;
+	--infobox-width: 15em;
 }
 
 * {
@@ -44,7 +46,6 @@ iframe {
 	position: fixed;
 	bottom: 0;
 	right: 0;
-	background: gold;
 	box-shadow: 0em -0.2em rgba(0, 0, 0, 0.034);
 }
 
@@ -61,19 +62,22 @@ iframe {
 }
 
 #control-buttons-frame {
-	background: white;
-	z-index: -1;
-	position: relative;
+	display: grid;
+	align-items: center;
+}
+
+#history-wrapper {
+	overflow-x: auto;
+	margin: 0 1em;
+	padding: 0 1em;
+}
+
+.history-element:not(:last-child) {
+	margin-right: 1em;
 }
 
 #restart {
-
 	margin: 0;
-	z-index: -1;
-	position: absolute;
-	top: 50%;
-	-ms-transform: translateY(-50%);
-	transform: translateY(-50%);
 	border-radius: 3em;
 	border-width: 0.1em;
 	border-color: black;
@@ -91,17 +95,14 @@ iframe {
 }
 
 #history-frame {
-	list-style-type: none;
-	margin: 0;
-	overflow-y: hidden;
-	overflow-x: visible;
-	padding: 0.5em;
-	padding-left: var(--history-element-left-pad);
+	flex-direction: row;
 	display: flex;
-	margin-left: 5em;
-	margin-right: 1em;
+	height: 100%;
+	width: fit-content;
 	position: relative;
+	overflow-x: hidden;
 }
+
 
 /* grey bar that goes behind all of the elements */
 #history-frame::after {
@@ -113,7 +114,7 @@ iframe {
 	left: calc(var(--history-element-left-pad) + var(--spacing));
 	width: calc(calc(100% - calc(var(--history-element-left-pad) * 2)) - var(--spacing));
 	height: var(--bar-height);
-	background: #000;
+	background: #C4C4C4;
 	z-index: -10;
 }
 
@@ -151,11 +152,12 @@ li span {
 	display: inline-block;
 }
 
-#control-buttons-frame {
-	cursor: pointer;
-}
-
 #overlay {
 	background-color: white;
 	padding-top: 0.5em;
+}
+
+#infobox {
+	width: var(--infobox-width);
+	min-width: var(--infobox-width);
 }

@@ -274,11 +274,11 @@ function unSerialize(name) {
 // creates unordered list from array
 function visualizeHistory(array) {
 	// Create the list element:
-	var list = document.createElement("ul");
+	var list = document.createElement("div");
 
 	for (var i = 0; i < array.length; i++) {
 		// Create the list items:
-		var item = document.createElement("li");
+		var item = document.createElement("div");
 		item.className = "history-element";
 		let border = document.createElement("span");
 		border.className = "history-text";
@@ -302,9 +302,10 @@ function reverseHistory(goal) {
 }
 
 function setHistory() {
-	let frame = document.getElementById("history-frame");
+	const frame = document.getElementById("history-frame");
 	frame.innerHTML = visualizeHistory(viewedPages).innerHTML;
-	frame.scrollLeft = 10000;
+	const wrapper = document.getElementById("history-wrapper");
+	wrapper.scrollLeft = 10000;
 }
 
 function kickIfNotLoggedIn() {

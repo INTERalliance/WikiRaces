@@ -249,3 +249,19 @@ tr[data-level-status="future"] .level-status-text {
 .button-link:hover .button-top {
     transform: translateY(3px);
 }
+
+/* line connecting buttons */
+
+.button-connector-line {
+    width: 6px;
+    height: 90%;
+    background: var(--button-connector-line);
+    position: absolute;
+    top: 42px;
+    left: 59px;
+    z-index: -1;
+}
+
+.levels-table-wrapper {
+    position: relative;
+}

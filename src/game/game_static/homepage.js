@@ -3,6 +3,8 @@
  * when viewing the main page (`/wiki-races/`)
  */
 
+const BUTTON_CONNECTOR_LINE_CLASS_NAME = "button-connector-line";
+const LEVELS_TABLE_WRAPPER_CLASS_NAME = "levels-table-wrapper";
 const LEVELS_CONTAINER_CLASS_NAME = "levels-table";
 const LEVELS_TABLE_CLASS_NAME = "levels-table-data";
 const LEVELS_ROW_CLASS_NAME = "levels-data-row";
@@ -391,13 +393,19 @@ async function attemptToSubmitUsername() {
 async function createLevelsTable() {
 	const levels = Object.values(await getJsonData());
 	const levelsDiv = document.getElementById(LEVELS_CONTAINER_CLASS_NAME);
+	const wrapper = document.createElement("div");
+	wrapper.className = LEVELS_TABLE_WRAPPER_CLASS_NAME;
 	const table = document.createElement("table");
 	table.className = LEVELS_TABLE_CLASS_NAME;
 	for (let i = 0; i < levels.length; i++) {
 		const level = levels[i];
 		table.append(createTableLine(i, level.name, level.startTime, level.endTime));
 	}
-	levelsDiv.append(table);
+	wrapper.append(table);
+	const line = document.createElement("div");
+	line.className = BUTTON_CONNECTOR_LINE_CLASS_NAME;
+	wrapper.append(line);
+	levelsDiv.append(wrapper);
 }
 
 (async () => {

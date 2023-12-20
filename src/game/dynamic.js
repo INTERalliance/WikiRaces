@@ -30,9 +30,6 @@ const { fillTemplate } = require("./template");
 // wiki to fetch wikipedia pages
 const wiki = require('wikipedia');
 
-// wiki to fetch wikipedia pages
-const wiki = require('wikipedia');
-
 /**
  * Takes HTML and processes it to be embedded in the template by
  * removing html and body tags.

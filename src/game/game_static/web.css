@@ -1,6 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@600&family=Montserrat:wght@400;600&display=swap');
-
-
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@600&family=Montserrat:wght@400;500;600&display=swap');
 
 :root {
     --background: white;
@@ -30,9 +28,11 @@
     --active-button-top: #58CC02;
     --active-button-bottom: #46A302;
     --active-button-text: white;
+    --active-level-text: #58CC02;
     --inactive-button-top: #E5E5E5;
     --inactive-button-bottom: #B7B7B7;
     --inactive-button-text: #AFAFAF;
+    --inactive-level-text: #AFAFAF;
 }
 
 .font-serif {

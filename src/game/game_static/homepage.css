@@ -226,3 +226,16 @@ tr[data-level-status="future"] .button-text {
     font-size: x-large;
     font-weight: bold;
 }
+
+.level-status-text {
+    font-weight: 500;
+}
+
+tr[data-level-status="present"] .level-status-text {
+    color: var(--active-level-text);
+}
+
+tr[data-level-status="past"] .level-status-text,
+tr[data-level-status="future"] .level-status-text {
+    color: var(--inactive-level-text);
+}

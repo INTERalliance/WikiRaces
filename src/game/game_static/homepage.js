@@ -152,7 +152,6 @@ function createTableLine(number, levelName, startTime, endTime) {
 	let links = document.createElement("td");
 
 	let time = document.createElement("span");
-	// time.href = url;
 	time.classList.add("align-right", LEVEL_STATUS_TEXT_CLASS_NAME);
 	time.id = getIdFromName(levelName);
 

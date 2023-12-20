@@ -180,16 +180,8 @@ function setUpCountDown() {
 			const diff = endDate - date;
 			const seconds = Math.floor(diff / 1000) % 60;
 			const minutes = Math.floor((diff / 1000) / 60);
-
-			if (minutes > 0) {
-				return `Time Left: ${minutes} minute${s(
-					minutes
-				)} ${Math.round(seconds)} second${s(seconds)}.`;
-			} else if (seconds >= 0) {
-				return `Time Left: ${Math.round(seconds)} second${s(
-					Math.round(seconds)
-				)}.`;
-			}
+			const zeroPaddedSeconds = Math.round(seconds).toString().padStart(2, '0');
+			return `${minutes}:${zeroPaddedSeconds}`;
 		}
 
 		console.log(timer.textContent, "timer.textContent");
@@ -219,9 +211,7 @@ function startGame(level) {
 	viewedPages = [];
 
 	// Set goal text:
-	document.getElementById("goal").textContent = `Goal: ${serialize(
-		level.endPage
-	)}`;
+	document.getElementById("goal").textContent = serialize(level.endPage);
 }
 
 // Sets Iframe location on script load, and when `reset` is clicked

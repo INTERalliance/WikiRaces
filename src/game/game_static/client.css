@@ -1,5 +1,6 @@
 :root {
 	--overlay-height: 3.2em;
+	--history-element-left-pad: 2em;
 }
 
 * {
@@ -95,11 +96,27 @@ iframe {
 	overflow-y: hidden;
 	overflow-x: visible;
 	padding: 0.5em;
-	padding-left: 2em;
+	padding-left: var(--history-element-left-pad);
 	display: flex;
 	margin-left: 5em;
 	margin-right: 1em;
+	position: relative;
 }
+
+/* grey bar that goes behind all of the elements */
+#history-frame::after {
+	--spacing: 10px;
+	--bar-height: 5px;
+	content: "";
+	position: absolute;
+	top: calc(50% - calc(var(--bar-height) / 2));
+	left: calc(var(--history-element-left-pad) + var(--spacing));
+	width: calc(calc(100% - calc(var(--history-element-left-pad) * 2)) - var(--spacing));
+	height: var(--bar-height);
+	background: #000;
+	z-index: -10;
+}
+
 
 .history-element {
 	white-space: nowrap;
@@ -117,6 +134,8 @@ iframe {
 	padding-left: 0.6em;
 	padding-right: 0.5em;
 	white-space: nowrap;
+	background-color: white;
+	/* TODO: pull all of these into css variables */
 }
 
 .history-text:hover {

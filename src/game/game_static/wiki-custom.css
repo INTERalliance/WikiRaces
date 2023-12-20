@@ -64,6 +64,8 @@ a[href^="/"] {
 }
 
 a[href^="/wiki/Help:"],
+a.new,
+/* ad.new == "red" links to pages that don't exist yet */
 a[href^="/wiki/Portal:"],
 a[href^="/wiki/Special:"] {
     pointer-events: none;

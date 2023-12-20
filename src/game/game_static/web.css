@@ -34,7 +34,53 @@
     --inactive-button-text: #AFAFAF;
     --inactive-level-text: #AFAFAF;
     --button-connector-line: #BFBFBF;
+    color-scheme: light;
 }
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background: #18181B;
+        --text: white;
+        --elementbg: #1e1e1e;
+        --buttonbg: #0c0c0c;
+        --buttonborder: #b3b3b3;
+        --header: black;
+        --subtle: #71AD8F;
+        --gold: #FEE333;
+        --silver: #D9E3ED;
+        --bronze: #F8BE8E;
+        --silveraccent: #AAC0D5;
+        --goldaccent: #FEC701;
+        --bronzeaccent: #D09259;
+        --shadow: #111;
+        --lightshadow: #222;
+        --linkhover: #71AD8F;
+        --orange: #f98f53;
+        --red: #f55a07;
+        --green: #70e479;
+        --greener: #48ac46;
+        --primary: #58CC02;
+        --blue: #4A90E2;
+        --bluer: #2d8bf6;
+        /* buttons on homepage */
+        --active-button-top: #58CC02;
+        --active-button-bottom: #46A302;
+        --active-button-text: white;
+        --active-level-text: #58CC02;
+        --inactive-button-top: #E5E5E5;
+        --inactive-button-bottom: #B7B7B7;
+        --inactive-button-text: #AFAFAF;
+        --inactive-level-text: #AFAFAF;
+        --button-connector-line: #BFBFBF;
+    }
+    
+    header {
+        color: var(--text) !important;
+    }
+    #ia-logo {
+        fill: var(--text) !important;
+    }
+  }
 
 .font-serif {
     font-family: 'DM Serif Display', serif;
@@ -273,7 +319,7 @@ a.status-urgent {
 button.red:hover,
 button.status-urgent:hover {
     background-color: var(--red);
-    border-color: var(--buttonborder);
+    border-color: var(--orange);
 
 }
 
@@ -283,7 +329,7 @@ button.status-urgent:hover {
 }
 
 .green:hover {
-    background-color: --greener;
+    background-color: var(--greener);
     border-color: var(--buttonborder);
 }
 

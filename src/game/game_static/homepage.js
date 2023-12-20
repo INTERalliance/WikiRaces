@@ -140,10 +140,11 @@ function createTableLine(number, levelName, startTime, endTime) {
 	const button = document.createElement("td");
 	const url = nameToURL(levelName);
 	number++; // account for zero indexing
-	const linkedButton = document.createElement('a');
-	linkedButton.href = url;
-	linkedButton.appendChild(createButton(number, url, false));
-	button.appendChild(linkedButton);
+	const buttonLink = document.createElement('a');
+	buttonLink.href = url;
+	buttonLink.className = "button-link";
+	buttonLink.appendChild(createButton(number, url, false));
+	button.appendChild(buttonLink);
 	button.className = "button-container";
 
 	let links = document.createElement("td");
@@ -213,7 +214,8 @@ function getTimeString(startTime) {
 		const secs = Math.round(seconds);
 		return `${minutes} minute${s(minutes)} ${secs} sec${s(secs)}`;
 	} else {
-		return `${Math.round(seconds)} sec`;
+		const secs = Math.round(seconds);
+		return `${secs} sec${s(secs)}`;
 	}
 }
 

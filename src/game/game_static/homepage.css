@@ -239,3 +239,13 @@ tr[data-level-status="past"] .level-status-text,
 tr[data-level-status="future"] .level-status-text {
     color: var(--inactive-level-text);
 }
+
+/* make buttons lower down and therefore look clickable on hover */
+.button-top {
+    transition: cy 1s ease;
+}
+
+.button-link:hover .button-text,
+.button-link:hover .button-top {
+    transform: translateY(3px);
+}

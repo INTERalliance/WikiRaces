@@ -80,6 +80,11 @@ body.dark {
     fill: var(--text) !important;
 }
 
+html:has(.dark), .dark #levels-table {
+    scrollbar-color: #393939 #1f1f1f; 
+    
+}
+
 .font-serif {
     font-family: 'DM Serif Display', serif;
     font-weight: normal;

@@ -111,19 +111,9 @@
 				<a target="_blank" href="https://github.com/INTERallianceGC/WikiRaces" id="github" aria-hidden="true">
 					<i class="fa fa-github fa-3x" aria-hidden="true"></i>
 				</a>
-				<button id="change-theme-button" alt="Click to toggle between dark and light theme" class="fa fa-sun-o fa-3x" onclick="changeSetting(`theme`)"></button>
+				<button id="change-theme-button" alt="Click to toggle between dark and light theme" class="fa fa-sun-o fa-3x" onclick="theme()"></button>
 			</div>
 		</footer>
-		<script>
-			// I normally don't like using script tags, but I don't want another .js file to keep track of.
-			document.getElementById("go-home").addEventListener("click", () => {
-				window.location.href = `${window.location.protocol}//${window.location.host}`;
-			});
-			document
-				.getElementById("go-leaderboard")
-				.addEventListener("click", () => {
-					window.location.href = `${window.location.protocol}//${window.location.host}/wiki-races/leaderboard`;
-				});
-		</script>
+		<script src="../wiki-races/web.js" async defer></script>
 	</body>
 </html>

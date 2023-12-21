@@ -482,7 +482,3 @@ document.getElementById("delete-username").addEventListener("click", logOut);
 document.body.onload = () => {
 	document.getElementById("submission-box").focus();
 };
-
-document.getElementById("go-leaderboard").addEventListener("click", () => {
-	window.location.href = `${window.location.protocol}//${window.location.host}/wiki-races/leaderboard`;
-});

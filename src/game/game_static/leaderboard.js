@@ -2,10 +2,6 @@
  * This file renders the information from the leaderboard api.
  */
 
-document.getElementById("go-home").addEventListener("click", () => {
-	window.location.href = `${window.location.protocol}//${window.location.host}`;
-});
-
 function generateURL(path) {
 	return `${window.location.protocol}//${window.location.host}${path}`;
 }

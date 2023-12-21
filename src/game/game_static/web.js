@@ -3,13 +3,23 @@
  * when viewing any page
  */
 
+
+if ((localStorage.theme == undefined) && (window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+	theme("dark")
+}
+else if (localStorage.theme == undefined) {
+	theme("light")
+}
+
+
 //Checks if the user has already turned on Dark Mode.
 if (localStorage.theme == "dark") {
     theme("dark")
 }
-else {
+else if (localStorage.theme == "light") {
     theme("light")
 }
+
 
 
 //This function switches Dark Mode on and off.

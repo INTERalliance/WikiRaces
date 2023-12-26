@@ -199,6 +199,8 @@ function setUpCountDown() {
 
 function startGame(level) {
 	const error = document.getElementById("error-text");
+	document.getElementById("container").style.display = "block"; // show navigation and controls
+	document.getElementById('go-home').style.display = "none"; // hide "go home button" that is shown when someone joins a level too early
 
 	// Set iframe url:
 	if (level !== undefined) {
@@ -226,9 +228,10 @@ function loadClient() {
 
 		// Update time on screen
 		if (minutes > 0) {
-			error.textContent = `Starts in ${minutes} minute${s(
+			error.innerHTML = `Starts in ${minutes} minute${s(
 				minutes
-			)} ${Math.round(seconds)} second${s(Math.round(seconds))}.`;
+			)} ${Math.round(seconds)} second${s(Math.round(seconds))}. `;
+			document.getElementById('go-home').style.display = "block";
 		} else {
 			const timeLeft = Math.round(seconds * 10) / 10;
 			error.innerHTML = `Starts in ${timeLeft} second${s(
@@ -236,8 +239,12 @@ function loadClient() {
 			)}. <br>	Goal: Go from <b>${serialize(
 				level.startPage
 			)}</b> to <b>${serialize(level.endPage)}</b><br><br>
-			Remember that the goal is displayed in the bottom right.`;
+			Remember that the goal is displayed in the top right.`;
+			document.getElementById('go-home').style.display = "none";
 		}
+
+		// Hide game controls
+		document.getElementById("container").style.display = "none";
 
 		// start game at correct time.
 		if (getTime() - startDate >= 0) {

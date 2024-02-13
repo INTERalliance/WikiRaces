@@ -19,6 +19,8 @@ services:
       - MONGODB_URL="mongodb://mongodb:27017/"
     stdin_open: true # TODO: should these be enabled for production
     tty: true
+    volumes:
+      - "./src/game/game_static:/wiki-races/src/game/game_static"
 
 volumes:
   mongo_data: {}

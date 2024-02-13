@@ -20,7 +20,8 @@ services:
     stdin_open: true # TODO: should these be enabled for production
     tty: true
     volumes:
-      - "./src/game/game_static:/wiki-races/src/game/game_static"
+      - "./src/game/game_static:/wiki-races/src/game/game_static:ro" # game static is read only
+      - "./src/game/cache:/wiki-races/src/game/cache" # cache can read and write
 
 volumes:
   mongo_data: {}

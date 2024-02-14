@@ -2,7 +2,8 @@ import os
 from pymongo import MongoClient
 
 # mongodb url will use service name in docker compose
-mongo_url = os.environ["MONGODB_URL"] or "mongodb://127.0.0.1:27017"
+#mongo_url = os.environ["MONGODB_URL"]
+mongo_url = "mongodb://127.0.0.1:27017"
 client = MongoClient(mongo_url)
 db = client.wikiRaces
 

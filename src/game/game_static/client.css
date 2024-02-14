@@ -75,6 +75,7 @@ iframe {
 	margin-right: 1em;
 }
 
+.navigation-button,
 #restart {
 	margin: 0;
 	border-radius: 3em;
@@ -85,8 +86,14 @@ iframe {
 	margin-left: .5em;
 }
 
+.navigation-button:hover,
 #restart:hover {
 	background: lightgrey;
+}
+
+.navigation-button {
+	color: black;
+	text-decoration: none;
 }
 
 #goal,
@@ -162,4 +169,9 @@ li span {
 	width: fit-content;
 	min-width: fit-content;
 	margin-right: 1em;
+}
+
+#go-home {
+	display: none;
+	width: fit-content;
 }

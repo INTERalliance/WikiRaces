@@ -67,11 +67,12 @@ a[href^="./"] {
 a[href^="/wiki/Help:"],
 a[href^="/wiki/Portal:"],
 a[href^="/wiki/Special:"],
+a[href^="./wiki/Special:"],
 /* a.new == "red" links to pages that don't exist yet */
 a.new {
-    pointer-events: none;
-    cursor: text;
-    text-decoration: none;
+    pointer-events: none !important;
+    cursor: text !important;
+    text-decoration: none !important;
     color: black !important;
 }
 

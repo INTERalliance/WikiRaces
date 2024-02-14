@@ -61,19 +61,20 @@ function processHTML(page) {
  * [Wikipedia npm library](https://github.com/dijs/wiki)
  * which should call the 
  * [GET `/page/html/{title}` endpoint](https://en.wikipedia.org/api/rest_v1/#/Page%20content/get_page_html__title_).
- * @param {string} id 
+ * @param {string} rawId - The raw URL fragment
+ * @param {string} encodedId - The URI encoded fragment
  * @returns {Promise<string>}
  */
-async function generatePage(id) {
+async function generatePage(rawId, encodedId) {
 	// get raw html from wikipedia.
 	try {
-		const title = "default title";
-		const text = await fetch("https://en.wikipedia.org/w/rest.php/v1/page/United States/html")
+		const text = await fetch(`https://en.wikipedia.org/w/rest.php/v1/page/${encodedId}/html`)
 			.then(page => page.text());
-		const body = new JSDOM(text);
-		let html = body.window.document.querySelector("body").outerHTML; // get body html
+		const dom = new JSDOM(text);
+		let html = dom.window.document.querySelector("body").outerHTML; // get body html
+		const title = dom.window.document.querySelector("head").querySelector("title").textContent;
 		html = processHTML(html);
-		html = fillTemplate(html, id, title);
+		html = fillTemplate(html, encodedId, title);
 		return html;
 	} catch (error) {
 		log.error(error);
@@ -155,7 +156,7 @@ async function getPage(id) {
 		}
 		if (!page) {
 			avg.add(0);
-			page = await generatePage(id);
+			page = await generatePage(id, encodedId);
 			saveFile(encodedId, page);
 		}
 		log.info(`${Number(((await avg.average()) * 100).toFixed(4))}% cached`);

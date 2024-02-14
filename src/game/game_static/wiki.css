@@ -6757,3 +6757,472 @@ body.skin-vector-legacy .mw-indicators {
     clear: both
   }
 }
+
+/* Navbox Support */
+/* {{pp|small=y}} */
+.navbox {
+  box-sizing: border-box;
+  border: 1px solid #a2a9b1;
+  width: 100%;
+  clear: both;
+  font-size: 88%;
+  text-align: center;
+  padding: 1px;
+  margin: 1em auto 0;
+  /* Prevent preceding content from clinging to navboxes */
+}
+
+.navbox .navbox {
+  margin-top: 0;
+  /* No top margin for nested navboxes */
+}
+
+.navbox+.navbox,
+/* TODO: remove first line after transclusions have updated */
+.navbox+.navbox-styles+.navbox {
+  margin-top: -1px;
+  /* Single pixel border between adjacent navboxes */
+}
+
+.navbox-inner,
+.navbox-subgroup {
+  width: 100%;
+}
+
+.navbox-group,
+.navbox-title,
+.navbox-abovebelow {
+  padding: 0.25em 1em;
+  line-height: 1.5em;
+  text-align: center;
+}
+
+.navbox-group {
+  white-space: nowrap;
+  /* @noflip */
+  text-align: right;
+}
+
+.navbox,
+.navbox-subgroup {
+  background-color: #fdfdfd;
+}
+
+.navbox-list {
+  line-height: 1.5em;
+  border-color: #fdfdfd;
+  /* Must match background color */
+}
+
+.navbox-list-with-group {
+  text-align: left;
+  border-left-width: 2px;
+  border-left-style: solid;
+}
+
+/* cell spacing for navbox cells */
+/* Borders above 2nd, 3rd, etc. rows */
+/* TODO: figure out how to replace tr as structure;
+ * with div structure it should be just a matter of first-child */
+tr+tr>.navbox-abovebelow,
+tr+tr>.navbox-group,
+tr+tr>.navbox-image,
+tr+tr>.navbox-list {
+  border-top: 2px solid #fdfdfd;
+  /* Must match background color */
+}
+
+.navbox-title {
+  background-color: #ccf;
+  /* Level 1 color */
+}
+
+.navbox-abovebelow,
+.navbox-group,
+.navbox-subgroup .navbox-title {
+  background-color: #ddf;
+  /* Level 2 color */
+}
+
+.navbox-subgroup .navbox-group,
+.navbox-subgroup .navbox-abovebelow {
+  background-color: #e6e6ff;
+  /* Level 3 color */
+}
+
+.navbox-even {
+  background-color: #f7f7f7;
+}
+
+.navbox-odd {
+  background-color: transparent;
+}
+
+/* TODO: figure out how to remove reliance on td as structure */
+.navbox .hlist td dl,
+.navbox .hlist td ol,
+.navbox .hlist td ul,
+.navbox td.hlist dl,
+.navbox td.hlist ol,
+.navbox td.hlist ul {
+  padding: 0.125em 0;
+}
+
+.navbox .navbar {
+  display: block;
+  font-size: 100%;
+}
+
+.navbox-title .navbar {
+  /* @noflip */
+  float: left;
+  /* @noflip */
+  text-align: left;
+  /* @noflip */
+  margin-right: 0.5em;
+}
+
+/* Navbox div */
+
+.navbox-div {
+  box-sizing: border-box;
+  border: 1px solid #a2a9b1;
+  clear: both;
+  font-size: 88%;
+  padding: 3px;
+  margin: 1em auto 0;
+  /* Prevent preceding content from clinging to navboxes */
+}
+
+.navbox-div .navbox-div {
+  margin-top: 0;
+  /* No top margin for nested navboxes */
+}
+
+.navbox-div+.navbox-div-styles+.navbox-div {
+  margin-top: -1px;
+  /* Single pixel border between adjacent navboxes */
+}
+
+.navbox-div-title {
+  font-size: 114%;
+}
+
+.navbox-div .mw-collapsible-toggle {
+  padding-right: 1em;
+}
+
+.navbox-div-group,
+.navbox-div-title-and-bar,
+.navbox-div-abovebelow {
+  padding: 0.25em 1em;
+  line-height: 1.5em;
+  text-align: center;
+}
+
+.navbox-div-group,
+.navbox-div-title,
+.navbox-div-subgroup {
+  font-weight: bold;
+}
+
+.navbox-div,
+.navbox-div-subgroup {
+  background-color: #fdfdfd;
+}
+
+.navbox-div-list {
+  line-height: 1.5em;
+  border-color: #fdfdfd;
+  /* Must match background color */
+  padding: 0 0.25em
+}
+
+/* cell spacing for navbox cells */
+/* Borders above 2nd, 3rd, etc. rows */
+.navbox-div-abovebelow,
+.navbox-div-image,
+.navbox-div-leftimage,
+.navbox-div-lists>div {
+  border-top: 2px solid #fdfdfd;
+  /* Must match background color */
+  margin-top: 2px;
+}
+
+.navbox-div-abovebelow:first-child,
+.navbox-div-image:first-child,
+.navbox-div-leftimage:first-child,
+.navbox-div-lists>div:first-child {
+  border-top: none;
+}
+
+.navbox-div-image,
+.navbox-div-leftimage {
+  text-align: center;
+}
+
+
+.navbox-div-title-and-bar {
+  background-color: #ccf;
+  /* Level 1 color */
+}
+
+.navbox-div-abovebelow,
+.navbox-div-group,
+.navbox-div-subgroup .navbox-div-title-and-bar {
+  background-color: #ddf;
+  /* Level 2 color */
+}
+
+.navbox-div-subgroup .navbox-div-group,
+.navbox-div-subgroup .navbox-div-abovebelow {
+  background-color: #e6e6ff;
+  /* Level 3 color */
+}
+
+.navbox-div-even {
+  background-color: #f7f7f7;
+}
+
+.navbox-div-odd {
+  background-color: transparent;
+}
+
+.navbox-div .hlist dl,
+.navbox-div .hlist ol,
+.navbox-div .hlist ul {
+  padding: 0.125em 0;
+}
+
+.navbox-div .navbar {
+  font-size: 100%;
+  /* @noflip */
+  text-align: left;
+}
+
+@media (min-width: 720px) {
+  .navbox-div {
+    text-align: center;
+  }
+
+  .navbox-div.mw-collapsible .navbox-div-title {
+    margin: 0 4em;
+  }
+
+  .navbox-div-group {
+    white-space: nowrap;
+    justify-content: flex-end;
+  }
+
+  /* why are these two separate rules now?) */
+  .navbox-div .navbar {
+    display: block;
+    /* @noflip */
+    float: left;
+    /* @noflip */
+    margin-right: 0.5em;
+  }
+
+  .navbox-div-list-with-group {
+    text-align: left;
+    border-left-width: 2px;
+    border-left-style: solid;
+  }
+
+  .navbox-div-main {
+    display: flex;
+  }
+
+  .navbox-div-image,
+  .navbox-div-leftimage {
+    align-self: center;
+  }
+
+  .navbox-div-lists {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    flex: 1;
+    align-items: stretch;
+  }
+
+  .navbox-div-list-groupless {
+    grid-column: 1/3;
+    justify-content: center;
+  }
+
+  .navbox-div-lists>div {
+    display: flex;
+    align-items: center;
+  }
+}
+
+/* Add Sidebar */
+
+/* {{pp-template}} */
+/* TODO: Invert width design to be "mobile first" */
+.sidebar {
+  /* TODO: Ask if we should have max-width 22em instead */
+  width: 22em;
+  /* @noflip */
+  float: right;
+  /* @noflip */
+  clear: right;
+  /* @noflip */
+  margin: 0.5em 0 1em 1em;
+  background: #f8f9fa;
+  border: 1px solid #aaa;
+  padding: 0.2em;
+  text-align: center;
+  line-height: 1.4em;
+  font-size: 88%;
+  border-collapse: collapse;
+  /* Timeless has display: none on .nomobile at mobile resolutions, so we
+	 * unhide it with display: table and let precedence and proximity win.
+	 */
+  display: table;
+}
+
+/* Unfortunately, so does Minerva desktop, except Minerva drops an
+ * !important on the declaration. So we have to be mean for Minerva users.
+ * Mobile removes the element entirely with `wgMFRemovableClasses` in 
+ * https://github.com/wikimedia/operations-mediawiki-config/blob/master/
+ wmf-config/InitialiseSettings.php#L16992
+ * which is why displaying it categorically with display: table works.
+ * We don't really want to expose the generic user in the wild on mobile to have
+ * to deal with sidebars. (Maybe the ones with collapsible lists, so that
+ * might be an improvement. That is blocked on [[:phab:T111565]].)
+ */
+body.skin-minerva .sidebar {
+  display: table !important;
+  /* also, minerva is way too aggressive about other stylings on tables.
+	 * TODO remove when this template gets moved to a div. plans on talk page.
+	 * We always float right on Minerva because that's a lot of extra CSS
+	 * otherwise. */
+  float: right !important;
+  margin: 0.5em 0 1em 1em !important;
+}
+
+.sidebar-subgroup {
+  width: 100%;
+  margin: 0;
+  border-spacing: 0;
+}
+
+.sidebar-left {
+  /* @noflip */
+  float: left;
+  /* @noflip */
+  clear: left;
+  /* @noflip */
+  margin: 0.5em 1em 1em 0;
+}
+
+.sidebar-none {
+  float: none;
+  clear: both;
+  /* @noflip */
+  margin: 0.5em 1em 1em 0;
+}
+
+.sidebar-outer-title {
+  padding: 0 0.4em 0.2em;
+  font-size: 125%;
+  line-height: 1.2em;
+  font-weight: bold;
+}
+
+.sidebar-top-image {
+  padding: 0.4em;
+}
+
+.sidebar-top-caption,
+.sidebar-pretitle-with-top-image,
+.sidebar-caption {
+  padding: 0.2em 0.4em 0;
+  line-height: 1.2em;
+}
+
+.sidebar-pretitle {
+  padding: 0.4em 0.4em 0;
+  line-height: 1.2em;
+}
+
+.sidebar-title,
+.sidebar-title-with-pretitle {
+  padding: 0.2em 0.8em;
+  font-size: 145%;
+  line-height: 1.2em;
+}
+
+.sidebar-title-with-pretitle {
+  padding: 0.1em 0.4em;
+}
+
+.sidebar-image {
+  padding: 0.2em 0.4em 0.4em;
+}
+
+.sidebar-heading {
+  padding: 0.1em 0.4em;
+}
+
+.sidebar-content {
+  padding: 0 0.5em 0.4em;
+}
+
+.sidebar-content-with-subgroup {
+  padding: 0.1em 0.4em 0.2em;
+}
+
+.sidebar-above,
+.sidebar-below {
+  padding: 0.3em 0.8em;
+  font-weight: bold;
+}
+
+.sidebar-collapse .sidebar-above,
+.sidebar-collapse .sidebar-below {
+  border-top: 1px solid #aaa;
+  border-bottom: 1px solid #aaa;
+}
+
+.sidebar-navbar {
+  text-align: right;
+  font-size: 115%;
+  padding: 0 0.4em 0.4em;
+}
+
+.sidebar-list-title {
+  padding: 0 0.4em;
+  text-align: left;
+  font-weight: bold;
+  line-height: 1.6em;
+  font-size: 105%;
+}
+
+/* centered text with mw-collapsible headers is finicky */
+.sidebar-list-title-c {
+  padding: 0 0.4em;
+  text-align: center;
+  margin: 0 3.3em;
+}
+
+@media (max-width: 720px) {
+
+  /* users have wide latitude to set arbitrary width and margin :(
+	   "Super-specific" selector to prevent overriding this appearance by
+	   lower level sidebars too */
+  body.mediawiki .sidebar {
+    width: 100% !important;
+    clear: both;
+    float: none !important;
+    /* Remove when we div based; Minerva is dumb */
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* TODO: We might consider making all links wrap at small resolutions and then
+	 * only introduce nowrap at higher resolutions. Do when we invert the media
+	 * query.
+	 */
+}

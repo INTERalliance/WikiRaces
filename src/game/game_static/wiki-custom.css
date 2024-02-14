@@ -80,3 +80,8 @@ a.new {
 p {
     line-height: 1.6;
 }
+
+/* hide "lower-alpha" for links */
+span.mw-reflink-text {
+    display: none;
+}

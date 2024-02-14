@@ -236,7 +236,7 @@ function loadClient() {
 			)}. <br>	Goal: Go from <b>${serialize(
 				level.startPage
 			)}</b> to <b>${serialize(level.endPage)}</b><br><br>
-			Remember that the goal is displayed in the bottom right.`;
+			Remember that the goal is displayed in the top right.`;
 		}
 
 		// start game at correct time.

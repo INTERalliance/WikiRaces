@@ -23,12 +23,11 @@ const log = bunyan.createLogger(bunyanOpts);
 const fs = require("fs");
 const asyncfs = require("fs").promises;
 const path = require("path");
+const jsdom = require('jsdom');
+const { JSDOM } = jsdom;
 
 // basic html and css
 const { fillTemplate } = require("./template");
-
-// wiki to fetch wikipedia pages
-const wiki = require('wikijs').default;
 
 /**
  * Takes HTML and processes it to be embedded in the template by
@@ -59,7 +58,7 @@ function processHTML(page) {
  * Queries the Wikipedia Page API for a given page ID.
  *
  * This currently uses the 
- * [Wikipedia npm library](https://github.com/dopecodez/Wikipedia)
+ * [Wikipedia npm library](https://github.com/dijs/wiki)
  * which should call the 
  * [GET `/page/html/{title}` endpoint](https://en.wikipedia.org/api/rest_v1/#/Page%20content/get_page_html__title_).
  * @param {string} id 
@@ -68,11 +67,13 @@ function processHTML(page) {
 async function generatePage(id) {
 	// get raw html from wikipedia.
 	try {
-		log.info(`Downloading ${id}`);
-		const page = await wiki().page(id);
-		let html = await page.html();
+		const title = "default title";
+		const text = await fetch("https://en.wikipedia.org/w/rest.php/v1/page/United States/html")
+			.then(page => page.text());
+		const body = new JSDOM(text);
+		let html = body.window.document.querySelector("body").outerHTML; // get body html
 		html = processHTML(html);
-		html = fillTemplate(html, id, page.title);
+		html = fillTemplate(html, id, title);
 		return html;
 	} catch (error) {
 		log.error(error);

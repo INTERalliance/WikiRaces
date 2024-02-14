@@ -56,7 +56,8 @@ a {
 }
 
 a[href^="#"],
-a[href^="/"] {
+a[href^="/"],
+a[href^="./"] {
     pointer-events: all;
     cursor: pointer;
     text-decoration: none;

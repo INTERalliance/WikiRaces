@@ -186,7 +186,7 @@ async function getLeaderboardOverviewString() {
 
 	let totalAll = formatMS(data.averages);
 	let totalFinished = formatMS(data.averagesExcludingDNF);
-	
+
 	return `
 		The average total time across finished levels was ${totalFinished},
 		and ${totalAll} across all levels.
@@ -201,15 +201,15 @@ async function getLeaderboardOverviewString() {
 	const sorted = await sortSubmissions([...data]);
 	// Replace level name with capitalized, properly spaced name.
 	let newLevelNames = [];
-	levelNames.forEach(function(level) {
+	levelNames.forEach(function (level) {
 		level = level.slice(5)
 		level = `Level ` + level
 		newLevelNames.push(level);
 	})
 	// Load names into ceremony graphic
-	document.querySelector("#first-name p").innerHTML = sorted[0].name;
-	document.querySelector("#second-name p").innerHTML = sorted[1].name;
-	document.querySelector("#third-name p").innerHTML = sorted[2].name;
+	document.querySelector("#first-name p").innerHTML = sorted[0]?.name ?? "";
+	document.querySelector("#second-name p").innerHTML = sorted[1]?.name ?? "";
+	document.querySelector("#third-name p").innerHTML = sorted[2]?.name ?? "";
 	// Generate leaderboard table
 	let levelsDiv = document.getElementById("levels-table");
 	let table = document.createElement("table");

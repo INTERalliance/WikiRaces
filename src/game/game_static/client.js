@@ -186,6 +186,7 @@ function setUpCountDown() {
 		console.log(timer.textContent, "timer.textContent");
 		timer.textContent = getCountdownString();
 
+
 		// Update time on screen
 
 		// clear interval when time passes
@@ -195,6 +196,21 @@ function setUpCountDown() {
 			window.location.href = generateURL("/wiki-races/levelOver.html");
 		}
 	}, 200);
+
+	let fixWindowHack = setInterval(() => {
+		// TODO: This is a hack to keep the top navigation bar in view.
+		// Currently, when a user clicks a link to a document's subheading,
+		// it scrolls the page such that the top navigation is not in view.
+		// It may be possible to restyle the CSS such that the container floats
+		// on top, and can't scroll out of view. However, a quicker fix is to
+		// just scroll it into view.
+		const container = document.getElementById("container");
+		container.scrollIntoView();
+		// clear interval when time passes
+		if (getTime() - endDate >= 0) {
+			clearInterval(fixWindowHack);
+		}
+	}, 1000);
 }
 
 function startGame(level) {

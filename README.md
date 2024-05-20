@@ -103,8 +103,8 @@ by only clicking the links in the Wikipedia pages.
 
 ---
 
-This is intended to be run on a linux system.
-It has been proven to work on Ubuntu Server 20.04.2
+This is intended to be run on a Linux system.
+It has been proven to work on Ubuntu Server 20.04.2 and on Ubuntu Server 22.04.1
 
 This does not have any of the NGINX settings needed to support the server.
 You will need to do that yourself if you are setitng this up.

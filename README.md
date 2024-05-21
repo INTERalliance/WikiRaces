@@ -26,23 +26,25 @@ docker compose build && docker compose up
 docker compose down
 ```
 
-### Installing and running on Fedora Linux 37
+### Installing and running on Fedora Linux 40
 
 ```bash
-git clone https://github.com/interalliancegc/wikiraces
+# If build and other necessary tools are not installed (such as literally running this in a Docker application):
+# sudo dnf install git make automake gcc gcc-c++ kernel-devel npm
+git clone https://github.com/interalliancegc/wikiraces.git/
 cd wikiraces
 npm install
 # FROM https://developer.fedoraproject.org/tech/database/mongodb/about.html
 # note that MongoDB is no longer supported for Fedora by default
 # https://developer.fedoraproject.org/tech/database/mongodb/about.html
 # add to the yum repos:
-sudo tee "/etc/yum.repos.d/mongodb-org-6.0.repo" << 'EOF'
-[mongodb-org-6.0]
+sudo tee "/etc/yum.repos.d/mongodb-org-7.0.repo" << 'EOF'
+[mongodb-org-7.0]
 name=MongoDB Repository
-baseurl=https://repo.mongodb.org/yum/redhat/9/mongodb-org/6.0/x86_64/
+baseurl=https://repo.mongodb.org/yum/redhat/9/mongodb-org/7.0/x86_64/
 gpgcheck=1
 enabled=1
-gpgkey=https://www.mongodb.org/static/pgp/server-6.0.asc
+gpgkey=https://www.mongodb.org/static/pgp/server-7.0.asc
 EOF
 # handle errors with mongodb
 # https://www.mongodb.com/community/forums/t/openssl-error-when-starting-mongosh/243323/2
@@ -50,7 +52,7 @@ sudo dnf install mongodb-mongosh-shared-openssl3
 sudo dnf install mongodb-org
 if `mongosh --help 1>/dev/null`; then echo 'OK'; else echo '!!!NG!!!'; fi
 # run server for development
-npm run-script run
+npm run-script run # Should default to port 8443
 # OR run server for production
 sudo npm install pm2 -g
 pm2 start src/app.js --name wikiRaces
@@ -101,8 +103,8 @@ by only clicking the links in the Wikipedia pages.
 
 ---
 
-This is intended to be run on a linux system.
-It has been proven to work on Ubuntu Server 20.04.2
+This is intended to be run on a Linux system.
+It has been proven to work on Ubuntu Server 20.04.2 and on Ubuntu Server 22.04.1
 
 This does not have any of the NGINX settings needed to support the server.
 You will need to do that yourself if you are setitng this up.

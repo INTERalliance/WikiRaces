@@ -1,5 +1,5 @@
 FROM node:18.18
-LABEL authors="Zack Sargent, Con Godsted, Ajai Nelson" 
+LABEL authors="Zack Sargent, Cassian Godsted, Ajai Nelson" 
 
 WORKDIR /wiki-races
 RUN npm install pm2 bunyan -g

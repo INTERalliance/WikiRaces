@@ -48,7 +48,7 @@
 		"jest-cli": "^26.6.3",
 		"jest-puppeteer": "^4.4.0",
 		"puppeteer": "^2.1.1",
-		"webpack": "^5.15.0",
+		"webpack": "^5.95.0",
 		"webpack-dev-middleware": "^5.3.4"
 	}
 }

@@ -49,6 +49,6 @@
 		"jest-puppeteer": "^4.4.0",
 		"puppeteer": "^2.1.1",
 		"webpack": "^5.15.0",
-		"webpack-dev-middleware": "^4.1.0"
+		"webpack-dev-middleware": "^5.3.4"
 	}
 }

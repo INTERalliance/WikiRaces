@@ -4,7 +4,7 @@ Wiki Races is a competition where players start on
 a Wikipedia page, and have to get to another Wikipedia page
 by only clicking the links in the Wikipedia pages. 
 
-This repository hosts the app used for the Wiki Races competition held at TechOlympics. It was originally created for TechOlympics 2021, to allow the competition to work remotely. While there have been other Wiki Races websites created since then, none of them have fit our needs for TechOlympics.
+This repository hosts the app used for the Wiki Races competition held at TechOlympics. It was originally created for TechOlympics 2021, to allow the competition to work remotely, as no websites like it existed. While there have been other Wiki Races websites created since then, none of them have fit our needs for TechOlympics, so this app has been updated throughout the years to add additional functionality.
 
 To run the competition, see the information below.
 

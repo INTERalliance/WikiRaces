@@ -102,7 +102,7 @@ h1, h2 {
 
 /* hide elements added by wikipedia download */
 div[style="clear:both; background-image:linear-gradient(180deg, #E8E8E8, white); border-top: dashed 2px #AAAAAA; padding: 0.5em 0.5em 0.5em 0.5em; margin-top: 1em; direction: ltr;"]
-, details:has(#References), details:has(#External_links), details:has(#Citations), details:has(#Further_reading),  .geo-inline-hidden.noexcerpt {
+, details:has(#References), details:has(#External_links), details:has(#Citations), details:has(#Further_reading), details:has(#Footnotes), details:has(#Bibliography),  .geo-inline-hidden.noexcerpt {
     display: none;
     visibility: hidden;
 }

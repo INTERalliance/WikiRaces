@@ -141,8 +141,7 @@ Due to networking issues at TechOlympics 2024, a focus of the 2025 rework was of
 To use this offline functionality, run `cd local`, `npm install`, and finally `node server`. Note that you'll need a [dump of Wikipedia](https://library.kiwix.org/#lang=eng&category=wikipedia) downloaded to the `local` folder as `wiki.zim`. 
 
 Known issues (Local Server)
-- Links with special characters are not correctly parsed.
-- Design issues.
+- Minor design issues when parsed by Wiki Races.
 
 ---
 

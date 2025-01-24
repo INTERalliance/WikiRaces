@@ -1,6 +1,6 @@
 // read.js
-import { Archive, SuggestionSearcher, Searcher, Query } from "@openzim/libzim";
-import {createServer} from "http"
+import { Archive} from "@openzim/libzim";
+import { createServer } from "http"
 
 const outFile = "./wiki.zim";
 const archive = new Archive(outFile);
@@ -11,15 +11,15 @@ async function read(Path) {
 
     try {
         let entry = archive.getEntryByPath(Path);
+        // catch redirects
         if (entry.isRedirect)
             entry = entry.redirectEntry
+        // read and return data
         const item = entry.item;
         const blob = item.data;
         return blob.data;
     }
-    catch {
-
-    }
+    catch {}
 }
 
 // Creating server 
@@ -27,8 +27,17 @@ const server = createServer(async (req, res) => {
     // Sending the response
     let path = req.url
     path = path.slice(1)
-    console.log(path)
-    const data = await read(path)
+    let decodedPath;
+
+    // Parse special characters.
+    try {
+        decodedPath = decodeURIComponent(path);
+    } catch (e) {
+        // Catches a malformed URI
+        decodedPath = path
+    }
+
+    const data = await read(decodedPath)
     if (data != undefined) {
         res.write(data)
     }

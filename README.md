@@ -55,6 +55,7 @@ docker compose down
 You'll use the admin tools to start a competition. First, make sure you have Python and the dependencies installed. This guide uses a virtual environment to avoid issues.
 
 ```bash
+cd src/admin_tools # Enter the admin tool directory.
 sudo apt install python3 python3-pip python3.12-venv # Install Python on a debian-based system like Ubuntu.
 python3 -m venv env # Create a virtual environment
 source env/bin/activate # Activate your virtual environment

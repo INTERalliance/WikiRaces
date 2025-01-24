@@ -1,6 +1,7 @@
 # Game cache
 src/game/cache
 __pycache__/
+src/admin_tools/env
 .vscode
 *.zim
 

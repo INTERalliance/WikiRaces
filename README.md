@@ -1,21 +1,45 @@
 # Wiki Races
 
-This is the repository for the INTERalliance WikiRaces competition at TechOlympics 2025.
+Wiki Races is a competition where players start on
+a Wikipedia page, and have to get to another Wikipedia page
+by only clicking the links in the Wikipedia pages. 
 
-Run `npm install` in the project directory to install the dependencies.
+This repository hosts the app used for the Wiki Races competition held at TechOlympics. It was originally created for TechOlympics 2021, to allow the competition to work remotely. While there have been other Wiki Races websites created since then, none of them have fit our needs for TechOlympics.
 
-Run `npm run-script test` to run the test suites.
+To run the competition, see the information below.
 
-Run `npm run-script run` to host the site for testing.
+---
 
-On the actual server, use pm2 to start the server with `npm run-script prod-run`
+### Website features:
+
+- Homepage:
+  - Display levels (from `levels.json`)
+  - Submit usernames and userIds to server
+- Client:
+  - Loaded when links from the homepage are clicked.
+  - Tracks user history
+    - Visualises history at the bottom of the page
+    - Can click on a history element to go back to that page
+  - Submits user data (history, time, userId) to server when a level is completed.
+- Leaderboard:
+  - Orders all players by total time
+  - Has links to show players individual submissions
+- Server:
+  - Dynamically generate Wikipedia pages
+  - Save user data
+  - Host various APIs for webpages
+- Admin tools:
+  - Rename users on the fly
+  - Set level times easily
+
+---
 
 ### Installing and running with Docker
 
 First, [Install Docker](<https://docs.docker.com/engine/install/>).
 
 Then, run the server:
-```
+```sh
 # to build for the first time
 docker compose up
 # to detach output for deployment on server
@@ -26,7 +50,29 @@ docker compose build && docker compose up
 docker compose down
 ```
 
-### Installing and running on Fedora Linux 40
+### Running the Competition
+
+You'll use the admin tools to start a competition. First, make sure you have Python and the dependencies installed. This guide uses a virtual environment to avoid issues.
+
+```bash
+sudo apt install python3 python3-pip python3.12-venv # Install Python on a debian-based system like Ubuntu.
+python3 -m venv env # Create a virtual environment
+source env/bin/activate # Activate your virtual environment
+pip install -r requirements.txt  # Download admin tool depenencies.
+
+```
+
+1. Start and use the Python program to generate new levels - you may wish to consult previous games or the list of good levels. This can be done before the competition.
+   - `python3 generateLevels.py`
+2. Start and use the Python program to generate new timings - 5 minutes before starting, 7 minute duration, 1 minute break time between levels is recommended.
+    - `python3 setTime.py`
+3. Direct users to the site! For the official competition, this is run on [wiki-races.interalliance.org](https://wiki-races.interalliance.org)
+4. After the competition ends, you can clean up by removing the users from the databse.
+   - `python3 manage_db.py`
+   - Press 8 to delete users.
+
+<details>
+<summary><h3>Installing and running on Fedora Linux 40</h3></summary>
 
 ```bash
 # If build and other necessary tools are not installed (such as literally running this in a Docker application):
@@ -59,8 +105,18 @@ pm2 start src/app.js --name wikiRaces
 pm2 status wikiRaces
 pm2 stop wikiRaces
 ```
+</details>
 
-### Running for development
+<details>
+<summary><h3>Running for development</h3></summary>
+
+Run `npm install` in the project directory to install the dependencies.
+
+Run `npm run-script test` to run the test suites.
+
+Run `npm run-script run` to host the site for testing.
+
+On the actual server, use pm2 to start the server with `npm run-script prod-run`
 
 If you're developing this application locally, and you want to restart the server any time you make edits to a file, then you should use:
 ```bash
@@ -69,8 +125,9 @@ npm run-script dev-run
 
 Overall, take a look through `package.json` and see if any of the scripts there seem useful to you.
 
----
+</details>
 
+---
 
 ### Local-first Mode
 
@@ -87,44 +144,6 @@ Known issues (Local Server)
 - Redirects will fail.
 - Design issues.
 
-### About Wiki Races:
-
-Wiki Races is a competition where players start on
-a Wikipedia page, and have to get to another Wikipedia page
-by only clicking the links in the Wikipedia pages.
-
----
-
-### Website features:
-
-- Homepage:
-  - Display levels (from `levels.json`)
-  - Submit usernames and userIds to server
-- Client:
-  - Loaded when links from the homepage are clicked.
-  - Tracks user history
-    - Visualises history at the bottom of the page
-    - Can click on a history element to go back to that page
-  - Submits user data (history, time, userId) to server when a level is completed.
-- Leaderboard:
-  - Orders all players by total time
-  - Has links to show players individual submissions
-- Server:
-  - Dynamically generate Wikipedia pages
-  - Save user data
-  - Host various APIs for webpages
-- Admin tools:
-  - Rename users on the fly
-  - Set level times easily
-
----
-
-This is intended to be run on a Linux system.
-It has been proven to work on Ubuntu Server 20.04.2 and on Ubuntu Server 22.04.1
-
-This does not have any of the NGINX settings needed to support the server.
-You will need to do that yourself if you are setitng this up.
-
 ---
 
 ### To do:
@@ -132,6 +151,17 @@ You will need to do that yourself if you are setitng this up.
 - Big change: Pull from Wikipedia API instead of webpage
   - change function `getWiki(id)` in dynamic.js to pull from Wikipedia API
   - Take data from API and format it as a styled HTML webpage
+  - There are many NodeJS Wikipedia APIs
+    1. [Wikipedia](https://github.com/dopecodez/Wikipedia)
+      - returns images in a nice format
+      - looks like it's already in use by <https://wiki-race.com/game>
+    2. [NodeMW](https://github.com/macbre/nodemw)
+    3. [NodeJS wiki](https://github.com/dijs/wiki)
+  - Excluding references from parse request?
+    - https://stackoverflow.com/questions/16259946/wikipedia-api-excluding-references-from-parse-request 
+  - Problem:
+    - How do we avoid links that do not point to wikipedia?
+    - ([Thou shalt not parse HTML with regex](https://stackoverflow.com/a/1732454))
 - clean up useless async/await
 - Set up auto redirect from HTTP to HTTPS
 - set up replica sets for mongodb
@@ -208,17 +238,4 @@ You will need to do that yourself if you are setitng this up.
 
 </details>
 
-## Using the Wikipedia API?
 
-- There are many NodeJS Wikipedia APIs
-  1. [Wikipedia](https://github.com/dopecodez/Wikipedia)
-    - returns images in a nice format
-    - looks like it's already in use by <https://wiki-race.com/game>
-  2. [NodeMW](https://github.com/macbre/nodemw)
-  3. [NodeJS wiki](https://github.com/dijs/wiki)
-- Excluding references from parse request?
-  - https://stackoverflow.com/questions/16259946/wikipedia-api-excluding-references-from-parse-request 
-- Problem:
-  - How do we avoid links that do not point to wikipedia?
-  - ([Thou shalt not parse HTML with regex](https://stackoverflow.com/a/1732454))
-  

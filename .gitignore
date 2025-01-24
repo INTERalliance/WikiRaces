@@ -2,6 +2,7 @@
 src/game/cache
 __pycache__/
 .vscode
+*.zim
 
 # Logs
 logs

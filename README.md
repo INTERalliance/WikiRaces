@@ -71,6 +71,22 @@ Overall, take a look through `package.json` and see if any of the scripts there 
 
 ---
 
+
+### Local-first Mode
+
+Due to networking issues at TechOlympics 2024, a focus of the 2025 rework was offline functionality. It's still in its early stages, but the server will now first attempt to connect to a Wikipedia instance running locally on port 3000 before falling back to Wikipedia. Added to the existing cache system, the priority now works as follows:
+
+1. Use a cached page when possible.
+2. Use a local page when possible
+3. Use a Wikipedia page when possible.
+4. Show an error.
+
+To use this offline functionality, run `cd local`, `npm install`, and finally `node server`. Note that you'll need a [dump of Wikipedia](https://library.kiwix.org/#lang=eng&category=wikipedia) downloaded to the `local` folder as `wiki.zim`. 
+
+Known issues (Local Server)
+- Redirects will fail.
+- Design issues.
+
 ### About Wiki Races:
 
 Wiki Races is a competition where players start on
@@ -125,7 +141,6 @@ You will need to do that yourself if you are setitng this up.
 - encode urls properly
 - Reorder directory structure so pages are not jumbled together.
 - set up nojs and IE support
-- 2024 redesign
 
 ---
 
@@ -133,6 +148,7 @@ You will need to do that yourself if you are setitng this up.
   <summary>Completed tasks</summary>
 
 ## Completed:
+- 2024 redesign
 - set up Docker
 - Cache all loaded files -> Store as JSON or as Files?
 - Get Wikipedia content and parse it

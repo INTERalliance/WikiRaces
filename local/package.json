@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@openzim/libzim": "^3.2.3"
+  }
+}

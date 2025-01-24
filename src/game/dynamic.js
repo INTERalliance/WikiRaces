@@ -35,7 +35,7 @@ const { fillTemplate } = require("./template");
  * @param {string} page - a raw HTML page returned from wikipedia
  * @returns {string}
  */
-function processHTML(page) {
+function processHTML(page, localMode) {
 	// I previously used a DOM emulator (jsdom) to remove elements,
 	// and, in terms of performance, this wall of regex is significantly better.
 
@@ -45,6 +45,15 @@ function processHTML(page) {
 	page = page.replace("</body>", "");
 	page = page.replace(/<html.*>/, "");
 	page = page.replace("</html>", "");
+	if (localMode) {
+		// fix internal links
+		page = page.replaceAll("<a href=\"", "<a href=\"./");
+		// remove built in title
+		let h1 = page.indexOf("<h1>")
+		let endH1 = page.indexOf("</h1>")
+		page = page.replace(page.substring(h1, endH1), "")
+
+	}
 	// removes all script tags
 	page = page.replace(
 		/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi,
@@ -65,19 +74,29 @@ function processHTML(page) {
  * @param {string} encodedId - The URI encoded fragment
  * @returns {Promise<string>}
  */
-async function generatePage(rawId, encodedId) {
+async function generatePage(rawId, encodedId, localMode) {
 	// get raw html from wikipedia.
 	try {
-		const text = await fetch(`https://en.wikipedia.org/w/rest.php/v1/page/${encodedId}/html`)
+		let text;
+		if (localMode) {
+			text = await fetch(`http://host.docker.internal:3000/${encodedId}`)
+			.then(page => page.text())
+		}
+		else {
+			text = await fetch(`https://en.wikipedia.org/w/rest.php/v1/page/${encodedId}/html`)
 			.then(page => page.text());
+		}
+		
 		const dom = new JSDOM(text);
 		let html = dom.window.document.querySelector("body").outerHTML; // get body html
 		const title = dom.window.document.querySelector("head").querySelector("title").textContent;
-		html = processHTML(html);
+		html = processHTML(html, localMode);
 		html = fillTemplate(html, encodedId, title);
 		return html;
 	} catch (error) {
 		log.error(error);
+		if (localMode)
+			return generatePage(rawId, encodedId, false)
 		return "This page could not be found. You can use the timeline at the bottom of the page to go back.";
 	}
 }
@@ -156,7 +175,7 @@ async function getPage(id) {
 		}
 		if (!page) {
 			avg.add(0);
-			page = await generatePage(id, encodedId);
+			page = await generatePage(id, encodedId, true);
 			saveFile(encodedId, page);
 		}
 		log.info(`${Number(((await avg.average()) * 100).toFixed(4))}% cached`);

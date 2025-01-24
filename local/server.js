@@ -2,13 +2,17 @@
 import { Archive, SuggestionSearcher, Searcher, Query } from "@openzim/libzim";
 import {createServer} from "http"
 
+const outFile = "./wiki.zim";
+const archive = new Archive(outFile);
+
+// Reading from a ZIM file.
 async function read(Path) {
-    const outFile = "./wiki.zim";
-    const archive = new Archive(outFile);
     console.log(`Archive opened: main entry path - ${archive.mainEntry.path}`);
 
     try {
-        const entry = archive.getEntryByPath(Path);
+        let entry = archive.getEntryByPath(Path);
+        if (entry.isRedirect)
+            entry = entry.redirectEntry
         const item = entry.item;
         const blob = item.data;
         return blob.data;
@@ -16,8 +20,7 @@ async function read(Path) {
     catch {
 
     }
-};
-
+}
 
 // Creating server 
 const server = createServer(async (req, res) => {
@@ -28,7 +31,9 @@ const server = createServer(async (req, res) => {
     const data = await read(path)
     if (data != undefined) {
         res.write(data)
-
+    }
+    else {
+		res.write("This page could not be found. You can use the timeline at the bottom of the page to go back.") 
     }
     res.end();
 })
